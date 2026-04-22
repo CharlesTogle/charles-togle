@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Projects from './components/Projects';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -12,6 +13,7 @@ export default function Home() {
   if (!mounted) return null;
 
   return (
+    <>
     <div
       className="relative w-full flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: '#0e0818', height: 'calc(100vh - 40px)' }}
@@ -157,5 +159,7 @@ export default function Home() {
         </svg>
       </div>
     </div>
+    <Projects />
+    </>
   );
 }
