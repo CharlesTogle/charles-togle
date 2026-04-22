@@ -2,50 +2,94 @@
 @import "tailwindcss";
 
 :root {
-  /* Cosmic Shadow Color System */
-  --background: #181021;
-  --foreground: #ecddf6;
+  /* Cosmic Terminal Color System */
+  --surface: #1a101e;
+  --surface-dim: #1a101e;
+  --surface-bright: #413545;
+  --surface-container-lowest: #140a18;
+  --surface-container-low: #221826;
+  --surface-container: #271c2a;
+  --surface-container-high: #312635;
+  --surface-container-highest: #3d3140;
 
-  /* Primary Colors */
-  --primary: #ecb1ff;
-  --primary-dark: #bf00ff;
-  --primary-text: #520070;
-
-  /* Surface Hierarchy */
-  --surface-dim: #181021;
-  --surface-bright: #3f3548;
-  --container-lowest: #120b1b;
-  --container-low: #201829;
-  --container: #241c2e;
-  --container-high: #2f2638;
-  --container-highest: #3a3144;
-
-  /* Text Colors */
-  --on-surface: #ecddf6;
+  --on-surface: #f0ddf1;
   --on-surface-variant: #d5c0d7;
+  --inverse-surface: #f0ddf1;
+  --inverse-on-surface: #382c3c;
 
-  /* Accent Colors */
-  --secondary: #d3beeb;
-  --tertiary: #d7baff;
   --outline: #9d8ba0;
   --outline-variant: #514254;
+  --surface-tint: #ecb1ff;
 
-  /* Status Colors */
-  --success: #7dd8c0;
+  --primary: #ecb1ff;
+  --on-primary: #520070;
+  --primary-container: #bf00ff;
+  --on-primary-container: #ffffff;
+  --inverse-primary: #9900ce;
+
+  --secondary: #c7bfff;
+  --on-secondary: #2c148e;
+  --secondary-container: #4635a7;
+  --on-secondary-container: #b8afff;
+
+  --tertiary: #cfbcff;
+  --on-tertiary: #3a0092;
+  --tertiary-container: #8652ff;
+  --on-tertiary-container: #ffffff;
+
   --error: #ffb4ab;
-  --warning: #ecb1ff;
+  --on-error: #690005;
+  --error-container: #93000a;
+  --on-error-container: #ffdad6;
+
+  --background: #1a101e;
+  --on-background: #f0ddf1;
+
+  /* Typography Scales */
+  --fs-h1: 48px;
+  --fs-h2: 32px;
+  --fs-h3: 24px;
+  --fs-body-lg: 18px;
+  --fs-body-md: 16px;
+  --fs-mono-label: 12px;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --lh-tight: 1.1;
+  --lh-snug: 1.2;
+  --lh-normal: 1.3;
+  --lh-relaxed: 1.6;
+
+  --ls-tight: -0.02em;
+  --ls-base: 0em;
+  --ls-wide: 0.1em;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 48px;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-foreground: var(--on-surface);
   --font-sans: 'Space Grotesk', var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-body {
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
   background: var(--background);
-  color: var(--foreground);
+  color: var(--on-surface);
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
@@ -57,4 +101,14 @@ body {
 
 .cursor {
   animation: blink 1s infinite;
+}
+
+/* Neon Glow for Primary Elements */
+@keyframes neon-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(189, 0, 255, 0.3); }
+  50% { box-shadow: 0 0 12px rgba(189, 0, 255, 0.6); }
+}
+
+.neon-glow {
+  animation: neon-glow 2s ease-in-out infinite;
 }
