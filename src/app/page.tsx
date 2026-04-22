@@ -164,9 +164,28 @@ export default function Home () {
           </div>
         </div>
         {/* Scroll Indicator */}
-        <div
-          className='absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none'
-          style={{ color: 'var(--outline)' }}
+        <button
+          type='button'
+          className='absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2'
+          style={{
+            color: 'var(--outline)',
+            background: 'transparent',
+            border: 'none',
+            cursor: 'pointer'
+          }}
+          onClick={() =>
+            document.getElementById('about')?.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            })
+          }
+          onMouseEnter={e => {
+            e.currentTarget.style.color = 'var(--primary-container)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.color = 'var(--outline)'
+          }}
+          aria-label='Scroll to about section'
         >
           <span
             className='font-mono tracking-widest'
@@ -188,7 +207,7 @@ export default function Home () {
               strokeLinecap='square'
             />
           </svg>
-        </div>
+        </button>
       </div>
       <About />
       <Projects />
