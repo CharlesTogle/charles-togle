@@ -39,17 +39,18 @@ export default function Home() {
         <div
           className="border"
           style={{
-            backgroundColor: 'var(--surface-container-low)',
-            borderColor: 'var(--outline-variant)',
+            backgroundColor: '#120a1a',
+            borderColor: 'rgba(191,0,255,0.25)',
             borderRadius: 0,
+            boxShadow: '0 0 40px rgba(191,0,255,0.08), inset 0 0 60px rgba(10,2,16,0.6)',
           }}
         >
           {/* Title Bar */}
           <div
             className="flex items-center gap-3 px-5 py-3"
             style={{
-              backgroundColor: 'var(--surface-container)',
-              borderBottom: '1px solid var(--outline-variant)',
+              backgroundColor: '#1a0d22',
+              borderBottom: '1px solid rgba(191,0,255,0.2)',
             }}
           >
             {/* Traffic lights — muted squares matching image */}
@@ -82,15 +83,16 @@ export default function Home() {
               >
                 Diving into the Abyss...
               </span>
-              {/* Cursor block */}
+              {/* Cursor block — neon glow */}
               <span
                 className="cursor"
                 style={{
                   display: 'inline-block',
                   width: '14px',
                   height: '28px',
-                  backgroundColor: 'var(--primary-container)',
+                  backgroundColor: '#bf00ff',
                   flexShrink: 0,
+                  boxShadow: '0 0 8px #bf00ff, 0 0 20px rgba(191,0,255,0.6), 0 0 40px rgba(191,0,255,0.3)',
                 }}
               />
             </div>
