@@ -52,6 +52,7 @@ const projects: Project[] = [
     period: 'Feb – April 2025',
     tech: ['React', 'Capacitor', 'FastifyJS', 'Supabase', 'Gemini API'],
     links: {
+      live: 'https://umak-link-web.vercel.app/',
       source: 'https://github.com/CharlesTogle/umak-link-web',
       source2: 'https://github.com/CharlesTogle/umak-link-backend',
     },
