@@ -12,7 +12,7 @@ export default function Home() {
   if (!mounted) return null;
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#181021' }}>
+    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#0a0805' }}>
       {/* Name Silhouette Background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
         <div className="text-center opacity-5">
