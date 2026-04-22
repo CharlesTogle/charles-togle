@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Charles Nathaniel Togle",
   description: "Full-stack engineer • Systems • Real-world impact",
   icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23110f1a'/><text x='16' y='22' font-family='monospace' font-size='14' font-weight='bold' fill='%239333ea' text-anchor='middle'>CT</text></svg>",
+    icon: "/favicon.svg",
   },
 };
 

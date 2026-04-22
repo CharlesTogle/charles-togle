@@ -171,6 +171,48 @@ html, body {
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+html,
+body,
+header,
+main,
+section,
+div,
+button,
+span,
+a,
+svg,
+path,
+rect,
+circle,
+line {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    fill 180ms ease,
+    stroke 180ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body,
+  header,
+  main,
+  section,
+  div,
+  button,
+  span,
+  a,
+  svg,
+  path,
+  rect,
+  circle,
+  line {
+    transition: none;
+  }
+}
+
 /* Terminal Cursor Blink Animation */
 @keyframes blink {
   0%, 50% { opacity: 1; }

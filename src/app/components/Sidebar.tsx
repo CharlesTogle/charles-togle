@@ -194,16 +194,24 @@ export default function Sidebar () {
           }
         >
           <svg width='16' height='16' viewBox='0 0 16 16' fill='none'>
-            <circle
-              cx='6'
-              cy='6'
-              r='3'
-              stroke='currentColor'
-              strokeWidth='1.2'
-            />
-            <path d='M6 1v2M6 9v2M1 6h2M9 6h2M2.5 2.5l1.4 1.4M8.1 8.1l1.4 1.4M2.5 9.5l1.4-1.4M8.1 3.9l1.4-1.4' stroke='currentColor' strokeWidth='1.2' strokeLinecap='square' />
-            <path d='M10.5 10.5l1.2 1.2' stroke='currentColor' strokeWidth='1.2' strokeLinecap='square' />
-            <path d='M12 11.7c0 1.3 1 2.3 2.3 2.3-.4-.2-1-.8-1-1.8 0-1 .6-1.6 1-1.8-1.3 0-2.3 1-2.3 2.3Z' fill='currentColor' stroke='currentColor' strokeWidth='0.3' />
+            {theme === 'light' ? (
+              <>
+                <circle cx='8' cy='8' r='2.8' stroke='currentColor' strokeWidth='1.2' />
+                <path
+                  d='M8 1.4v1.8M8 12.8v1.8M1.4 8h1.8M12.8 8h1.8M3.3 3.3l1.3 1.3M11.4 11.4l1.3 1.3M3.3 12.7l1.3-1.3M11.4 4.6l1.3-1.3'
+                  stroke='currentColor'
+                  strokeWidth='1.2'
+                  strokeLinecap='square'
+                />
+              </>
+            ) : (
+              <path
+                d='M10.8 2.2c-2.7.3-4.8 2.6-4.8 5.4 0 2.9 2.4 5.3 5.3 5.3 1.1 0 2.1-.3 2.9-.9a5.8 5.8 0 0 1-4.4 2C6.6 14 4 11.4 4 8.2c0-2.5 1.6-4.7 3.9-5.5.9-.3 1.9-.5 2.9-.5Z'
+                stroke='currentColor'
+                strokeWidth='1.2'
+                strokeLinejoin='round'
+              />
+            )}
           </svg>
         </button>
 
@@ -286,54 +294,6 @@ export default function Sidebar () {
           </svg>
         </button>
 
-        {/* Spacer */}
-        <div className='flex-1' />
-
-        {/* Settings */}
-        <button
-          style={{ ...iconBtnStyle(false), marginBottom: '8px' }}
-          onMouseEnter={e => (e.currentTarget.style.color = 'var(--primary-container)')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'var(--outline)')}
-        >
-          <svg width='16' height='16' viewBox='0 0 16 16' fill='none'>
-            <circle
-              cx='8'
-              cy='8'
-              r='2.5'
-              stroke='currentColor'
-              strokeWidth='1.2'
-            />
-            <path
-              d='M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41'
-              stroke='currentColor'
-              strokeWidth='1.2'
-              strokeLinecap='square'
-            />
-          </svg>
-        </button>
-
-        {/* User */}
-        <button
-          style={{ ...iconBtnStyle(false), marginBottom: '4px' }}
-          onMouseEnter={e => (e.currentTarget.style.color = 'var(--primary-container)')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'var(--outline)')}
-        >
-          <svg width='16' height='16' viewBox='0 0 16 16' fill='none'>
-            <circle
-              cx='8'
-              cy='5'
-              r='3'
-              stroke='currentColor'
-              strokeWidth='1.2'
-            />
-            <path
-              d='M1 14c0-3 3-5 7-5s7 2 7 5'
-              stroke='currentColor'
-              strokeWidth='1.2'
-              strokeLinecap='square'
-            />
-          </svg>
-        </button>
       </div>
 
       {/* Explorer panel */}
