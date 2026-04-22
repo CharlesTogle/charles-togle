@@ -13,22 +13,21 @@ export default function Header() {
       className="fixed top-0 left-0 right-0 z-50 flex items-stretch"
       style={{
         height: '40px',
-        backgroundColor: '#0e0818',
-        borderBottom: '1px solid rgba(191,0,255,0.2)',
+        backgroundColor: 'var(--shell-top)',
+        borderBottom: '1px solid var(--shell-border-strong)',
       }}
     >
       {/* Logo */}
       <div
-        className="flex items-center px-4 shrink-0 font-mono font-bold tracking-widest"
+        className="flex items-center gap-3 px-4 shrink-0 font-mono font-bold tracking-widest"
         style={{
           fontSize: '13px',
-          color: '#bf00ff',
-          borderRight: '1px solid rgba(191,0,255,0.2)',
-          minWidth: '180px',
-          textShadow: '0 0 10px rgba(191,0,255,0.5)',
+          borderRight: '1px solid var(--shell-border-strong)',
+          minWidth: '220px',
         }}
       >
-        TERMINAL_v1.0.4
+        <span style={{ fontSize: '14px', color: 'var(--primary-container)', opacity: 0.9 }}>◆</span>
+        <span style={{ color: 'var(--on-surface)', opacity: 0.75 }}>charles@portfolio: ~</span>
       </div>
 
       {/* Tabs */}
@@ -39,11 +38,11 @@ export default function Header() {
             className="relative flex items-center px-5 font-mono tracking-widest transition-colors duration-150"
             style={{
               fontSize: '11px',
-              color: tab.active ? '#bf00ff' : 'var(--outline)',
+              color: tab.active ? 'var(--primary-container)' : 'var(--outline)',
               backgroundColor: 'transparent',
               border: 'none',
               cursor: 'pointer',
-              borderRight: '1px solid rgba(191,0,255,0.1)',
+              borderRight: '1px solid var(--shell-border)',
             }}
             onMouseEnter={(e) => {
               if (!tab.active) e.currentTarget.style.color = 'var(--on-surface-variant)';
@@ -59,8 +58,8 @@ export default function Header() {
                 className="absolute bottom-0 left-0 right-0"
                 style={{
                   height: '2px',
-                  backgroundColor: '#bf00ff',
-                  boxShadow: '0 0 6px rgba(191,0,255,0.8)',
+                  backgroundColor: 'var(--primary-container)',
+                  boxShadow: '0 0 6px var(--accent-glow)',
                 }}
               />
             )}
@@ -71,7 +70,7 @@ export default function Header() {
       {/* Right icons — no bell */}
       <div
         className="flex items-center gap-1 px-3 shrink-0"
-        style={{ borderLeft: '1px solid rgba(191,0,255,0.2)' }}
+        style={{ borderLeft: '1px solid var(--shell-border-strong)' }}
       >
         {/* Terminal icon */}
         <button
@@ -84,7 +83,7 @@ export default function Header() {
             border: 'none',
             cursor: 'pointer',
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = '#bf00ff')}
+          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary-container)')}
           onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--outline)')}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -103,7 +102,7 @@ export default function Header() {
             border: 'none',
             cursor: 'pointer',
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = '#bf00ff')}
+          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary-container)')}
           onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--outline)')}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

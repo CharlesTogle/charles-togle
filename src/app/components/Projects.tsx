@@ -236,7 +236,7 @@ function FeaturedCard({ project }: { project: Project }) {
       <div
         style={{
           height: '280px',
-          background: '#080511',
+          background: 'var(--surface-container-lowest)',
           position: 'relative',
           overflow: 'hidden',
           display: 'flex',
@@ -555,7 +555,7 @@ export default function Projects() {
     <section
       id="projects"
       style={{
-        background: '#0d0917',
+        background: 'var(--section-bg-alt)',
         padding: '80px 0',
         fontFamily: 'Space Grotesk, sans-serif',
       }}
