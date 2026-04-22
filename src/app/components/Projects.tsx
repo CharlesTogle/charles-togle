@@ -56,6 +56,7 @@ const projects: Project[] = [
       source2: 'https://github.com/CharlesTogle/umak-link-backend',
     },
     icon: 'link',
+    screenshot: '/projects/umak-link.png',
   },
   {
     id: '0X03',
