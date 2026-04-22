@@ -13,27 +13,9 @@ export default function Home() {
 
   return (
     <div
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
-      style={{ backgroundColor: '#0e0818' }}
+      className="relative w-full flex items-center justify-center overflow-hidden"
+      style={{ backgroundColor: '#0e0818', height: 'calc(100vh - 40px)' }}
     >
-      {/* Name Silhouette — watermark behind everything */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
-        <div className="text-center opacity-[0.04] leading-none">
-          <div
-            className="font-bold tracking-tighter"
-            style={{ fontSize: '18vw', color: 'var(--primary)', letterSpacing: 'var(--ls-tight)' }}
-          >
-            CHARLES
-          </div>
-          <div
-            className="font-bold tracking-tighter"
-            style={{ fontSize: '9vw', color: 'var(--primary)', letterSpacing: 'var(--ls-tight)' }}
-          >
-            NATHANIEL TOGLE
-          </div>
-        </div>
-      </div>
-
       {/* Terminal Window */}
       <div className="relative z-10 w-full max-w-3xl mx-6">
         <div
@@ -152,6 +134,27 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
+      {/* Scroll Indicator */}
+      <div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
+        style={{ color: 'var(--outline)' }}
+      >
+        <span
+          className="font-mono tracking-widest"
+          style={{ fontSize: 'var(--fs-mono-label)' }}
+        >
+          SCROLL
+        </span>
+        <svg
+          className="animate-bounce"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+        >
+          <path d="M3 5l5 6 5-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+        </svg>
       </div>
     </div>
   );
