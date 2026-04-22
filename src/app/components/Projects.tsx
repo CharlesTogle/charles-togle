@@ -21,6 +21,7 @@ interface Project {
   impact?: string
   links: ProjectLinks
   icon: string
+  screenshot?: string
 }
 
 // ─── Data ────────────────────────────────────────────────────────────────────
@@ -39,6 +40,7 @@ const projects: Project[] = [
       source: 'https://github.com/CharlesTogle/Hope-Hub',
     },
     icon: 'edu',
+    screenshot: '/projects/hope-hub.png',
   },
   {
     id: '0X02',
@@ -84,6 +86,7 @@ const projects: Project[] = [
       source: 'https://github.com/CharlesTogle/not-so-simple-quiz-app',
     },
     icon: 'quiz',
+    screenshot: '/projects/manual-quiz.png',
   },
   {
     id: '0X05',
@@ -100,6 +103,7 @@ const projects: Project[] = [
       source: 'https://github.com/CharlesTogle/DigitalPulsify',
     },
     icon: 'pulse',
+    screenshot: '/projects/digital-pulse.png',
   },
   {
     id: '0X06',
@@ -128,6 +132,7 @@ const projects: Project[] = [
       source: 'https://github.com/CharlesTogle/agentic-coding-slides',
     },
     icon: 'slides',
+    screenshot: '/projects/agentic-slides.png',
   },
 ]
 
@@ -237,20 +242,36 @@ function FeaturedCard({ project }: { project: Project }) {
           flexShrink: 0,
         }}
       >
-        <span
-          style={{
-            fontSize: '15vw',
-            fontWeight: 700,
-            color: '#bf00ff',
-            opacity: 0.06,
-            lineHeight: 1,
-            userSelect: 'none',
-            fontFamily: 'Space Grotesk, sans-serif',
-            position: 'absolute',
-          }}
-        >
-          {project.id}
-        </span>
+        {project.screenshot ? (
+          <img
+            src={project.screenshot}
+            alt={project.name}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'top',
+              opacity: 0.85,
+            }}
+          />
+        ) : (
+          <span
+            style={{
+              fontSize: '15vw',
+              fontWeight: 700,
+              color: '#bf00ff',
+              opacity: 0.06,
+              lineHeight: 1,
+              userSelect: 'none',
+              fontFamily: 'Space Grotesk, sans-serif',
+              position: 'absolute',
+            }}
+          >
+            {project.id}
+          </span>
+        )}
         <div
           style={{
             position: 'absolute',
