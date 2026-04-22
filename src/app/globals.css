@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Cosmic Shadow Color System */
+  --background: #181021;
+  --foreground: #ecddf6;
+
+  /* Primary Colors */
+  --primary: #ecb1ff;
+  --primary-dark: #bf00ff;
+  --primary-text: #520070;
+
+  /* Surface Hierarchy */
+  --surface-dim: #181021;
+  --surface-bright: #3f3548;
+  --container-lowest: #120b1b;
+  --container-low: #201829;
+  --container: #241c2e;
+  --container-high: #2f2638;
+  --container-highest: #3a3144;
+
+  /* Text Colors */
+  --on-surface: #ecddf6;
+  --on-surface-variant: #d5c0d7;
+
+  /* Accent Colors */
+  --secondary: #d3beeb;
+  --tertiary: #d7baff;
+  --outline: #9d8ba0;
+  --outline-variant: #514254;
+
+  /* Status Colors */
+  --success: #7dd8c0;
+  --error: #ffb4ab;
+  --warning: #ecb1ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Space Grotesk', var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Terminal Cursor Blink Animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
