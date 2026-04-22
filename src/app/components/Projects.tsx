@@ -37,10 +37,10 @@ const projects: Project[] = [
     period: 'March – May 2025',
     tech: ['React', 'PostgreSQL', 'Supabase'],
     links: {
-      source: 'https://github.com/CharlesTogle/Hope-Hub',
+      source: 'https://github.com/CharlesTogle/Hope-Hub'
     },
     icon: 'edu',
-    screenshot: '/projects/hope-hub.png',
+    screenshot: '/projects/hope-hub.png'
   },
   {
     id: '0X02',
@@ -54,10 +54,10 @@ const projects: Project[] = [
     links: {
       live: 'https://umak-link-web.vercel.app/',
       source: 'https://github.com/CharlesTogle/umak-link-web',
-      source2: 'https://github.com/CharlesTogle/umak-link-backend',
+      source2: 'https://github.com/CharlesTogle/umak-link-backend'
     },
     icon: 'link',
-    screenshot: '/projects/umak-link.png',
+    screenshot: '/projects/umak-link.png'
   },
   {
     id: '0X03',
@@ -69,9 +69,9 @@ const projects: Project[] = [
     period: '2025',
     tech: ['SSH', 'Ollama', 'Android', 'Linux'],
     links: {
-      source: 'https://github.com/CharlesTogle/android-server-with-llm',
+      source: 'https://github.com/CharlesTogle/android-server-with-llm'
     },
-    icon: 'terminal',
+    icon: 'terminal'
   },
   {
     id: '0X04',
@@ -85,10 +85,10 @@ const projects: Project[] = [
     impact: '40+ students',
     links: {
       live: 'https://not-so-simple-quiz-app.vercel.app/',
-      source: 'https://github.com/CharlesTogle/not-so-simple-quiz-app',
+      source: 'https://github.com/CharlesTogle/not-so-simple-quiz-app'
     },
     icon: 'quiz',
-    screenshot: '/projects/manual-quiz.png',
+    screenshot: '/projects/manual-quiz.png'
   },
   {
     id: '0X05',
@@ -102,10 +102,10 @@ const projects: Project[] = [
     impact: '50+ students',
     links: {
       live: 'https://digital-pulsify.vercel.app/',
-      source: 'https://github.com/CharlesTogle/DigitalPulsify',
+      source: 'https://github.com/CharlesTogle/DigitalPulsify'
     },
     icon: 'pulse',
-    screenshot: '/projects/digital-pulse.png',
+    screenshot: '/projects/digital-pulse.png'
   },
   {
     id: '0X06',
@@ -117,111 +117,168 @@ const projects: Project[] = [
     period: '2024',
     tech: ['Python', 'BeautifulSoup'],
     links: {
-      source: 'https://github.com/CharlesTogle/gather-phishing-urls',
+      source: 'https://github.com/CharlesTogle/gather-phishing-urls'
     },
     icon: 'shield',
-    screenshot: '/projects/phishing-scraper.png',
+    screenshot: '/projects/phishing-scraper.png'
   },
   {
     id: '0X07',
     code: 'AGENTIC_CODING_SLIDES',
     name: 'Agentic Coding Slides',
     description:
-      'Taught entire 3rd year CS cohort agentic coding. Persuaded professor to integrate it as future curriculum for underclassmen.',
+      'Taught entire 3rd year CS cohort agentic coding, Motivated the professor to integrate it as future curriculum for underclassmen.',
     role: 'Author & Presenter',
     period: '2025',
     tech: ['AI', 'Education'],
     links: {
-      source: 'https://github.com/CharlesTogle/agentic-coding-slides',
+      source: 'https://github.com/CharlesTogle/agentic-coding-slides'
     },
     icon: 'slides',
-    screenshot: '/projects/agentic-slides.png',
-  },
+    screenshot: '/projects/agentic-slides.png'
+  }
 ]
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 
-function IconEdu() {
+function IconEdu () {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
-      <path d="M8 2L1 6l7 4 7-4-7-4z" />
-      <path d="M1 6v5" />
-      <path d="M4 7.5v3.5c0 1.1 1.8 2 4 2s4-.9 4-2V7.5" />
+    <svg
+      width='16'
+      height='16'
+      viewBox='0 0 16 16'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='1.2'
+    >
+      <path d='M8 2L1 6l7 4 7-4-7-4z' />
+      <path d='M1 6v5' />
+      <path d='M4 7.5v3.5c0 1.1 1.8 2 4 2s4-.9 4-2V7.5' />
     </svg>
   )
 }
 
-function IconLink() {
+function IconLink () {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
-      <path d="M6.5 9.5a3.5 3.5 0 0 0 4.95 0l2-2a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25" />
-      <path d="M9.5 6.5a3.5 3.5 0 0 0-4.95 0l-2 2a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25" />
+    <svg
+      width='16'
+      height='16'
+      viewBox='0 0 16 16'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='1.2'
+    >
+      <path d='M6.5 9.5a3.5 3.5 0 0 0 4.95 0l2-2a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25' />
+      <path d='M9.5 6.5a3.5 3.5 0 0 0-4.95 0l-2 2a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25' />
     </svg>
   )
 }
 
-function IconTerminal() {
+function IconTerminal () {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
-      <rect x="1" y="2" width="14" height="12" />
-      <path d="M4 6l3 3-3 3" />
-      <path d="M9 12h3" />
+    <svg
+      width='16'
+      height='16'
+      viewBox='0 0 16 16'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='1.2'
+    >
+      <rect x='1' y='2' width='14' height='12' />
+      <path d='M4 6l3 3-3 3' />
+      <path d='M9 12h3' />
     </svg>
   )
 }
 
-function IconQuiz() {
+function IconQuiz () {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
-      <rect x="2" y="1" width="12" height="14" />
-      <path d="M5 6l2 2 4-4" />
-      <path d="M5 10h6" />
+    <svg
+      width='16'
+      height='16'
+      viewBox='0 0 16 16'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='1.2'
+    >
+      <rect x='2' y='1' width='12' height='14' />
+      <path d='M5 6l2 2 4-4' />
+      <path d='M5 10h6' />
     </svg>
   )
 }
 
-function IconPulse() {
+function IconPulse () {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
-      <path d="M1 8h2v-4h3v8h3v-4h3v4h1" />
+    <svg
+      width='16'
+      height='16'
+      viewBox='0 0 16 16'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='1.2'
+    >
+      <path d='M1 8h2v-4h3v8h3v-4h3v4h1' />
     </svg>
   )
 }
 
-function IconShield() {
+function IconShield () {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
-      <path d="M8 1L2 4v4c0 3.5 2.5 6.2 6 7 3.5-.8 6-3.5 6-7V4L8 1z" />
+    <svg
+      width='16'
+      height='16'
+      viewBox='0 0 16 16'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='1.2'
+    >
+      <path d='M8 1L2 4v4c0 3.5 2.5 6.2 6 7 3.5-.8 6-3.5 6-7V4L8 1z' />
     </svg>
   )
 }
 
-function IconSlides() {
+function IconSlides () {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
-      <rect x="1" y="2" width="14" height="10" />
-      <path d="M6 7l4-2v4L6 7z" />
-      <path d="M6 14l2-2 2 2" />
+    <svg
+      width='16'
+      height='16'
+      viewBox='0 0 16 16'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='1.2'
+    >
+      <rect x='1' y='2' width='14' height='10' />
+      <path d='M6 7l4-2v4L6 7z' />
+      <path d='M6 14l2-2 2 2' />
     </svg>
   )
 }
 
-function ProjectIcon({ icon }: { icon: string }) {
+function ProjectIcon ({ icon }: { icon: string }) {
   switch (icon) {
-    case 'edu':      return <IconEdu />
-    case 'link':     return <IconLink />
-    case 'terminal': return <IconTerminal />
-    case 'quiz':     return <IconQuiz />
-    case 'pulse':    return <IconPulse />
-    case 'shield':   return <IconShield />
-    case 'slides':   return <IconSlides />
-    default:         return <IconTerminal />
+    case 'edu':
+      return <IconEdu />
+    case 'link':
+      return <IconLink />
+    case 'terminal':
+      return <IconTerminal />
+    case 'quiz':
+      return <IconQuiz />
+    case 'pulse':
+      return <IconPulse />
+    case 'shield':
+      return <IconShield />
+    case 'slides':
+      return <IconSlides />
+    default:
+      return <IconTerminal />
   }
 }
 
 // ─── Featured Card ────────────────────────────────────────────────────────────
 
-function FeaturedCard({ project }: { project: Project }) {
+function FeaturedCard ({ project }: { project: Project }) {
   return (
     <div
       style={{
@@ -229,7 +286,7 @@ function FeaturedCard({ project }: { project: Project }) {
         border: '1px solid var(--outline-variant)',
         display: 'flex',
         flexDirection: 'column',
-        height: '100%',
+        height: '100%'
       }}
     >
       {/* Visual area */}
@@ -242,7 +299,7 @@ function FeaturedCard({ project }: { project: Project }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          flexShrink: 0,
+          flexShrink: 0
         }}
       >
         {project.screenshot ? (
@@ -256,7 +313,7 @@ function FeaturedCard({ project }: { project: Project }) {
               height: '100%',
               objectFit: 'cover',
               objectPosition: 'top',
-              opacity: 0.85,
+              opacity: 0.85
             }}
           />
         ) : (
@@ -269,7 +326,7 @@ function FeaturedCard({ project }: { project: Project }) {
               lineHeight: 1,
               userSelect: 'none',
               fontFamily: 'Space Grotesk, sans-serif',
-              position: 'absolute',
+              position: 'absolute'
             }}
           >
             {project.id}
@@ -282,13 +339,21 @@ function FeaturedCard({ project }: { project: Project }) {
             left: 0,
             right: 0,
             height: '120px',
-            background: 'linear-gradient(to top, #0d0917 0%, transparent 100%)',
+            background: 'linear-gradient(to top, #0d0917 0%, transparent 100%)'
           }}
         />
       </div>
 
       {/* Meta area */}
-      <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '12px', flex: 1 }}>
+      <div
+        style={{
+          padding: '24px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '12px',
+          flex: 1
+        }}
+      >
         {/* Project label */}
         <span
           style={{
@@ -297,7 +362,7 @@ function FeaturedCard({ project }: { project: Project }) {
             color: '#bf00ff',
             fontFamily: 'Space Grotesk, sans-serif',
             fontWeight: 600,
-            textTransform: 'uppercase',
+            textTransform: 'uppercase'
           }}
         >
           PROJECT_{project.id}
@@ -310,7 +375,7 @@ function FeaturedCard({ project }: { project: Project }) {
             fontWeight: 600,
             color: 'var(--on-surface)',
             margin: 0,
-            fontFamily: 'Space Grotesk, sans-serif',
+            fontFamily: 'Space Grotesk, sans-serif'
           }}
         >
           {project.name}
@@ -327,7 +392,7 @@ function FeaturedCard({ project }: { project: Project }) {
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
-            fontFamily: 'Space Grotesk, sans-serif',
+            fontFamily: 'Space Grotesk, sans-serif'
           }}
         >
           {project.description}
@@ -341,7 +406,7 @@ function FeaturedCard({ project }: { project: Project }) {
               letterSpacing: 'var(--ls-wide)',
               color: 'var(--outline)',
               fontFamily: 'monospace',
-              textTransform: 'uppercase',
+              textTransform: 'uppercase'
             }}
           >
             ROLE: {project.role}
@@ -352,7 +417,7 @@ function FeaturedCard({ project }: { project: Project }) {
               letterSpacing: 'var(--ls-wide)',
               color: 'var(--outline)',
               fontFamily: 'monospace',
-              textTransform: 'uppercase',
+              textTransform: 'uppercase'
             }}
           >
             PERIOD: {project.period}
@@ -361,7 +426,7 @@ function FeaturedCard({ project }: { project: Project }) {
 
         {/* Tech tags */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-          {project.tech.map((t) => (
+          {project.tech.map(t => (
             <span
               key={t}
               style={{
@@ -371,7 +436,7 @@ function FeaturedCard({ project }: { project: Project }) {
                 border: '1px solid rgba(191,0,255,0.3)',
                 padding: '2px 8px',
                 fontFamily: 'Space Grotesk, sans-serif',
-                letterSpacing: '0.05em',
+                letterSpacing: '0.05em'
               }}
             >
               {t}
@@ -380,15 +445,34 @@ function FeaturedCard({ project }: { project: Project }) {
         </div>
 
         {/* Action buttons */}
-        <div style={{ display: 'flex', gap: '8px', marginTop: '4px', flexWrap: 'wrap' }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: '8px',
+            marginTop: '4px',
+            flexWrap: 'wrap'
+          }}
+        >
           {project.links.live && (
-            <ActionButton href={project.links.live} variant="solid" label="EXECUTE" />
+            <ActionButton
+              href={project.links.live}
+              variant='solid'
+              label='EXECUTE'
+            />
           )}
           {project.links.source && (
-            <ActionButton href={project.links.source} variant="outline" label="SOURCE" />
+            <ActionButton
+              href={project.links.source}
+              variant='outline'
+              label='SOURCE'
+            />
           )}
           {project.links.source2 && (
-            <ActionButton href={project.links.source2} variant="outline" label="SOURCE_2" />
+            <ActionButton
+              href={project.links.source2}
+              variant='outline'
+              label='SOURCE_2'
+            />
           )}
         </div>
       </div>
@@ -398,10 +482,10 @@ function FeaturedCard({ project }: { project: Project }) {
 
 // ─── Action Button ────────────────────────────────────────────────────────────
 
-function ActionButton({
+function ActionButton ({
   href,
   variant,
-  label,
+  label
 }: {
   href: string
   variant: 'solid' | 'outline'
@@ -419,7 +503,7 @@ function ActionButton({
     fontFamily: 'Space Grotesk, sans-serif',
     display: 'inline-block',
     transition: 'box-shadow 0.2s, background 0.2s',
-    borderRadius: 0,
+    borderRadius: 0
   }
 
   const solidStyle: React.CSSProperties = {
@@ -427,21 +511,21 @@ function ActionButton({
     background: '#bf00ff',
     color: '#ffffff',
     border: 'none',
-    boxShadow: hovered ? '0 0 12px rgba(191,0,255,0.5)' : 'none',
+    boxShadow: hovered ? '0 0 12px rgba(191,0,255,0.5)' : 'none'
   }
 
   const outlineStyle: React.CSSProperties = {
     ...baseStyle,
     background: hovered ? 'rgba(191,0,255,0.1)' : 'transparent',
     color: '#bf00ff',
-    border: '1px solid #bf00ff',
+    border: '1px solid #bf00ff'
   }
 
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      target='_blank'
+      rel='noopener noreferrer'
       style={variant === 'solid' ? solidStyle : outlineStyle}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -453,10 +537,10 @@ function ActionButton({
 
 // ─── Mini Card ────────────────────────────────────────────────────────────────
 
-function MiniCard({
+function MiniCard ({
   project,
   active,
-  onClick,
+  onClick
 }: {
   project: Project
   active: boolean
@@ -484,7 +568,7 @@ function MiniCard({
         borderBottom: '1px solid var(--outline-variant)',
         padding: '16px',
         cursor: 'pointer',
-        transition: 'background 0.15s',
+        transition: 'background 0.15s'
       }}
     >
       {/* Icon */}
@@ -502,7 +586,7 @@ function MiniCard({
           textTransform: 'uppercase',
           color: active ? '#bf00ff' : 'var(--on-surface)',
           marginTop: '12px',
-          fontFamily: 'Space Grotesk, sans-serif',
+          fontFamily: 'Space Grotesk, sans-serif'
         }}
       >
         {project.code}
@@ -510,19 +594,21 @@ function MiniCard({
 
       {/* Description */}
       <span
-        style={{
-          display: '-webkit-box',
-          WebkitLineClamp: 2,
-          WebkitBoxOrient: 'vertical',
-          overflow: 'hidden',
-          fontSize: '11px',
-          color: 'var(--outline)',
-          textTransform: 'uppercase',
-          letterSpacing: '0.05em',
-          marginTop: '4px',
-          lineHeight: 1.5,
-          fontFamily: 'Space Grotesk, sans-serif',
-        } as React.CSSProperties}
+        style={
+          {
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            fontSize: '11px',
+            color: 'var(--outline)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+            marginTop: '4px',
+            lineHeight: 1.5,
+            fontFamily: 'Space Grotesk, sans-serif'
+          } as React.CSSProperties
+        }
       >
         {project.description}
       </span>
@@ -535,7 +621,7 @@ function MiniCard({
           color: 'var(--outline-variant)',
           marginTop: '6px',
           fontFamily: 'monospace',
-          letterSpacing: '0.05em',
+          letterSpacing: '0.05em'
         }}
       >
         {project.role} · {project.period}
@@ -546,7 +632,7 @@ function MiniCard({
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-export default function Projects() {
+export default function Projects () {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -562,11 +648,11 @@ export default function Projects() {
 
   return (
     <section
-      id="projects"
+      id='projects'
       style={{
         background: 'var(--section-bg-alt)',
         padding: '80px 0',
-        fontFamily: 'Space Grotesk, sans-serif',
+        fontFamily: 'Space Grotesk, sans-serif'
       }}
     >
       <div className='mx-auto max-w-[1200px] px-4 sm:px-8'>
@@ -577,7 +663,7 @@ export default function Projects() {
               fontSize: 'var(--fs-mono-label)',
               letterSpacing: 'var(--ls-wide)',
               color: 'var(--outline)',
-              fontFamily: 'monospace',
+              fontFamily: 'monospace'
             }}
           >
             $ PROJECTS_
@@ -589,7 +675,7 @@ export default function Projects() {
           style={{
             height: '1px',
             background: 'var(--outline-variant)',
-            marginBottom: '32px',
+            marginBottom: '32px'
           }}
         />
 
@@ -599,7 +685,7 @@ export default function Projects() {
           style={{
             display: 'grid',
             gap: '0',
-            alignItems: 'start',
+            alignItems: 'start'
           }}
         >
           {/* Left: Featured card */}
@@ -611,9 +697,11 @@ export default function Projects() {
               height: isMobile ? 'auto' : '640px',
               overflowY: 'auto',
               border: '1px solid var(--outline-variant)',
-              borderLeft: isMobile ? '1px solid var(--outline-variant)' : 'none',
+              borderLeft: isMobile
+                ? '1px solid var(--outline-variant)'
+                : 'none',
               scrollbarWidth: 'thin',
-              scrollbarColor: 'var(--outline-variant) transparent',
+              scrollbarColor: 'var(--outline-variant) transparent'
             }}
           >
             {projects.map((project, index) => (
