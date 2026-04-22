@@ -26,8 +26,33 @@ const files = [
 
 export default function Sidebar () {
   const [explorerOpen, setExplorerOpen] = useState(true)
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
   const [activeFile, setActiveFile] =
     useState<typeof files[number]['name']>('portfolio.sh')
+
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem('theme')
+    const preferredTheme =
+      storedTheme === 'light' || storedTheme === 'dark'
+        ? storedTheme
+        : window.matchMedia('(prefers-color-scheme: light)').matches
+          ? 'light'
+          : 'dark'
+
+    setTheme(preferredTheme)
+  }, [])
+
+  useEffect(() => {
+    const root = document.documentElement
+
+    if (theme === 'light') {
+      root.dataset.theme = 'light'
+    } else {
+      delete root.dataset.theme
+    }
+
+    window.localStorage.setItem('theme', theme)
+  }, [theme])
 
   const trackedSections = useMemo(
     () =>
@@ -156,29 +181,29 @@ export default function Sidebar () {
           </svg>
         </button>
 
-        {/* Search */}
+        {/* Theme toggle */}
         <button
-          style={iconBtnStyle(false)}
+          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          style={iconBtnStyle(theme === 'light')}
+          onClick={() => setTheme(current => (current === 'light' ? 'dark' : 'light'))}
           onMouseEnter={e => (e.currentTarget.style.color = 'var(--primary-container)')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'var(--outline)')}
+          onMouseLeave={e =>
+            (e.currentTarget.style.color =
+              theme === 'light' ? 'var(--primary-container)' : 'var(--outline)')
+          }
         >
           <svg width='16' height='16' viewBox='0 0 16 16' fill='none'>
             <circle
-              cx='6.5'
-              cy='6.5'
-              r='4.5'
+              cx='6'
+              cy='6'
+              r='3'
               stroke='currentColor'
               strokeWidth='1.2'
             />
-            <line
-              x1='10'
-              y1='10'
-              x2='14'
-              y2='14'
-              stroke='currentColor'
-              strokeWidth='1.2'
-              strokeLinecap='square'
-            />
+            <path d='M6 1v2M6 9v2M1 6h2M9 6h2M2.5 2.5l1.4 1.4M8.1 8.1l1.4 1.4M2.5 9.5l1.4-1.4M8.1 3.9l1.4-1.4' stroke='currentColor' strokeWidth='1.2' strokeLinecap='square' />
+            <path d='M10.5 10.5l1.2 1.2' stroke='currentColor' strokeWidth='1.2' strokeLinecap='square' />
+            <path d='M12 11.7c0 1.3 1 2.3 2.3 2.3-.4-.2-1-.8-1-1.8 0-1 .6-1.6 1-1.8-1.3 0-2.3 1-2.3 2.3Z' fill='currentColor' stroke='currentColor' strokeWidth='0.3' />
           </svg>
         </button>
 
