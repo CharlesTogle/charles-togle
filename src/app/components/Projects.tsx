@@ -118,6 +118,7 @@ const projects: Project[] = [
       source: 'https://github.com/CharlesTogle/gather-phishing-urls',
     },
     icon: 'shield',
+    screenshot: '/projects/phishing-scraper.png',
   },
   {
     id: '0X07',
