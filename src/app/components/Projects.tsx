@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -235,7 +235,7 @@ function FeaturedCard({ project }: { project: Project }) {
       {/* Visual area */}
       <div
         style={{
-          height: '280px',
+          height: 'clamp(200px, 42vw, 280px)',
           background: 'var(--surface-container-lowest)',
           position: 'relative',
           overflow: 'hidden',
@@ -548,8 +548,17 @@ function MiniCard({
 
 export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
 
   const featured = projects[activeIndex]
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const sync = () => setIsMobile(window.innerWidth < 768)
+    sync()
+    window.addEventListener('resize', sync)
+    return () => window.removeEventListener('resize', sync)
+  }, [])
 
   return (
     <section
@@ -560,7 +569,7 @@ export default function Projects() {
         fontFamily: 'Space Grotesk, sans-serif',
       }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+      <div className='mx-auto max-w-[1200px] px-4 sm:px-8'>
         {/* Section header */}
         <div style={{ marginBottom: '24px' }}>
           <span
@@ -586,9 +595,9 @@ export default function Projects() {
 
         {/* Two-column grid */}
         <div
+          className='grid grid-cols-1 md:grid-cols-[60%_40%]'
           style={{
             display: 'grid',
-            gridTemplateColumns: '60% 40%',
             gap: '0',
             alignItems: 'start',
           }}
@@ -599,10 +608,10 @@ export default function Projects() {
           {/* Right: Mini card list */}
           <div
             style={{
-              height: '640px',
+              height: isMobile ? 'auto' : '640px',
               overflowY: 'auto',
               border: '1px solid var(--outline-variant)',
-              borderLeft: 'none',
+              borderLeft: isMobile ? '1px solid var(--outline-variant)' : 'none',
               scrollbarWidth: 'thin',
               scrollbarColor: 'var(--outline-variant) transparent',
             }}

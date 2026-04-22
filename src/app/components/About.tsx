@@ -64,7 +64,7 @@ export default function About() {
         borderTop: '1px solid rgba(81,66,84,0.4)',
       }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+      <div className='mx-auto max-w-[1200px] px-4 sm:px-8'>
 
         {/* Section label */}
         <div ref={header.ref} style={{ marginBottom: '24px', ...fadeUp(header.visible) }}>
@@ -83,7 +83,7 @@ export default function About() {
             ...fadeUp(body.visible),
           }}
         >
-          <div style={{ padding: '32px 36px', display: 'flex', flexDirection: 'column', gap: '32px' }}>
+          <div className='flex flex-col gap-8 px-0 py-6 sm:px-4 sm:py-8 md:px-9'>
 
             {/* Bio */}
             <p
@@ -256,7 +256,7 @@ export default function About() {
                   { label: 'GITHUB',   val: 'github.com/charlestogle',         href: 'https://github.com/charlestogle/portfolio' },
                   { label: 'LINKEDIN', val: 'in/charles-nathaniel-togle',      href: 'https://www.linkedin.com/in/charles-nathaniel-togle-09858b350/' },
                 ].map(({ label, val, href }) => (
-                  <div key={label} style={{ display: 'flex', gap: '12px', alignItems: 'baseline' }}>
+                  <div key={label} className='flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3'>
                     <span style={{ fontSize: '9px', fontFamily: 'monospace', color: '#bf00ff', letterSpacing: '0.12em', minWidth: '72px', flexShrink: 0 }}>
                       {label}
                     </span>

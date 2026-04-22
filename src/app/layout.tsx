@@ -24,8 +24,7 @@ export default function RootLayout({
       >
         <Header />
         <Sidebar />
-        {/* Main content — offset for header (40px) + sidebar (40px icon + 220px explorer = 260px) */}
-        <main style={{ paddingTop: '40px', paddingLeft: '260px' }}>
+        <main className="pt-10 md:pl-[260px]">
           {children}
         </main>
       </body>

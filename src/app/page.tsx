@@ -1,29 +1,20 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
 import About from './components/About'
 import Experience from './components/Experience'
 
 export default function Home () {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) return null
-
   return (
     <>
       <div
         id='hero'
-        className='relative w-full flex items-center justify-center overflow-hidden'
-        style={{ backgroundColor: 'var(--hero-bg)', height: 'calc(100vh - 40px)' }}
+        className='relative flex min-h-[calc(100vh-40px)] w-full items-center justify-center overflow-hidden px-4 sm:px-6'
+        style={{ backgroundColor: 'var(--hero-bg)' }}
       >
         {/* Terminal Window */}
-        <div className='relative z-10 w-full max-w-3xl mx-6'>
+        <div className='relative z-10 w-full max-w-3xl'>
           <div
             className='border'
             style={{
@@ -35,7 +26,7 @@ export default function Home () {
           >
             {/* Title Bar */}
             <div
-              className='flex items-center gap-3 px-5 py-3'
+              className='flex items-center gap-3 px-4 py-3 sm:px-5'
               style={{
                 backgroundColor: 'var(--hero-titlebar)',
                 borderBottom: '1px solid var(--shell-border-strong)'
@@ -57,25 +48,26 @@ export default function Home () {
                 />
               </div>
               <span
-                className='ml-3 font-mono tracking-widest'
+                className='ml-2 font-mono tracking-widest sm:ml-3'
                 style={{
                   color: 'var(--outline)',
                   fontSize: 'var(--fs-mono-label)'
                 }}
               >
-                SESSION: ID_000_ABYSS
+                <span className='hidden sm:inline'>SESSION: ID_000_ABYSS</span>
+                <span className='sm:hidden'>ID_000_ABYSS</span>
               </span>
             </div>
 
             {/* Body */}
-            <div className='px-6 py-8 space-y-8'>
+            <div className='space-y-6 px-4 py-6 sm:space-y-8 sm:px-6 sm:py-8'>
               {/* Main command line */}
-              <div className='flex items-center gap-3'>
+              <div className='flex flex-wrap items-center gap-2 sm:gap-3'>
                 <span
                   className='font-mono'
                   style={{
                     color: 'var(--outline)',
-                    fontSize: '28px',
+                    fontSize: 'clamp(20px, 6vw, 28px)',
                     lineHeight: 1
                   }}
                 >
@@ -85,7 +77,7 @@ export default function Home () {
                   className='font-mono animate-pulse'
                   style={{
                     color: 'var(--primary-container)',
-                    fontSize: '28px',
+                    fontSize: 'clamp(20px, 6vw, 28px)',
                     lineHeight: 1
                   }}
                 >
@@ -106,7 +98,7 @@ export default function Home () {
               </div>
 
               {/* Tags */}
-              <div className='flex gap-3'>
+              <div className='flex flex-wrap gap-3'>
                 <button
                   className='font-mono font-bold tracking-widest transition-all duration-200'
                   style={{

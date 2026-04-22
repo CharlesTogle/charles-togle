@@ -172,7 +172,7 @@ export default function Skills() {
         borderTop: '1px solid rgba(81,66,84,0.4)',
       }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+      <div className='mx-auto max-w-[1200px] px-4 sm:px-8'>
 
         {/* Section label */}
         <div ref={header.ref} style={{ marginBottom: '24px', ...fadeUp(header.visible) }}>
@@ -189,7 +189,7 @@ export default function Skills() {
           ref={grid.ref}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(2, minmax(0, 500px))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
             justifyContent: 'center',
             gap: '1px',
           }}

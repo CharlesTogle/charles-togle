@@ -78,7 +78,7 @@ export default function Experience() {
         borderTop: '1px solid rgba(81,66,84,0.4)',
       }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+      <div className='mx-auto max-w-[1200px] px-4 sm:px-8'>
 
         {/* Section label */}
         <div ref={header.ref} style={{ marginBottom: '24px', ...fadeUp(header.visible) }}>
@@ -95,7 +95,7 @@ export default function Experience() {
           {experience.map((item, i) => (
             <div key={item.company + item.period}>
               {/* Entry */}
-              <div style={{ padding: '32px 0' }}>
+              <div style={{ padding: '24px 0' }}>
                 {/* Period */}
                 <span
                   style={{
@@ -115,7 +115,7 @@ export default function Experience() {
                 <span
                   style={{
                     display: 'block',
-                    fontSize: '20px',
+                    fontSize: 'clamp(18px, 5vw, 20px)',
                     fontWeight: 600,
                     color: 'var(--on-surface)',
                     fontFamily: 'Space Grotesk, sans-serif',
@@ -149,7 +149,7 @@ export default function Experience() {
                         style={{
                           color: '#bf00ff',
                           flexShrink: 0,
-                          fontSize: '14px',
+                          fontSize: '13px',
                           lineHeight: 1.75,
                           textShadow: '0 0 8px rgba(191,0,255,0.6)',
                         }}
