@@ -1,28 +1,15 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-
-const tabs = [
-  { label: 'ROOT', active: false },
-  { label: 'SRC', active: false },
-  { label: 'PORTFOLIO', active: true },
-  { label: 'MAIN.JS', active: false }
-]
+import { usePathname, useRouter } from 'next/navigation'
+import { headerTabs } from '../data/navigation'
+import { getInitialTheme } from '../helpers/theme'
 
 export default function Header() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
-
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem('theme')
-    const preferredTheme =
-      storedTheme === 'light' || storedTheme === 'dark'
-        ? storedTheme
-        : window.matchMedia('(prefers-color-scheme: light)').matches
-          ? 'light'
-          : 'dark'
-
-    setTheme(preferredTheme)
-  }, [])
+  const pathname = usePathname()
+  const router = useRouter()
+  const [theme, setTheme] = useState<'dark' | 'light'>(getInitialTheme)
+  const isLogPage = pathname === '/log'
 
   useEffect(() => {
     const root = document.documentElement
@@ -69,7 +56,7 @@ export default function Header() {
       </div>
 
       <div className="hidden md:flex items-stretch flex-1">
-        {tabs.map((tab) => (
+        {headerTabs.map((tab) => (
           <button
             key={tab.label}
             className="relative flex items-center px-5 font-mono tracking-widest transition-colors duration-150"
@@ -107,6 +94,31 @@ export default function Header() {
         className="ml-auto flex items-center gap-1 px-2 md:px-3 shrink-0"
         style={{ borderLeft: '1px solid var(--shell-border-strong)' }}
       >
+        <button
+          type="button"
+          aria-label="Open git log page"
+          title="Open git log page"
+          className="flex items-center justify-center transition-colors duration-150 md:hidden"
+          style={{
+            width: '28px',
+            height: '28px',
+            color: isLogPage ? 'var(--primary-container)' : 'var(--outline)',
+            backgroundColor: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+          }}
+          onClick={() => router.push('/log')}
+          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary-container)')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = isLogPage ? 'var(--primary-container)' : 'var(--outline)')}
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="4" cy="4" r="2" stroke="currentColor" strokeWidth="1.2" />
+            <circle cx="12" cy="4" r="2" stroke="currentColor" strokeWidth="1.2" />
+            <circle cx="4" cy="12" r="2" stroke="currentColor" strokeWidth="1.2" />
+            <path d="M4 6v2a2 2 0 002 2h2M12 6v4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" />
+          </svg>
+        </button>
+
         <button
           type="button"
           aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}

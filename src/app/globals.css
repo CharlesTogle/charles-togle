@@ -2,6 +2,8 @@
 @import "tailwindcss";
 
 :root {
+  --desktop-sidebar-width: 260px;
+
   /* Cosmic Terminal Color System */
   --surface: #1a101e;
   --surface-dim: #1a101e;
@@ -231,4 +233,14 @@ line {
 
 .neon-glow {
   animation: neon-glow 2s ease-in-out infinite;
+}
+
+.app-main {
+  padding-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .app-main {
+    padding-left: var(--desktop-sidebar-width);
+  }
 }

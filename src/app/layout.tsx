@@ -24,7 +24,7 @@ export default function RootLayout({
       >
         <Header />
         <Sidebar />
-        <main className="pt-10 md:pl-[260px]">
+        <main className="app-main">
           {children}
         </main>
       </body>

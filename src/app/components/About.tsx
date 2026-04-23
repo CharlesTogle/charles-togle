@@ -1,58 +1,12 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
-
-function useInView(threshold = 0.12) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect() } },
-      { threshold }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [threshold])
-  return { ref, visible }
-}
-
-const fadeUp = (visible: boolean, delay = 0): React.CSSProperties => ({
-  opacity: visible ? 1 : 0,
-  transform: visible ? 'translateY(0)' : 'translateY(24px)',
-  transition: `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms`,
-})
-
-const highlights = [
-  'Full-stack engineer across web, mobile, and cloud infrastructure',
-  'Built systems handling 460K+ records and automated 5 FTE worth of daily work',
-  'Shipped production apps on AWS, Vercel, and Supabase — real users, real impact',
-  'Strong in JavaScript, React, Next.js, Node.js, PostgreSQL, and DevOps tooling',
-]
-
-const education = [
-  {
-    period: '2023 – EXPECTED 2027',
-    degree: 'BS Computer Science — Application Development',
-    school: 'University of Makati · Makati City, PH',
-    bullets: [
-      "Dean's List — 1st & 2nd Sem, 2023–2024",
-      "Dean's List — 1st & 2nd Sem, 2024–2025",
-      "Dean's List — 1st Sem, 2025–2026",
-    ],
-  },
-  {
-    period: 'GRADUATED 2022',
-    degree: 'GED / Senior High School',
-    school: 'Pasay City National Science HS · Pasay, PH',
-    bullets: ['Graduated With Honors', 'Consistent With Honors'],
-  },
-]
+import { contactItems, educationEntries, aboutHighlights } from '../data/about'
+import { fadeUp } from '../helpers/animations'
+import { useInView } from '../helpers/useInView'
 
 export default function About() {
-  const header = useInView()
-  const body = useInView()
+  const [headerRef, headerVisible] = useInView()
+  const [bodyRef, bodyVisible] = useInView()
 
   return (
     <section
@@ -67,7 +21,7 @@ export default function About() {
       <div className='mx-auto max-w-[1200px] px-4 sm:px-8'>
 
         {/* Section label */}
-        <div ref={header.ref} style={{ marginBottom: '24px', ...fadeUp(header.visible) }}>
+        <div ref={headerRef} style={{ marginBottom: '24px', ...fadeUp(headerVisible) }}>
           <span style={{ fontSize: '11px', letterSpacing: '0.1em', color: 'var(--outline)', fontFamily: 'monospace' }}>
             $ ABOUT_
           </span>
@@ -78,9 +32,9 @@ export default function About() {
 
         {/* Body */}
         <div
-          ref={body.ref}
+          ref={bodyRef}
           style={{
-            ...fadeUp(body.visible),
+            ...fadeUp(bodyVisible),
           }}
         >
           <div className='flex flex-col gap-8 px-0 py-6 sm:px-4 sm:py-8 md:px-9'>
@@ -116,7 +70,7 @@ export default function About() {
 
             {/* Highlights */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {highlights.map((h) => (
+              {aboutHighlights.map((h) => (
                 <div key={h} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                   <span
                     style={{
@@ -162,7 +116,7 @@ export default function About() {
               </span>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                {education.map((edu) => (
+                {educationEntries.map((edu) => (
                   <div key={edu.degree}>
                     <span
                       style={{
@@ -250,12 +204,7 @@ export default function About() {
                 CONTACT
               </span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {[
-                  { label: 'EMAIL',    val: 'charles3togle@gmail.com' },
-                  { label: 'LOCATION', val: 'Pasay City, PH' },
-                  { label: 'GITHUB',   val: 'github.com/charlestogle',         href: 'https://github.com/charlestogle/portfolio' },
-                  { label: 'LINKEDIN', val: 'in/charles-nathaniel-togle',      href: 'https://www.linkedin.com/in/charles-nathaniel-togle-09858b350/' },
-                ].map(({ label, val, href }) => (
+                {contactItems.map(({ label, val, href }) => (
                   <div key={label} className='flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3'>
                     <span style={{ fontSize: '9px', fontFamily: 'monospace', color: '#bf00ff', letterSpacing: '0.12em', minWidth: '72px', flexShrink: 0 }}>
                       {label}

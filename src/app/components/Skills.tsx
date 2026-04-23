@@ -1,73 +1,8 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
-
-function useInView(threshold = 0.1) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect() } },
-      { threshold }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [threshold])
-  return { ref, visible }
-}
-
-const fadeUp = (visible: boolean, delay = 0): React.CSSProperties => ({
-  opacity: visible ? 1 : 0,
-  transform: visible ? 'translateY(0)' : 'translateY(24px)',
-  transition: `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms`,
-})
-
-const groups = [
-  {
-    label: 'DATABASES',
-    skills: [
-      { name: 'PostgreSQL', pct: 80 },
-      { name: 'MySQL',      pct: 70 },
-      { name: 'Supabase',   pct: 90 },
-    ],
-  },
-  {
-    label: 'FRAMEWORKS',
-    skills: [
-      { name: 'ReactJS',  pct: 80 },
-      { name: 'Next.JS',  pct: 65 },
-      { name: 'Hono',     pct: 50 },
-    ],
-  },
-  {
-    label: 'CLOUD & DEVOPS',
-    skills: [
-      { name: 'AWS (S3, CloudFront, RDS, Route53, Lightsail)', pct: 55 },
-      { name: 'GCP',     pct: 80 },
-      { name: 'Vercel',  pct: 90 },
-      { name: 'Docker',  pct: 65 },
-      { name: 'Nginx',   pct: 55 },
-    ],
-  },
-  {
-    label: 'TOOLS & OS',
-    skills: [
-      { name: 'VPS & SSH',    pct: 90 },
-      { name: 'Git & GitHub', pct: 90 },
-      { name: 'Linux',        pct: 90 },
-      { name: 'Figma',        pct: 50 },
-    ],
-  },
-  {
-    label: 'LANGUAGES',
-    skills: [
-      { name: 'English',  pct: 70 },
-      { name: 'Filipino', pct: 95 },
-    ],
-  },
-]
+import { skillGroups, type SkillGroup } from '../data/skills'
+import { fadeUp } from '../helpers/animations'
+import { useInView } from '../helpers/useInView'
 
 function SkillBar({ name, pct, animate }: { name: string; pct: number; animate: boolean }) {
   return (
@@ -120,7 +55,7 @@ function SkillBar({ name, pct, animate }: { name: string; pct: number; animate: 
   )
 }
 
-function SkillCard({ group, animate, delay }: { group: typeof groups[0]; animate: boolean; delay: number }) {
+function SkillCard({ group, animate, delay }: { group: SkillGroup; animate: boolean; delay: number }) {
   return (
     <div
       style={{
@@ -159,8 +94,8 @@ function SkillCard({ group, animate, delay }: { group: typeof groups[0]; animate
 }
 
 export default function Skills() {
-  const header = useInView()
-  const grid = useInView(0.05)
+  const [headerRef, headerVisible] = useInView()
+  const [gridRef, gridVisible] = useInView(0.05)
 
   return (
     <section
@@ -175,7 +110,7 @@ export default function Skills() {
       <div className='mx-auto max-w-[1200px] px-4 sm:px-8'>
 
         {/* Section label */}
-        <div ref={header.ref} style={{ marginBottom: '24px', ...fadeUp(header.visible) }}>
+        <div ref={headerRef} style={{ marginBottom: '24px', ...fadeUp(headerVisible) }}>
           <span style={{ fontSize: '11px', letterSpacing: '0.1em', color: 'var(--outline)', fontFamily: 'monospace' }}>
             $ SKILLS_
           </span>
@@ -186,7 +121,7 @@ export default function Skills() {
 
         {/* Card grid */}
         <div
-          ref={grid.ref}
+          ref={gridRef}
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
@@ -194,8 +129,8 @@ export default function Skills() {
             gap: '1px',
           }}
         >
-          {groups.map((group, i) => (
-            <SkillCard key={group.label} group={group} animate={grid.visible} delay={i * 80} />
+          {skillGroups.map((group, i) => (
+            <SkillCard key={group.label} group={group} animate={gridVisible} delay={i * 80} />
           ))}
         </div>
 
@@ -204,7 +139,7 @@ export default function Skills() {
           style={{
             marginTop: '48px',
             textAlign: 'center',
-            ...fadeUp(grid.visible, 500),
+            ...fadeUp(gridVisible, 500),
           }}
         >
           <p
@@ -218,7 +153,7 @@ export default function Skills() {
               letterSpacing: '0.02em',
             }}
           >
-            "Nothing is truly 100% Learnable in this world..."
+            &quot;Nothing is truly 100% Learnable in this world...&quot;
           </p>
         </div>
 

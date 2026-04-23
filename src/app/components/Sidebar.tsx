@@ -1,122 +1,112 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
-
-const iconBtnStyle = (active: boolean) => ({
-  width: '40px',
-  height: '40px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: active ? 'var(--primary-container)' : 'var(--outline)',
-  backgroundColor: 'transparent',
-  border: 'none',
-  cursor: 'pointer',
-  borderLeft: active ? '2px solid var(--primary-container)' : '2px solid transparent',
-  transition: 'color 0.15s'
-})
-
-const files = [
-  { name: 'portfolio.sh', icon: '◈', sectionIds: ['hero', 'about'] },
-  { name: 'projects.tsx', icon: '◈', sectionIds: ['projects'] },
-  { name: 'experience.log', icon: '◈', sectionIds: ['experience'] },
-  { name: 'skills.tsx', icon: '◈', sectionIds: ['skills'] },
-  { name: 'README.md', icon: '≡', sectionIds: [] }
-] as const
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import { sidebarFiles } from '../data/navigation'
+import {
+  MOBILE_SIDEBAR_CLOSE_DELAY_MS,
+  buildTrackedSidebarSections,
+  getActiveSidebarFile,
+  getSidebarSectionElements,
+  iconButtonStyle,
+  scrollToSection,
+  setDesktopSidebarWidth
+} from '../helpers/sidebar'
 
 export default function Sidebar() {
-  const [explorerOpen, setExplorerOpen] = useState(true)
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const [mobileMounted, setMobileMounted] = useState(false)
+  const pathname = usePathname()
+  const router = useRouter()
+  const closeTimeoutRef = useRef<number | null>(null)
+  const [mobilePhase, setMobilePhase] = useState<'closed' | 'opening' | 'open' | 'closing'>('closed')
   const [activeFile, setActiveFile] =
-    useState<typeof files[number]['name']>('portfolio.sh')
+    useState<typeof sidebarFiles[number]['name']>('portfolio.sh')
+  const isHomePage = pathname === '/'
+  const isLogPage = pathname === '/log'
+  const mobileVisible = mobilePhase !== 'closed'
+  const mobileOpen = mobilePhase === 'open'
+  const displayedActiveFile = isHomePage ? activeFile : 'portfolio.sh'
 
-  const trackedSections = useMemo(
-    () =>
-      files.flatMap(file =>
-        file.sectionIds.map(sectionId => ({
-          sectionId,
-          fileName: file.name
-        }))
-      ),
-    []
-  )
+  const trackedSections = useMemo(() => buildTrackedSidebarSections(), [])
 
   useEffect(() => {
-    const handleToggle = () => setMobileOpen(current => !current)
-    const handleClose = () => setMobileOpen(false)
+    const openMobileDrawer = () => {
+      if (closeTimeoutRef.current !== null) {
+        window.clearTimeout(closeTimeoutRef.current)
+        closeTimeoutRef.current = null
+      }
 
+      setMobilePhase(current => {
+        if (current === 'open' || current === 'opening') {
+          return current
+        }
+
+        window.requestAnimationFrame(() => {
+          setMobilePhase(next => (next === 'opening' ? 'open' : next))
+        })
+
+        return 'opening'
+      })
+    }
+
+    const closeMobileDrawer = () => {
+      if (closeTimeoutRef.current !== null) {
+        window.clearTimeout(closeTimeoutRef.current)
+      }
+
+      setMobilePhase(current => {
+        if (current === 'closed' || current === 'closing') {
+          return current
+        }
+
+        closeTimeoutRef.current = window.setTimeout(() => {
+          setMobilePhase('closed')
+          closeTimeoutRef.current = null
+        }, MOBILE_SIDEBAR_CLOSE_DELAY_MS)
+
+        return 'closing'
+      })
+    }
+
+    const handleToggle = () => {
+      if (mobileOpen) {
+        closeMobileDrawer()
+        return
+      }
+
+      openMobileDrawer()
+    }
+
+    const handleClose = () => closeMobileDrawer()
     window.addEventListener('toggle-mobile-sidebar', handleToggle)
     window.addEventListener('close-mobile-sidebar', handleClose)
 
     return () => {
+      if (closeTimeoutRef.current !== null) {
+        window.clearTimeout(closeTimeoutRef.current)
+      }
       window.removeEventListener('toggle-mobile-sidebar', handleToggle)
       window.removeEventListener('close-mobile-sidebar', handleClose)
     }
-  }, [])
-
-  useEffect(() => {
-    if (mobileOpen) {
-      setMobileMounted(true)
-      return
-    }
-
-    const timeout = window.setTimeout(() => setMobileMounted(false), 220)
-    return () => window.clearTimeout(timeout)
   }, [mobileOpen])
 
   useEffect(() => {
-    const sectionMap = new Map<string, number>()
-    const sections = trackedSections
-      .map(({ sectionId, fileName }) => {
-        const element = document.getElementById(sectionId)
-        return element ? { element, sectionId, fileName } : null
-      })
-      .filter(Boolean) as Array<{
-      element: HTMLElement
-      sectionId: string
-      fileName: typeof files[number]['name']
-    }>
+    setDesktopSidebarWidth(isLogPage)
 
+    return () => {
+      setDesktopSidebarWidth(false)
+    }
+  }, [isLogPage])
+
+  useEffect(() => {
+    if (!isHomePage) return
+
+    const sections = getSidebarSectionElements(trackedSections)
     if (!sections.length) return
 
-    const updateActiveFile = () => {
-      if (window.scrollY < 80) {
-        setActiveFile('portfolio.sh')
-        return
-      }
-
-      let bestMatch = sections[0]
-      let bestRatio = sectionMap.get(bestMatch.sectionId) ?? 0
-
-      for (const section of sections) {
-        const ratio = sectionMap.get(section.sectionId) ?? 0
-        if (ratio > bestRatio) {
-          bestMatch = section
-          bestRatio = ratio
-        }
-      }
-
-      if (bestRatio > 0) {
-        setActiveFile(bestMatch.fileName)
-        return
-      }
-
-      const viewportAnchor = window.innerHeight * 0.35
-      const closestSection = [...sections]
-        .reverse()
-        .find(({ element }) => element.getBoundingClientRect().top <= viewportAnchor)
-
-      setActiveFile(closestSection?.fileName ?? 'portfolio.sh')
-    }
+    const updateActiveFile = () => setActiveFile(getActiveSidebarFile(sections))
 
     const observer = new IntersectionObserver(
-      entries => {
-        for (const entry of entries) {
-          sectionMap.set(entry.target.id, entry.intersectionRatio)
-        }
-        updateActiveFile()
-      },
+      () => updateActiveFile(),
       {
         rootMargin: '-64px 0px -45% 0px',
         threshold: [0, 0.15, 0.35, 0.55, 0.75, 1]
@@ -128,25 +118,15 @@ export default function Sidebar() {
     }
 
     window.addEventListener('scroll', updateActiveFile, { passive: true })
+    window.addEventListener('resize', updateActiveFile)
     updateActiveFile()
 
     return () => {
       observer.disconnect()
       window.removeEventListener('scroll', updateActiveFile)
+      window.removeEventListener('resize', updateActiveFile)
     }
-  }, [trackedSections])
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (!element) return
-
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
-
-    setMobileOpen(false)
-  }
+  }, [isHomePage, trackedSections])
 
   const sidebarContent = (
     <div className='flex h-full'>
@@ -159,11 +139,16 @@ export default function Sidebar() {
         }}
       >
         <button
-          style={iconBtnStyle(explorerOpen)}
-          onClick={() => setExplorerOpen(v => !v)}
+          type='button'
+          aria-label='Go to home page'
+          style={iconButtonStyle(isHomePage)}
+          onClick={() => {
+            router.push('/')
+            window.dispatchEvent(new Event('close-mobile-sidebar'))
+          }}
           onMouseEnter={e => (e.currentTarget.style.color = 'var(--primary-container)')}
           onMouseLeave={e =>
-            (e.currentTarget.style.color = explorerOpen ? 'var(--primary-container)' : 'var(--outline)')
+            (e.currentTarget.style.color = isHomePage ? 'var(--primary-container)' : 'var(--outline)')
           }
         >
           <svg width='18' height='18' viewBox='0 0 18 18' fill='none'>
@@ -172,20 +157,7 @@ export default function Sidebar() {
         </button>
 
         <button
-          style={iconBtnStyle(false)}
-          onMouseEnter={e => (e.currentTarget.style.color = 'var(--primary-container)')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'var(--outline)')}
-        >
-          <svg width='16' height='16' viewBox='0 0 16 16' fill='none'>
-            <circle cx='4' cy='4' r='2' stroke='currentColor' strokeWidth='1.2' />
-            <circle cx='12' cy='4' r='2' stroke='currentColor' strokeWidth='1.2' />
-            <circle cx='4' cy='12' r='2' stroke='currentColor' strokeWidth='1.2' />
-            <path d='M4 6v2a2 2 0 002 2h2M12 6v4' stroke='currentColor' strokeWidth='1.2' strokeLinecap='square' />
-          </svg>
-        </button>
-
-        <button
-          style={iconBtnStyle(false)}
+          style={iconButtonStyle(false)}
           onMouseEnter={e => (e.currentTarget.style.color = 'var(--primary-container)')}
           onMouseLeave={e => (e.currentTarget.style.color = 'var(--outline)')}
         >
@@ -198,7 +170,7 @@ export default function Sidebar() {
         </button>
       </div>
 
-      {explorerOpen && (
+      {!isLogPage && (
         <div
           style={{
             width: '220px',
@@ -222,7 +194,7 @@ export default function Sidebar() {
               type='button'
               className='md:hidden'
               style={{ color: 'var(--outline)', background: 'transparent', border: 'none', cursor: 'pointer' }}
-              onClick={() => setMobileOpen(false)}
+              onClick={() => window.dispatchEvent(new Event('close-mobile-sidebar'))}
             >
               CLOSE
             </button>
@@ -249,8 +221,8 @@ export default function Sidebar() {
               </span>
             </div>
 
-            {files.map(file => {
-              const isActive = file.name === activeFile
+            {sidebarFiles.map(file => {
+              const isActive = file.name === displayedActiveFile
               const isClickable = file.sectionIds.length > 0
 
               return (
@@ -297,7 +269,7 @@ export default function Sidebar() {
         {sidebarContent}
       </div>
 
-      {mobileMounted && (
+      {mobileVisible && (
         <div
           className='md:hidden fixed inset-0 top-10 z-40 flex transition-opacity duration-200 ease-out'
           style={{ opacity: mobileOpen ? 1 : 0 }}
@@ -321,7 +293,7 @@ export default function Sidebar() {
               cursor: 'pointer',
               opacity: mobileOpen ? 1 : 0
             }}
-            onClick={() => setMobileOpen(false)}
+            onClick={() => window.dispatchEvent(new Event('close-mobile-sidebar'))}
           />
         </div>
       )}
