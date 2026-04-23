@@ -31,12 +31,12 @@ const experience = [
     company: 'Centervert',
     location: 'Greenville, NC (Remote)',
     bullets: [
-      'Reduced operational workload for a client by 4–6 hrs/day, eliminating need for 5 Full Time Employees through automation',
-      'Built automated lead intake system (Supabase Edge Functions + GHL API), replacing manual CRM workflows and increasing lead intake by 30–40 per day',
-      'Architected centralized database handling 460K+ records for scalable cross-system access',
-      'Migrated 2 full-stack apps to AWS, improving scalability and reducing vendor dependency',
-      'Contributed to payment portal (Next.js + Stripe) processing $1K–$2K/client requests',
-      'Built CMS dashboard enabling non-technical clients to manage content independently, eliminating developer deployment dependency',
+      'Reduced client workload by 4–6 hrs/day and eliminated the need for 5 Full Time Employees by automating operational workflows',
+      'Increased lead intake by 30–40 per day by building an automated lead intake system using Supabase Edge Functions and GHL API',
+      'Enabled scalable cross-system access for 460K+ records by architecting a centralized database',
+      'Improved scalability and reduced vendor dependency by migrating 2 full-stack apps to AWS',
+      'Processed $1K–$2K/client requests in a payment portal built with Next.js and Stripe',
+      'Eliminated developer deployment dependency by building a CMS dashboard that lets non-technical clients manage content independently',
     ],
   },
   {
@@ -45,10 +45,9 @@ const experience = [
     company: 'Freelance Software Engineer',
     location: 'Makati City, PH',
     bullets: [
-      'Led development of a multi-tenant fitness education platform (React, PostgreSQL, Supabase)',
-      'Designed role-based access system for Teachers and Students across 4 core modules',
-      'Built quiz system tied to lecture content for structured assessments',
-      'Implemented automated Physical Fitness Test classification using recorded sessions',
+      'Delivered a multi-tenant fitness education platform by leading full-stack development using React, PostgreSQL, and Supabase',
+      'Secured access for Teachers and Students across 4 core modules by designing a role-based access system',
+'Automated Physical Fitness Test classification by implementing a session-based recording system',
     ],
   },
   {
@@ -57,9 +56,9 @@ const experience = [
     company: 'University Project',
     location: 'University of Makati',
     bullets: [
-      'Built centralized lost & found platform (React, Capacitor, FastifyJS, Supabase) for web and mobile',
-      'Integrated AI image classification (Gemini API) to extract structured metadata (color, category, descriptors)',
-      'Implemented PostgreSQL full-text + similarity search to match lost and found items',
+      'Unified lost & found reporting across web and mobile by building a centralized platform using React, Capacitor, FastifyJS, and Supabase',
+      'Extracted structured metadata (color, category, descriptors) from item photos by integrating AI image classification via Gemini API',
+      'Matched lost and found items accurately by implementing PostgreSQL full-text and similarity search',
     ],
   },
 ]

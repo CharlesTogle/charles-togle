@@ -49,7 +49,7 @@ const projects: Project[] = [
     description:
       'Lost & found platform for web and mobile with AI image classification via Gemini API. PostgreSQL full-text and similarity search.',
     role: 'Developer & Project Manager',
-    period: 'Feb – April 2025',
+    period: 'Feb – April 2025, Feb - March 2026',
     tech: ['React', 'Capacitor', 'FastifyJS', 'Supabase', 'Gemini API'],
     links: {
       live: 'https://umak-link-web.vercel.app/',
@@ -66,7 +66,7 @@ const projects: Project[] = [
     description:
       'Guide to running a local LLM on Android via SSH and Ollama, exposed to local network. Turns your phone into an AI inference server.',
     role: 'Author',
-    period: '2025',
+    period: 'Feb 2026',
     tech: ['SSH', 'Ollama', 'Android', 'Linux'],
     links: {
       source: 'https://github.com/CharlesTogle/android-server-with-llm'
@@ -80,7 +80,7 @@ const projects: Project[] = [
     description:
       'Quiz platform supporting Multiple Choice, Identification, and Acronyms. Helped 40+ classmates review and increased class passing rate.',
     role: 'Solo Developer',
-    period: '2024',
+    period: 'March 2026',
     tech: ['React', 'Supabase'],
     impact: '40+ students',
     links: {
@@ -96,7 +96,7 @@ const projects: Project[] = [
     name: 'Digital Pulse Converter',
     description:
       'Converts characters into digital pulse codes (NRZ, Manchester, etc.) with visualization. Automated networking assignments for 50+ students.',
-    role: 'Solo Developer',
+    role: 'Co Developer',
     period: '2024',
     tech: ['JavaScript', 'Canvas API'],
     impact: '50+ students',
@@ -114,7 +114,7 @@ const projects: Project[] = [
     description:
       'Automated scraper and checker for phishing URLs. Gathers and validates malicious URLs for security research and analysis.',
     role: 'Solo Developer',
-    period: '2024',
+    period: 'April 2026',
     tech: ['Python', 'BeautifulSoup'],
     links: {
       source: 'https://github.com/CharlesTogle/gather-phishing-urls'
@@ -125,11 +125,11 @@ const projects: Project[] = [
   {
     id: '0X07',
     code: 'AGENTIC_CODING_SLIDES',
-    name: 'Agentic Coding Slides',
+    name: 'Agentic Coding Presentation',
     description:
       'Taught entire 3rd year CS cohort agentic coding, Motivated the professor to integrate it as future curriculum for underclassmen.',
     role: 'Author & Presenter',
-    period: '2025',
+    period: 'March 2026',
     tech: ['AI', 'Education'],
     links: {
       source: 'https://github.com/CharlesTogle/agentic-coding-slides'

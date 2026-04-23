@@ -1,11 +1,25 @@
 'use client'
 
+import { useEffect } from 'react'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
 import About from './components/About'
 import Experience from './components/Experience'
 
 export default function Home () {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const hero = document.getElementById('hero')
+      if (!hero) return
+      const { top, bottom } = hero.getBoundingClientRect()
+      const inHero = top <= 0 && bottom >= window.innerHeight * 0.5
+      if (inHero) {
+        document.getElementById('about')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <>
       <div
