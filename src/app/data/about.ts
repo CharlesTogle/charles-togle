@@ -26,7 +26,7 @@ export const educationEntries: EducationEntry[] = [
     bullets: [
       "Dean's List - 1st & 2nd Sem, 2023-2024",
       "Dean's List - 1st & 2nd Sem, 2024-2025",
-      "Dean's List - 1st Sem, 2025-2026"
+      "Dean's List - 1st & 2nd Sem, 2025-2026"
     ]
   },
   {
