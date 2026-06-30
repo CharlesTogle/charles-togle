@@ -1,236 +1,95 @@
-'use client'
-
-import { contactItems, educationEntries, aboutHighlights } from '../data/about'
-import { fadeUp } from '../helpers/animations'
-import { useInView } from '../helpers/useInView'
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { aboutHighlights, contactItems, educationEntries } from "../data/about";
 
 export default function About() {
-  const [headerRef, headerVisible] = useInView()
-  const [bodyRef, bodyVisible] = useInView()
-
   return (
-    <section
-      id="about"
-      style={{
-        background: 'var(--section-bg)',
-        padding: '48px 0',
-        fontFamily: 'Space Grotesk, sans-serif',
-        borderTop: '1px solid rgba(81,66,84,0.4)',
-      }}
-    >
-      <div className='mx-auto max-w-[1200px] px-4 sm:px-8'>
+    <section id="about" className="section-frame">
+      <div className="section-shell space-y-8">
+        <div className="grid gap-8 border-b pb-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start" style={{ borderColor: "var(--border)" }}>
+          <div className="space-y-4">
+            <p className="text-sm" style={{ color: "var(--accent-strong)" }}>
+              About
+            </p>
+            <h2 className="section-title max-w-[10ch] font-semibold">Built for real work, not just demos.</h2>
+          </div>
 
-        {/* Section label */}
-        <div ref={headerRef} style={{ marginBottom: '24px', ...fadeUp(headerVisible) }}>
-          <span style={{ fontSize: '11px', letterSpacing: '0.1em', color: 'var(--outline)', fontFamily: 'monospace' }}>
-            $ ABOUT_
-          </span>
-        </div>
-
-        {/* Divider */}
-        <div style={{ height: '1px', background: 'var(--outline-variant)', marginBottom: '40px' }} />
-
-        {/* Body */}
-        <div
-          ref={bodyRef}
-          style={{
-            ...fadeUp(bodyVisible),
-          }}
-        >
-          <div className='flex flex-col gap-8 px-0 py-6 sm:px-4 sm:py-8 md:px-9'>
-
-            {/* Bio */}
-            <p
-              style={{
-                margin: 0,
-                fontSize: '15px',
-                color: 'var(--on-surface-variant)',
-                lineHeight: 1.75,
-                fontFamily: 'Space Grotesk, sans-serif',
-                maxWidth: '820px',
-              }}
-            >
-              Aspiring web systems engineer seeking a Junior Software Engineer role, with a long-term goal of becoming a{' '}
-              <span
-                style={{
-                  color: '#bf00ff',
-                  fontWeight: 700,
-                  textShadow: '0 0 12px rgba(191,0,255,0.5)',
-                }}
-              >
-                Forward Deployed Engineer
-              </span>
-              . Strong interest in building real-world software, thrives in challenging and high-pressure environments.
-              Motivated to learn deeply from both systems and people — communicates effectively, approachable, and
-              committed to delivering practical, high-quality solutions.
+          <div className="space-y-6">
+            <p className="section-copy max-w-none text-lg">
+              Aspiring web systems engineer seeking a junior software engineering role, with a long-term goal of becoming a Forward Deployed Engineer. Strong interest in real-world software, high-pressure delivery, and practical systems that help people operate better.
             </p>
 
-            {/* Divider */}
-            <div style={{ height: '1px', background: 'var(--outline-variant)' }} />
-
-            {/* Highlights */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {aboutHighlights.map((h) => (
-                <div key={h} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                  <span
-                    style={{
-                      color: '#bf00ff',
-                      flexShrink: 0,
-                      fontSize: '14px',
-                      lineHeight: 1.75,
-                      textShadow: '0 0 8px rgba(191,0,255,0.6)',
-                    }}
-                  >
-                    ›
-                  </span>
-                  <span
-                    style={{
-                      fontSize: '14px',
-                      color: 'var(--on-surface-variant)',
-                      lineHeight: 1.75,
-                      fontFamily: 'Space Grotesk, sans-serif',
-                    }}
-                  >
-                    {h}
-                  </span>
+            <div className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
+              {aboutHighlights.map((highlight) => (
+                <div key={highlight} className="border-t pt-4" style={{ borderColor: "var(--border)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-soft)" }}>
+                    {highlight}
+                  </p>
                 </div>
               ))}
             </div>
-
-            {/* Divider */}
-            <div style={{ height: '1px', background: 'var(--outline-variant)' }} />
-
-            {/* Education */}
-            <div>
-              <span
-                style={{
-                  display: 'block',
-                  fontSize: '11px',
-                  letterSpacing: '0.1em',
-                  color: 'var(--outline)',
-                  fontFamily: 'monospace',
-                  marginBottom: '20px',
-                }}
-              >
-                EDUCATION
-              </span>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                {educationEntries.map((edu) => (
-                  <div key={edu.degree}>
-                    <span
-                      style={{
-                        display: 'block',
-                        fontSize: '10px',
-                        fontFamily: 'monospace',
-                        color: '#bf00ff',
-                        letterSpacing: '0.1em',
-                        marginBottom: '2px',
-                        textShadow: '0 0 8px rgba(191,0,255,0.4)',
-                      }}
-                    >
-                      {edu.period}
-                    </span>
-                    <span
-                      style={{
-                        display: 'block',
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        color: 'var(--on-surface)',
-                        fontFamily: 'Space Grotesk, sans-serif',
-                      }}
-                    >
-                      {edu.degree}
-                    </span>
-                    <span
-                      style={{
-                        display: 'block',
-                        fontSize: '11px',
-                        fontFamily: 'monospace',
-                        color: 'var(--outline)',
-                        letterSpacing: '0.06em',
-                        textTransform: 'uppercase',
-                        marginBottom: '10px',
-                      }}
-                    >
-                      {edu.school}
-                    </span>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                      {edu.bullets.map((b) => (
-                        <div key={b} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                          <span
-                            style={{
-                              color: '#bf00ff',
-                              flexShrink: 0,
-                              fontSize: '14px',
-                              textShadow: '0 0 8px rgba(191,0,255,0.6)',
-                            }}
-                          >
-                            ›
-                          </span>
-                          <span
-                            style={{
-                              fontSize: '13px',
-                              color: 'var(--on-surface-variant)',
-                              fontFamily: 'Space Grotesk, sans-serif',
-                              lineHeight: 1.5,
-                            }}
-                          >
-                            {b}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Divider */}
-            <div style={{ height: '1px', background: 'var(--outline-variant)' }} />
-
-            {/* Contact */}
-            <div>
-              <span
-                style={{
-                  display: 'block',
-                  fontSize: '11px',
-                  letterSpacing: '0.1em',
-                  color: 'var(--outline)',
-                  fontFamily: 'monospace',
-                  marginBottom: '16px',
-                }}
-              >
-                CONTACT
-              </span>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {contactItems.map(({ label, val, href }) => (
-                  <div key={label} className='flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3'>
-                    <span style={{ fontSize: '9px', fontFamily: 'monospace', color: '#bf00ff', letterSpacing: '0.12em', minWidth: '72px', flexShrink: 0 }}>
-                      {label}
-                    </span>
-                    {href ? (
-                      <a
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ fontSize: '12px', color: 'var(--on-surface-variant)', fontFamily: 'monospace', textDecoration: 'none', borderBottom: '1px solid rgba(191,0,255,0.3)', transition: 'color 0.15s' }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = '#bf00ff')}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--on-surface-variant)')}
-                      >
-                        {val}
-                      </a>
-                    ) : (
-                      <span style={{ fontSize: '12px', color: 'var(--on-surface-variant)', fontFamily: 'monospace' }}>{val}</span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-
           </div>
+        </div>
+
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,1.2fr)_340px] xl:items-start">
+          <div className="space-y-5">
+            <div className="flex items-center justify-between gap-4">
+              <h3 className="text-2xl font-semibold tracking-[-0.04em]">Education</h3>
+              <span className="text-sm" style={{ color: "var(--foreground-soft)" }}>
+                Ongoing academic track
+              </span>
+            </div>
+
+            <div className="grid gap-5">
+              {educationEntries.map((entry) => (
+                <article key={`${entry.degree}-${entry.period}`} className="card-surface p-6 sm:p-7">
+                  <div className="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-8">
+                    <div className="space-y-3">
+                      <p className="text-sm font-medium" style={{ color: "var(--accent-strong)" }}>
+                        {entry.period}
+                      </p>
+                      <div>
+                        <h4 className="text-xl font-semibold tracking-[-0.03em]">{entry.degree}</h4>
+                        <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--foreground-soft)" }}>
+                          {entry.school}
+                        </p>
+                      </div>
+                    </div>
+
+                    <ul className="grid gap-2 border-t pt-4 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0" style={{ borderColor: "var(--border)" }}>
+                      {entry.bullets.map((bullet) => (
+                        <li key={bullet} className="text-sm leading-relaxed" style={{ color: "var(--foreground-soft)" }}>
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <article className="card-surface p-6 sm:p-8 xl:sticky xl:top-28">
+            <h3 className="text-2xl font-semibold tracking-[-0.04em]">Contact</h3>
+            <div className="mt-6 grid gap-5">
+              {contactItems.map((item) => (
+                <div key={item.label} className="border-t pt-4" style={{ borderColor: "var(--border)" }}>
+                  <p className="text-xs uppercase tracking-[0.16em]" style={{ color: "var(--foreground-soft)" }}>
+                    {item.label}
+                  </p>
+                  {item.href ? (
+                    <a href={item.href} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-2 text-sm font-medium">
+                      {item.val}
+                      <ArrowUpRight size={14} />
+                    </a>
+                  ) : (
+                    <p className="mt-2 text-sm font-medium">{item.val}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </article>
         </div>
       </div>
     </section>
-  )
+  );
 }

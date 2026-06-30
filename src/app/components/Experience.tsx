@@ -1,124 +1,47 @@
-'use client'
-
-import { experiences } from '../data/portfolio'
-import { fadeUp } from '../helpers/animations'
-import { useInView } from '../helpers/useInView'
+import { experiences } from "../data/portfolio";
 
 export default function Experience() {
-  const [headerRef, headerVisible] = useInView()
-  const [bodyRef, bodyVisible] = useInView()
-
   return (
-    <section
-      id="experience"
-      style={{
-        background: 'var(--section-bg)',
-        padding: '48px 0',
-        fontFamily: 'Space Grotesk, sans-serif',
-        borderTop: '1px solid rgba(81,66,84,0.4)',
-      }}
-    >
-      <div className='mx-auto max-w-[1200px] px-4 sm:px-8'>
-
-        {/* Section label */}
-        <div ref={headerRef} style={{ marginBottom: '24px', ...fadeUp(headerVisible) }}>
-          <span style={{ fontSize: '11px', letterSpacing: '0.1em', color: 'var(--outline)', fontFamily: 'monospace' }}>
-            $ EXPERIENCE_
-          </span>
+    <section id="experience" className="section-frame">
+      <div className="section-shell grid gap-10 lg:grid-cols-[280px_minmax(0,1fr)]">
+        <div className="space-y-4">
+          <p className="text-sm" style={{ color: "var(--accent-strong)" }}>
+            Experience
+          </p>
+          <h2 className="section-title max-w-[8ch] font-semibold">Work that changed operations.</h2>
+          <p className="section-copy text-base">
+            The emphasis here is concrete delivery: systems built, scale handled, and manual effort removed.
+          </p>
         </div>
 
-        {/* Divider */}
-        <div style={{ height: '1px', background: 'var(--outline-variant)', marginBottom: '40px' }} />
-
-        {/* Entries */}
-        <div ref={bodyRef} style={{ display: 'flex', flexDirection: 'column', ...fadeUp(bodyVisible, 100) }}>
-          {experiences.map((item, i) => (
-            <div key={item.company + item.period}>
-              {/* Entry */}
-              <div style={{ padding: '24px 0' }}>
-                {/* Period */}
-                <span
-                  style={{
-                    display: 'block',
-                    fontSize: '10px',
-                    fontFamily: 'monospace',
-                    color: '#bf00ff',
-                    letterSpacing: '0.12em',
-                    marginBottom: '6px',
-                    textShadow: '0 0 8px rgba(191,0,255,0.4)',
-                  }}
-                >
-                  {item.period}
-                </span>
-
-                {/* Title */}
-                <span
-                  style={{
-                    display: 'block',
-                    fontSize: 'clamp(18px, 5vw, 20px)',
-                    fontWeight: 600,
-                    color: 'var(--on-surface)',
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    letterSpacing: '-0.01em',
-                    marginBottom: '4px',
-                  }}
-                >
-                  {item.title}
-                </span>
-
-                {/* Company · Location */}
-                <span
-                  style={{
-                    display: 'block',
-                    fontSize: '11px',
-                    fontFamily: 'monospace',
-                    color: 'var(--outline)',
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                    marginBottom: '20px',
-                  }}
-                >
-                  {item.company} · {item.location}
-                </span>
-
-                {/* Bullets */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  {item.bullets.map((b) => (
-                    <div key={b} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                      <span
-                        style={{
-                          color: '#bf00ff',
-                          flexShrink: 0,
-                          fontSize: '13px',
-                          lineHeight: 1.75,
-                          textShadow: '0 0 8px rgba(191,0,255,0.6)',
-                        }}
-                      >
-                        ›
-                      </span>
-                      <span
-                        style={{
-                          fontSize: '14px',
-                          color: 'var(--on-surface-variant)',
-                          lineHeight: 1.75,
-                          fontFamily: 'Space Grotesk, sans-serif',
-                        }}
-                      >
-                        {b}
-                      </span>
-                    </div>
-                  ))}
+        <div className="grid gap-6">
+          {experiences.map((item) => (
+            <article key={`${item.company}-${item.period}`} className="card-surface p-6 sm:p-8">
+              <div className="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-8">
+                <div className="space-y-3">
+                  <p className="text-sm font-medium" style={{ color: "var(--accent-strong)" }}>
+                    {item.period}
+                  </p>
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-[-0.04em]">{item.title}</h3>
+                    <p className="mt-2 text-sm" style={{ color: "var(--foreground-soft)" }}>
+                      {item.company} · {item.location}
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              {/* Divider between entries, not after last */}
-              {i < experiences.length - 1 && (
-                <div style={{ height: '1px', background: 'var(--outline-variant)' }} />
-              )}
-            </div>
+                <ul className="grid gap-3 border-t pt-5 lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0" style={{ borderColor: "var(--border)" }}>
+                  {item.bullets.map((bullet) => (
+                    <li key={bullet} className="text-sm leading-relaxed sm:text-base" style={{ color: "var(--foreground-soft)" }}>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

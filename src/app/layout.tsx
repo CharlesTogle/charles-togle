@@ -1,11 +1,21 @@
 import type { Metadata } from "next";
+import { JetBrains_Mono, Outfit } from "next/font/google";
+import Nav from "./components/Nav";
 import "./globals.css";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
 
 export const metadata: Metadata = {
   title: "Charles Nathaniel Togle",
-  description: "Full-stack engineer • Systems • Real-world impact",
+  description: "Full-stack engineer shipping practical systems with measurable impact.",
   icons: {
     icon: "/favicon.svg",
   },
@@ -17,16 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <body
-        className="min-h-full"
-        style={{ backgroundColor: 'var(--background)', color: 'var(--on-surface)' }}
-      >
-        <Header />
-        <Sidebar />
-        <main className="app-main">
-          {children}
-        </main>
+    <html lang="en">
+      <body className={`${outfit.variable} ${jetbrainsMono.variable} bg-background text-foreground`}>
+        <div className="page-shell" style={{ fontFamily: "var(--font-outfit), sans-serif" }}>
+          <Nav />
+          <main className="pt-20">{children}</main>
+        </div>
       </body>
     </html>
   );

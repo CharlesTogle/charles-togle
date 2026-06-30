@@ -136,6 +136,22 @@ export const projects: Project[] = [
     },
     icon: 'slides',
     screenshot: '/projects/agentic-slides.png'
+  },
+  {
+    id: '0X08',
+    code: 'HOME_SERVER_SYSTEM',
+    name: 'HomeServer Lite + NginxConf',
+    description:
+      'Private self-hosted file server system split across the product app and its infrastructure layer. Combines the React/Fastify/PostgreSQL file server with the nginx, BIND DNS, Tailscale, and firewall routing setup that makes the private VPS deployment usable.',
+    role: 'System Designer, App Developer & Infrastructure Engineer',
+    period: '2026',
+    tech: ['React', 'Vite', 'Fastify', 'PostgreSQL', 'Nginx', 'BIND DNS', 'Tailscale', 'UFW'],
+    links: {
+      source: 'https://github.com/CharlesTogle/HomeServer-Lite',
+      source2: 'https://github.com/CharlesTogle/NginxConf'
+    },
+    icon: 'terminal',
+    screenshot: '/projects/home-server-lite.png'
   }
 ]
 
