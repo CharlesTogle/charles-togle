@@ -157,37 +157,35 @@ export const projects: Project[] = [
 
 export const experiences: ExperienceEntry[] = [
   {
-    period: 'SEPT 2025 – APR 2026',
+    period: 'SEP 2025 - APR 2026',
     title: 'Dev Specialist',
     company: 'Centervert',
-    location: 'Greenville, NC (Remote)',
+    location: 'Greenville, North Carolina (Remote)',
     bullets: [
-      'Reduced client workload by 4–6 hrs/day and eliminated the need for 5 Full Time Employees by automating operational workflows',
+      "Automated 5 FTEs' worth of manual data entry (per manager estimate) via a Supabase Edge Function intake pipeline",
       'Increased lead intake by 30–40 per day by building an automated lead intake system using Supabase Edge Functions and GHL API',
-      'Enabled scalable cross-system access for 460K+ records by architecting a centralized database',
-      'Improved scalability and reduced vendor dependency by migrating 2 full-stack apps to AWS',
-      'Processed $1K–$2K/client requests in a payment portal built with Next.js and Stripe',
-      'Eliminated developer deployment dependency by building a CMS dashboard that lets non-technical clients manage content independently'
+      "Migrated 460K+ records to a self-architected Supabase schema, now the CRM's source of truth",
+      'Generated $1K–$2K in per-request billing through a Next.js/Stripe change-request-to-invoice pipeline'
     ]
   },
   {
-    period: 'MAR – MAY 2025',
+    period: 'MAR 2025 - MAY 2025',
     title: 'Developer & Project Manager',
     company: 'Freelance Software Engineer',
-    location: 'Makati City, PH',
+    location: 'Makati City, Metro Manila, Philippines',
     bullets: [
-      'Delivered a multi-tenant fitness education platform by leading full-stack development using React, PostgreSQL, and Supabase',
+      'Worked with a team of 5 to deliver a multi-tenant fitness education platform by leading full-stack development using React, PostgreSQL, and Supabase',
       'Secured access for Teachers and Students across 4 core modules by designing a role-based access system',
       'Automated Physical Fitness Test classification by implementing a session-based recording system'
     ]
   },
   {
-    period: 'FEB – APR 2025',
+    period: 'FEB 2025 - APR 2025',
     title: 'Developer & Project Manager',
     company: 'University Project',
     location: 'University of Makati',
     bullets: [
-      'Unified lost & found reporting across web and mobile by building a centralized platform using React, Capacitor, FastifyJS, and Supabase',
+      'Worked with a team of 4 to deliver unified lost & found reporting across web and mobile by building a centralized platform using React, Capacitor, FastifyJS, and Supabase',
       'Extracted structured metadata (color, category, descriptors) from item photos by integrating AI image classification via Gemini API',
       'Matched lost and found items accurately by implementing PostgreSQL full-text and similarity search'
     ]

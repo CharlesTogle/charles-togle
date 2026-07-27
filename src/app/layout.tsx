@@ -15,7 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Charles Nathaniel Togle",
-  description: "Full-stack engineer shipping practical systems with measurable impact.",
+  description: "Aspiring web systems engineer seeking a junior software engineering role, focused on practical systems with measurable impact.",
   icons: {
     icon: "/favicon.svg",
   },

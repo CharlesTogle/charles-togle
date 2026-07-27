@@ -1,6 +1,5 @@
 export interface SkillEntry {
   name: string
-  pct: number
 }
 
 export interface SkillGroup {
@@ -10,45 +9,53 @@ export interface SkillGroup {
 
 export const skillGroups: SkillGroup[] = [
   {
-    label: 'DATABASES',
+    label: 'LANGUAGES & FRAMEWORKS',
     skills: [
-      { name: 'PostgreSQL', pct: 80 },
-      { name: 'MySQL', pct: 70 },
-      { name: 'Supabase', pct: 90 }
+      { name: 'JavaScript' },
+      { name: 'TypeScript' },
+      { name: 'ReactJS' },
+      { name: 'Next.js' },
+      { name: 'Node.js' },
+      { name: 'Express' },
+      { name: 'Hono' }
     ]
   },
   {
-    label: 'FRAMEWORKS',
+    label: 'DATABASES',
     skills: [
-      { name: 'ReactJS', pct: 80 },
-      { name: 'Next.JS', pct: 65 },
-      { name: 'Hono', pct: 50 }
+      { name: 'PostgreSQL' },
+      { name: 'MySQL' },
+      { name: 'Supabase' }
     ]
   },
   {
     label: 'CLOUD & DEVOPS',
     skills: [
-      { name: 'AWS (S3, CloudFront, RDS, Route53, Lightsail)', pct: 55 },
-      { name: 'GCP', pct: 80 },
-      { name: 'Vercel', pct: 90 },
-      { name: 'Docker', pct: 65 },
-      { name: 'Nginx', pct: 55 }
+      { name: 'AWS (S3, CloudFront, RDS, Route53, Lightsail)' },
+      { name: 'GCP' },
+      { name: 'Docker' },
+      { name: 'Nginx' },
+      { name: 'VPS' }
     ]
   },
   {
-    label: 'TOOLS & OS',
+    label: 'TOOLS',
     skills: [
-      { name: 'VPS & SSH', pct: 90 },
-      { name: 'Git & GitHub', pct: 90 },
-      { name: 'Linux', pct: 90 },
-      { name: 'Figma', pct: 50 }
+      { name: 'Git' },
+      { name: 'GitHub' },
+      { name: 'Linux' },
+      { name: 'SSH' },
+      { name: 'Vercel' },
+      { name: 'Render' },
+      { name: 'GitHub Workflows' },
+      { name: 'Tailscale' }
     ]
   },
   {
-    label: 'LANGUAGES',
+    label: 'OTHER',
     skills: [
-      { name: 'English', pct: 70 },
-      { name: 'Filipino', pct: 95 }
+      { name: 'API Integration' },
+      { name: 'Full-stack Development' }
     ]
   }
 ]

@@ -14,7 +14,7 @@ export default function Footer() {
 
         <div className="flex flex-wrap gap-3">
           {contactItems
-            .filter((item) => item.href)
+            .filter((item) => item.label === "GITHUB" || item.label === "LINKEDIN")
             .map((item) => (
               <a key={item.label} href={item.href} target="_blank" rel="noreferrer" className="button-secondary">
                 {item.label}

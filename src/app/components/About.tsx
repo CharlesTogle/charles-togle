@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
-import { aboutHighlights, contactItems, educationEntries } from "../data/about";
+import { aboutHighlights, awardEntries, contactItems, educationEntries } from "../data/about";
 
 export default function About() {
   return (
@@ -15,7 +15,7 @@ export default function About() {
 
           <div className="space-y-6">
             <p className="section-copy max-w-none text-lg">
-              Aspiring web systems engineer seeking a junior software engineering role, with a long-term goal of becoming a Forward Deployed Engineer. Strong interest in real-world software, high-pressure delivery, and practical systems that help people operate better.
+              Seeking a junior software engineering role to further develop technical and systems-level skills, with a long-term goal of becoming a Forward Deployed Engineer. Strong interest in building real-world software, high-pressure delivery, and practical systems that help people operate better. Works well in teams, communicates effectively, and stays teachable.
             </p>
 
             <div className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
@@ -55,16 +55,45 @@ export default function About() {
                       </div>
                     </div>
 
-                    <ul className="grid gap-2 border-t pt-4 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0" style={{ borderColor: "var(--border)" }}>
-                      {entry.bullets.map((bullet) => (
-                        <li key={bullet} className="text-sm leading-relaxed" style={{ color: "var(--foreground-soft)" }}>
-                          {bullet}
-                        </li>
-                      ))}
-                    </ul>
+                    {entry.bullets.length > 0 ? (
+                      <ul className="grid gap-2 border-t pt-4 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0" style={{ borderColor: "var(--border)" }}>
+                        {entry.bullets.map((bullet) => (
+                          <li key={bullet} className="text-sm leading-relaxed" style={{ color: "var(--foreground-soft)" }}>
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                   </div>
                 </article>
               ))}
+            </div>
+
+            <div className="space-y-5 pt-4">
+              <div className="flex items-center justify-between gap-4">
+                <h3 className="text-2xl font-semibold tracking-[-0.04em]">Awards</h3>
+                <span className="text-sm" style={{ color: "var(--foreground-soft)" }}>
+                  Competition and hackathon recognition
+                </span>
+              </div>
+
+              <div className="grid gap-5">
+                {awardEntries.map((entry) => (
+                  <article key={`${entry.title}-${entry.period}`} className="card-surface p-6 sm:p-7">
+                    <div className="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-8">
+                      <p className="text-sm font-medium" style={{ color: "var(--accent-strong)" }}>
+                        {entry.period}
+                      </p>
+                      <div className="space-y-2 border-t pt-4 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0" style={{ borderColor: "var(--border)" }}>
+                        <h4 className="text-xl font-semibold tracking-[-0.03em]">{entry.title}</h4>
+                        <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-soft)" }}>
+                          {entry.summary}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
 

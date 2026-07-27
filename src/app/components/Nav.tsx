@@ -27,7 +27,7 @@ export default function Nav() {
             Charles Togle
           </Link>
           <span className="hidden text-sm sm:inline" style={{ color: "var(--foreground-soft)" }}>
-            Full-stack engineer
+            Web systems engineer
           </span>
         </div>
 
