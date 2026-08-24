@@ -7,7 +7,7 @@ const stats = [
   { value: "460K+", label: "records unified for scalable access" },
   { value: "5 FTE", label: "worth of manual work automated away" },
   { value: "$1K-$2K", label: "client requests processed in production" },
-  { value: "1 cohort", label: "of CS students taught agentic coding" },
+  { value: "168 students", label: "taught agentic coding" },
 ];
 
 export default function Hero() {
