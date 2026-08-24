@@ -1,5 +1,6 @@
 import About from "./components/About";
 import AgenticTools from "./components/AgenticTools";
+import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -15,6 +16,7 @@ export default function Home() {
       <Projects />
       <Experience />
       <Skills />
+      <Education />
       <Footer />
     </>
   );
