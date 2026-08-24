@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 
 const homeLinks = [
@@ -35,16 +34,6 @@ export default function Nav() {
             ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <Image
-            src="/profile.png"
-            alt="Charles Togle"
-            width={44}
-            height={44}
-            className="h-11 w-11 border object-cover"
-            style={{ borderColor: "var(--border)" }}
-          />
-        </div>
       </div>
     </header>
   );
