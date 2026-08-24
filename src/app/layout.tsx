@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: "Charles Nathaniel Togle",
   description: "Future Forward Deployed Engineer building practical software and systems with measurable impact.",
   icons: {
-    icon: "/profile.png",
+    icon: [{ url: "/profile-favicon-photo.svg", type: "image/svg+xml" }],
   },
   openGraph: {
     title: "Charles Nathaniel Togle",
