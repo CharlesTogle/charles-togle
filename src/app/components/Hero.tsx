@@ -20,14 +20,14 @@ export default function Hero() {
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:items-center">
         <motion.div initial={initialUp} animate={animateUp} transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }} className="flex min-h-[calc(100dvh-9rem)] flex-col justify-center gap-8 lg:min-h-[calc(100dvh-8rem)]">
           <div className="inline-flex w-fit items-center gap-2 border px-3 py-2 text-sm" style={{ borderColor: "var(--border)", background: "var(--surface)", color: "var(--foreground-soft)" }}>
-            Aspiring web systems engineer
+            Future Frontend Deployed Engineer
           </div>
           <div className="max-w-3xl space-y-5">
             <h1 className="text-5xl font-semibold leading-[1.02] tracking-[-0.06em] md:text-6xl lg:text-7xl">
               Charles Nathaniel Togle builds practical software with measurable impact.
             </h1>
             <p className="max-w-[58ch] text-lg leading-relaxed" style={{ color: "var(--foreground-soft)" }}>
-              Aspiring web systems engineer seeking a junior software engineering role, with a long-term goal of becoming a Forward Deployed Engineer.
+              Future Frontend Deployed Engineer building practical software for real-world problems, from responsive interfaces to systems that help people operate better.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -38,6 +38,9 @@ export default function Hero() {
             <a href="#experience" className="button-secondary">
               See Experience
               <ArrowDownRight size={16} />
+            </a>
+            <a href="/RESUME_CHARLES_TOGLE.pdf" download className="button-secondary">
+              Download Resume
             </a>
           </div>
         </motion.div>
