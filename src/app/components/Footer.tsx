@@ -73,16 +73,18 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex items-end justify-between gap-4 border-t border-[var(--border)] px-1 pt-5 sm:px-3">
+        <div className="flex items-center justify-between gap-4 border-t border-[var(--border)] px-1 pt-5 sm:px-3">
           <div>
             <p className="text-xs uppercase tracking-[0.12em] text-[var(--foreground-soft)]">All rights reserved.</p>
             <p className="mt-2 text-[clamp(1.6rem,3vw,2.4rem)] tracking-[-0.06em]">© 2026 Charles Togle</p>
           </div>
-          <div className="ml-auto hidden sm:block">
-            <p className="text-xs uppercase tracking-[0.12em] text-[var(--foreground-soft)]">Based in</p>
-            <p className="mt-2 text-xs text-[var(--foreground)]">Pasay City, Philippines</p>
+          <div className="ml-auto flex items-center gap-5">
+            <div className="hidden sm:block">
+              <p className="text-xs leading-none uppercase tracking-[0.12em] text-[var(--foreground-soft)]">Based in</p>
+              <p className="mt-2 text-xs leading-none text-[var(--foreground)]">Pasay City, Philippines</p>
+            </div>
+            <a href="#hero" className="grid size-11 place-items-center rounded-full bg-[var(--accent)] text-white hover:-translate-y-0.5 hover:bg-[var(--accent-strong)]" aria-label="Back to the top"><ArrowUp size={18} /></a>
           </div>
-          <a href="#hero" className="grid size-11 place-items-center rounded-full bg-[var(--accent)] text-white hover:-translate-y-0.5 hover:bg-[var(--accent-strong)]" aria-label="Back to the top"><ArrowUp size={18} /></a>
         </div>
         </div>
       </div>
