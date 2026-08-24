@@ -29,14 +29,14 @@ export default function Hero() {
             style={{ borderColor: "var(--border)" }}
           />
           <div className="inline-flex w-fit items-center gap-2 border px-3 py-2 text-sm" style={{ borderColor: "var(--border)", background: "var(--surface)", color: "var(--foreground-soft)" }}>
-            Future Frontend Deployed Engineer
+            Future Forward Deployed Engineer
           </div>
           <div className="max-w-3xl space-y-5">
             <h1 className="text-5xl font-semibold leading-[1.02] tracking-[-0.06em] md:text-6xl lg:text-7xl">
               Charles Nathaniel Togle builds practical software with measurable impact.
             </h1>
             <p className="max-w-[58ch] text-lg leading-relaxed" style={{ color: "var(--foreground-soft)" }}>
-              Future Frontend Deployed Engineer building practical software for real-world problems, from responsive interfaces to systems that help people operate better.
+              Future Forward Deployed Engineer building practical software for real-world problems, from responsive interfaces to systems that help people operate better.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">

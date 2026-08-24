@@ -15,7 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Charles Nathaniel Togle",
-  description: "Future Frontend Deployed Engineer building practical software and systems with measurable impact.",
+  description: "Future Forward Deployed Engineer building practical software and systems with measurable impact.",
   icons: {
     icon: "/favicon.svg",
   },
