@@ -13,11 +13,34 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Charles Nathaniel Togle",
   description: "Future Forward Deployed Engineer building practical software and systems with measurable impact.",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/profile.png",
+  },
+  openGraph: {
+    title: "Charles Nathaniel Togle",
+    description: "Future Forward Deployed Engineer building practical software and systems with measurable impact.",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1718,
+        height: 806,
+        alt: "Charles Nathaniel Togle portfolio preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Charles Nathaniel Togle",
+    description: "Future Forward Deployed Engineer building practical software and systems with measurable impact.",
+    images: ["/og-image.png"],
   },
 };
 
