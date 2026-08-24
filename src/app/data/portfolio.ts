@@ -67,7 +67,7 @@ export const projects: Project[] = [
     name: 'Hope Hub',
     description:
       'A multi-tenant Physical Education platform built with a team of five to bring lectures, quizzes, workouts, health tools, fitness testing, and class tracking into one system. Led the full-stack delivery across React, PostgreSQL, and Supabase, including role-based student and teacher experiences, lecture progress that controls quiz access, resumable timed quizzes with scoring and leaderboards, and session-based pre-test and post-test recording that automates Physical Fitness Test classification. The teacher dashboard supports class-code management, performance review, and spreadsheet export for reporting.',
-    role: 'Developer & Project Manager',
+    role: 'Project Manager and Full Stack Developer',
     period: 'March – May 2025',
     tech: ['React', 'Vite', 'PostgreSQL', 'Supabase', 'React Query', 'Recharts'],
     links: {
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     name: 'Umak Link',
     description:
       'A unified lost and found platform for web and mobile, delivered with a team of four to replace fragmented reporting with one searchable system for the University of Makati community. Built the Ionic React and Capacitor mobile client, a Next.js staff and admin portal, and a Fastify backend-for-frontend that centralizes authentication, role enforcement, posts, claims, fraud reports, notifications, storage, and audit logging. Integrated Gemini image classification to extract item metadata and generate search queries, then combined PostgreSQL full-text and similarity search to match lost and found reports. The backend was dockerized and deployed for Google Cloud Run, with Firebase push notifications and Resend email completing the operational workflow.',
-    role: 'Developer & Project Manager',
+    role: 'Project Manager and Full Stack Developer',
     period: 'Feb – April 2025, Feb - March 2026',
     tech: ['Ionic React', 'Capacitor', 'Next.js', 'FastifyJS', 'Supabase', 'Gemini API', 'Docker', 'Cloud Run'],
     links: {
@@ -204,21 +204,38 @@ export const experiences: ExperienceEntry[] = [
     ]
   },
   {
-    period: 'SEP 2025 - APR 2026',
+    period: 'MAR 2026 - APR 2026',
     title: 'Dev Specialist',
     company: 'Centervert',
     location: 'Greenville, North Carolina (Remote)',
     bullets: [
-      "Automated 5 FTEs' worth of manual data entry (per manager estimate) via a Supabase Edge Function intake pipeline",
+      'Led the development of the CRM intake and billing systems across Supabase, Next.js, and Stripe'
+    ]
+  },
+  {
+    period: 'OCT 2025 - MAR 2026',
+    title: 'Full Stack Engineer',
+    company: 'Centervert',
+    location: 'Greenville, North Carolina (Remote)',
+    bullets: [
       'Increased lead intake by 30–40 per day by building an automated lead intake system using Supabase Edge Functions and GHL API',
-      "Migrated 460K+ records to a self-architected Supabase schema, now the CRM's source of truth",
       'Generated $1K–$2K in per-request billing through a Next.js/Stripe change-request-to-invoice pipeline'
     ]
   },
   {
+    period: 'AUG 2025 - OCT 2025',
+    title: 'Supabase Consultant',
+    company: 'Centervert',
+    location: 'Greenville, North Carolina (Remote)',
+    bullets: [
+      "Automated 5 FTEs' worth of manual data entry (per manager estimate) via a Supabase Edge Function intake pipeline",
+      "Migrated 460K+ records to a self-architected Supabase schema, now the CRM's source of truth"
+    ]
+  },
+  {
     period: 'MAR 2025 - MAY 2025',
-    title: 'Developer & Project Manager',
-    company: 'Freelance Software Engineer',
+    title: 'Project Manager and Full Stack Developer',
+    company: 'The Hope Hub (Freelance)',
     location: 'Makati City, Metro Manila, Philippines',
     bullets: [
       'Worked with a team of 5 to deliver a multi-tenant fitness education platform by leading full-stack development using React, PostgreSQL, and Supabase',
@@ -228,7 +245,7 @@ export const experiences: ExperienceEntry[] = [
   },
   {
     period: 'FEB 2025 - APR 2025',
-    title: 'Developer & Project Manager',
+    title: 'Project Manager and Full Stack Developer',
     company: 'University Project',
     location: 'University of Makati',
     bullets: [
