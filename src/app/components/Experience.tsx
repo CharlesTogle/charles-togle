@@ -4,7 +4,7 @@ export default function Experience() {
   return (
     <section id="experience" className="section-frame">
       <div className="section-shell grid gap-10 lg:grid-cols-[280px_minmax(0,1fr)]">
-        <div className="space-y-4">
+        <div className="space-y-4 lg:sticky lg:top-28 lg:self-start">
           <p className="text-sm" style={{ color: "var(--accent-strong)" }}>
             Experience
           </p>
