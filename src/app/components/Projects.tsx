@@ -48,41 +48,45 @@ export default function Projects() {
           </p>
         </div>
 
-        <article className="card-surface overflow-hidden">
-          <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="flex min-h-[360px] flex-col justify-center gap-12 border-b p-6 sm:p-10 lg:border-b-0 lg:border-r" style={{ borderColor: "var(--border)", background: "var(--surface-strong)" }}>
-              <div className="flex items-center justify-between gap-4">
-                <p className="text-xs uppercase tracking-[0.18em]" style={{ color: "var(--accent-strong)" }}>
-                  Featured work
+        <article className="overflow-hidden border" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
+          <div className="grid lg:grid-cols-[0.78fr_1.22fr]">
+            <div className="relative flex min-h-[380px] flex-col justify-between overflow-hidden border-b p-6 sm:p-10 lg:border-b-0 lg:border-r" style={{ borderColor: "var(--border)", background: "var(--accent)" }}>
+              <div className="relative z-[1] flex items-center justify-between gap-4 text-sm font-medium" style={{ color: "var(--surface)" }}>
+                <span>Featured work</span>
+                <span>{featured.period}</span>
+              </div>
+
+              <div className="relative z-[1] space-y-5">
+                <p className="text-[clamp(4.5rem,10vw,8rem)] font-semibold leading-[0.82] tracking-[-0.1em]" style={{ color: "var(--surface)" }}>
+                  460K+
                 </p>
-                <p className="text-sm" style={{ color: "var(--foreground-soft)" }}>
-                  {featured.period}
+                <p className="max-w-[16ch] text-lg font-medium leading-snug" style={{ color: "var(--surface)" }}>
+                  records moved into a new CRM source of truth.
                 </p>
               </div>
 
-              <div className="space-y-5">
-                <p className="metric-value font-semibold">460K+</p>
-                <div className="max-w-sm space-y-2">
-                  <p className="text-xl font-semibold tracking-[-0.03em]">Records moved into a new CRM source of truth.</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-soft)" }}>
-                    Centervert intake, migration, and billing systems built for real operational load.
+              <div className="pointer-events-none absolute -bottom-20 -right-10 h-64 w-64 rounded-full border-[28px] opacity-25" style={{ borderColor: "var(--surface)" }} />
+            </div>
+
+            <div className="flex flex-col gap-8 p-6 sm:p-10 lg:p-12">
+              <div className="flex flex-col gap-6">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b pb-4" style={{ borderColor: "var(--border)" }}>
+                  <p className="font-mono text-xs tracking-[0.08em]" style={{ color: "var(--accent-strong)" }}>
+                    {featured.code}
+                  </p>
+                  <p className="text-sm" style={{ color: "var(--foreground-soft)" }}>
+                    {featured.role}
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="max-w-[11ch] text-4xl font-semibold leading-[0.95] tracking-[-0.07em] sm:text-6xl">{featured.name}</h3>
+                  <p className="max-w-[58ch] text-sm leading-relaxed sm:text-base" style={{ color: "var(--foreground-soft)" }}>
+                    {featured.description}
                   </p>
                 </div>
               </div>
-            </div>
 
-            <div className="flex flex-col gap-7 p-6 sm:p-10">
-              <div className="space-y-4">
-                <p className="text-xs uppercase tracking-[0.18em]" style={{ color: "var(--accent-strong)" }}>
-                  {featured.code}
-                </p>
-                <h3 className="text-4xl font-semibold tracking-[-0.06em] sm:text-5xl">{featured.name}</h3>
-                <p className="max-w-[58ch] text-justify text-sm leading-relaxed sm:text-base" style={{ color: "var(--foreground-soft)" }}>
-                  {featured.description}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 border-y py-5" style={{ borderColor: "var(--border)" }}>
+              <div className="grid grid-cols-2 gap-6 border-y py-5" style={{ borderColor: "var(--border)" }}>
                 <div>
                   <p className="text-2xl font-semibold tracking-[-0.04em]">5 FTE</p>
                   <p className="mt-1 text-sm" style={{ color: "var(--foreground-soft)" }}>manual work automated</p>
