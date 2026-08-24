@@ -101,7 +101,7 @@ export default function Projects() {
 
         <div className="grid gap-x-5 gap-y-10 sm:grid-cols-2 xl:grid-cols-4">
           {supportingProjects.map((project, index) => (
-            <article key={project.id} className="group flex h-full flex-col border-t pt-5" style={{ borderColor: "var(--border)" }}>
+            <article key={project.id} className="group flex h-full flex-col border-t px-6 pt-5 sm:px-0" style={{ borderColor: "var(--border)" }}>
               <div className="relative aspect-[16/10] overflow-hidden" style={{ background: "var(--surface-strong)" }}>
                 {project.screenshot ? (
                   <Image
