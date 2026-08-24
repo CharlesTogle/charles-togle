@@ -9,6 +9,8 @@ export interface AwardEntry {
   period: string
   title: string
   summary: string
+  source?: string
+  project?: string
 }
 
 export interface ContactItem {
@@ -18,7 +20,7 @@ export interface ContactItem {
 }
 
 export const aboutHighlights = [
-  'Seeking a junior software engineering role to keep growing technical and systems-level skills',
+  'Technical and systems-level thinking grounded in practical software',
   'Strong interest in building real-world software and practical systems that help people operate better',
   'Comfortable in challenging, high-pressure environments with real delivery expectations',
   'Approachable, teachable, and committed to continuous improvement in team settings'
@@ -48,13 +50,15 @@ export const awardEntries: AwardEntry[] = [
     period: 'NOV 2024, NOV 2025',
     title: 'Java Speed Coding - Infotech Winner',
     summary:
-      'Won this university-level algorithmic coding competition twice, solving problems of increasing difficulty under time pressure against 10-15 competing pairs.'
+      'Won this university-level algorithmic coding competition twice, standing out among 20-30 people each year. Solved increasingly difficult problems under intense time pressure through fast reasoning, strong Java fundamentals, and precise implementation.'
   },
   {
     period: 'JUL 2026',
     title: 'eGovHackathon 2026 - Top 10 Finalist',
+    source: 'https://github.com/Jerothegreat/eGovPHHackaton2026',
+    project: 'https://e-handa.vercel.app/',
     summary:
-      'Selected as a Top 10 Finalist for HANDA, a post-disaster household needs-assessment tool built as a super app integration with the eGovPH platform.'
+      'Selected as a Top 10 Finalist for HANDA, a post-disaster household needs-assessment tool built as a super app integration with the eGovPH platform. The project focused on helping communities report urgent needs faster and giving responders clearer information to act on after a disaster.'
   }
 ]
 
@@ -66,11 +70,6 @@ export const contactItems: ContactItem[] = [
     label: 'GITHUB',
     val: 'github.com/CharlesTogle',
     href: 'https://github.com/CharlesTogle'
-  },
-  {
-    label: 'WEBSITE',
-    val: 'charles-togle.vercel.app',
-    href: 'https://charles-togle.vercel.app'
   },
   {
     label: 'LINKEDIN',
