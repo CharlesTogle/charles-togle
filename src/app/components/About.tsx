@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
-import { aboutHighlights, awardEntries, contactItems, educationEntries } from "../data/about";
+import { aboutHighlights, awardEntries, contactItems } from "../data/about";
 
 export default function About() {
   return (
@@ -15,7 +15,7 @@ export default function About() {
 
           <div className="space-y-6">
             <p className="section-copy max-w-none text-lg">
-              Seeking a junior software engineering role to further develop technical and systems-level skills, with a long-term goal of becoming a Forward Deployed Engineer. Strong interest in building real-world software, high-pressure delivery, and practical systems that help people operate better. Works well in teams, communicates effectively, and stays teachable.
+              I build real-world software and practical systems that help people operate better. I care about clear thinking, reliable execution, and shipping work that holds up beyond the demo. Comfortable in high-pressure environments, collaborative by default, and always looking for a better way to solve the problem.
             </p>
 
             <div className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
@@ -32,43 +32,6 @@ export default function About() {
 
         <div className="grid gap-8 xl:grid-cols-[minmax(0,1.2fr)_340px] xl:items-start">
           <div className="space-y-5">
-            <div className="flex items-center justify-between gap-4">
-              <h3 className="text-2xl font-semibold tracking-[-0.04em]">Education</h3>
-              <span className="text-sm" style={{ color: "var(--foreground-soft)" }}>
-                Ongoing academic track
-              </span>
-            </div>
-
-            <div className="grid gap-5">
-              {educationEntries.map((entry) => (
-                <article key={`${entry.degree}-${entry.period}`} className="card-surface p-6 sm:p-7">
-                  <div className="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-8">
-                    <div className="space-y-3">
-                      <p className="text-sm font-medium" style={{ color: "var(--accent-strong)" }}>
-                        {entry.period}
-                      </p>
-                      <div>
-                        <h4 className="text-xl font-semibold tracking-[-0.03em]">{entry.degree}</h4>
-                        <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--foreground-soft)" }}>
-                          {entry.school}
-                        </p>
-                      </div>
-                    </div>
-
-                    {entry.bullets.length > 0 ? (
-                      <ul className="grid gap-2 border-t pt-4 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0" style={{ borderColor: "var(--border)" }}>
-                        {entry.bullets.map((bullet) => (
-                          <li key={bullet} className="text-sm leading-relaxed" style={{ color: "var(--foreground-soft)" }}>
-                            {bullet}
-                          </li>
-                        ))}
-                      </ul>
-                    ) : null}
-                  </div>
-                </article>
-              ))}
-            </div>
-
             <div className="space-y-5 pt-4">
               <div className="flex items-center justify-between gap-4">
                 <h3 className="text-2xl font-semibold tracking-[-0.04em]">Awards</h3>
@@ -89,6 +52,22 @@ export default function About() {
                         <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-soft)" }}>
                           {entry.summary}
                         </p>
+                        {entry.source || entry.project ? (
+                          <div className="flex flex-wrap gap-4 pt-1">
+                            {entry.source ? (
+                              <a href={entry.source} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium">
+                                Source
+                                <ArrowUpRight size={14} />
+                              </a>
+                            ) : null}
+                            {entry.project ? (
+                              <a href={entry.project} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium">
+                                Project
+                                <ArrowUpRight size={14} />
+                              </a>
+                            ) : null}
+                          </div>
+                        ) : null}
                       </div>
                     </div>
                   </article>
