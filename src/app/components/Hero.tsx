@@ -2,6 +2,7 @@
 
 import { ArrowDownRight, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { motion, useReducedMotion } from "motion/react";
+import Image from "next/image";
 
 const stats = [
   { value: "460K+", label: "records unified for scalable access" },
@@ -19,6 +20,14 @@ export default function Hero() {
     <section id="hero" className="section-shell pb-10 pt-8 lg:pb-14 lg:pt-12">
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:items-center">
         <motion.div initial={initialUp} animate={animateUp} transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }} className="flex min-h-[calc(100dvh-9rem)] flex-col justify-center gap-8 lg:min-h-[calc(100dvh-8rem)]">
+          <Image
+            src="/profile.png"
+            alt="Charles Togle"
+            width={96}
+            height={96}
+            className="h-24 w-24 border object-cover"
+            style={{ borderColor: "var(--border)" }}
+          />
           <div className="inline-flex w-fit items-center gap-2 border px-3 py-2 text-sm" style={{ borderColor: "var(--border)", background: "var(--surface)", color: "var(--foreground-soft)" }}>
             Future Frontend Deployed Engineer
           </div>

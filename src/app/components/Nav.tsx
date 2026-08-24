@@ -1,10 +1,7 @@
 "use client";
 
-import { List, X } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
 
 const homeLinks = [
   { href: "#about", label: "About" },
@@ -15,9 +12,6 @@ const homeLinks = [
 ];
 
 export default function Nav() {
-  usePathname();
-  const [mobileOpen, setMobileOpen] = useState(false);
-
   const onHome = true;
 
   return (
@@ -50,29 +44,8 @@ export default function Nav() {
             className="h-11 w-11 border object-cover"
             style={{ borderColor: "var(--border)" }}
           />
-          <button
-            type="button"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            className="button-secondary h-11 w-11 p-0 lg:hidden"
-            onClick={() => setMobileOpen((current) => !current)}
-          >
-            {mobileOpen ? <X size={18} /> : <List size={18} />}
-          </button>
         </div>
       </div>
-
-      {mobileOpen && (
-        <div className="border-t lg:hidden" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
-          <div className="section-shell flex flex-col gap-4 py-4">
-            {onHome &&
-              homeLinks.map((item) => (
-                <a key={item.href} href={item.href} className="text-base" onClick={() => setMobileOpen(false)}>
-                  {item.label}
-                </a>
-              ))}
-          </div>
-        </div>
-      )}
     </header>
   );
 }
