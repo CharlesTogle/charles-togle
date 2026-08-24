@@ -63,8 +63,8 @@ export const awardEntries: AwardEntry[] = [
 ]
 
 export const contactItems: ContactItem[] = [
-  { label: 'EMAIL', val: 'charles3togle@gmail.com' },
-  { label: 'PHONE', val: '+63 9281995178' },
+  { label: 'EMAIL', val: 'charles3togle@gmail.com', href: 'mailto:charles3togle@gmail.com' },
+  { label: 'PHONE', val: '+63 9281995178', href: 'tel:+639281995178' },
   { label: 'LOCATION', val: 'Pasay City, PH' },
   {
     label: 'GITHUB',
@@ -75,5 +75,10 @@ export const contactItems: ContactItem[] = [
     label: 'LINKEDIN',
     val: 'in/charles-nathaniel-togle',
     href: 'https://www.linkedin.com/in/charles-nathaniel-togle-09858b350/'
+  },
+  {
+    label: 'FACEBOOK',
+    val: 'facebook.com/charles3togle',
+    href: 'https://www.facebook.com/charles3togle'
   }
 ]
