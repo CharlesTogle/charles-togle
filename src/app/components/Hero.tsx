@@ -25,6 +25,7 @@ export default function Hero() {
             alt="Charles Togle"
             width={96}
             height={96}
+            loading="eager"
             className="h-24 w-24 border object-cover"
             style={{ borderColor: "var(--border)" }}
           />
