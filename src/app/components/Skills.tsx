@@ -15,9 +15,6 @@ export default function Skills() {
             <p className="section-copy max-w-none text-base">
               Resume-backed tools and technologies used across production builds, school projects, and client-facing systems.
             </p>
-            <p className="text-sm" style={{ color: "var(--foreground-soft)" }}>
-              Grouped by actual working areas instead of inflated self-ratings.
-            </p>
           </div>
         </div>
 
