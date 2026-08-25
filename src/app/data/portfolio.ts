@@ -13,10 +13,12 @@ export interface Project {
   period: string
   tech: string[]
   impact?: string
+  status?: string
   highlights?: { value: string; label: string }[]
   links: ProjectLinks
   icon: string
   screenshot?: string
+  screenshotFit?: 'cover' | 'contain'
 }
 
 export interface ExperienceEntry {
@@ -42,6 +44,29 @@ export const projects: Project[] = [
     icon: 'terminal'
   },
   {
+    id: '0X11',
+    code: 'ODIN_PFM',
+    name: 'Odin',
+    description:
+      'An offline-first personal finance management app for Filipino working young adults. Built around local SQLite reads and writes so transaction entry, balances, budgets, savings goals, and debt management stay useful when connectivity drops, then converges through a cursor-based sync engine with queued domain operations, idempotent push, tombstones, IBM-backed delete-wins conflict resolution, and per-field last-write-wins for concurrent edits. Security is enforced through user-scoped RLS, explicit sync allowlists, ownership validation, and Postgres RPCs for sensitive operations. Recurring transaction templates generate queued ledger entries automatically, while the backend is planned for Google Cloud Run and local development uses Tailscale for private remote access.',
+    role: 'Full Stack Engineer and Infrastructure Engineer',
+    period: '2026 – present',
+    tech: ['React Native', 'Expo', 'SQLite', 'Express', 'Supabase', 'RLS', 'Sync allowlists', 'Postgres RPCs', 'Cloud Run', 'Tailscale', 'Cron jobs'],
+    status: 'In Progress',
+    highlights: [
+      { value: 'Offline-first', label: 'local finance workflows' },
+      { value: 'Cursor sync', label: 'incremental convergence' },
+      { value: 'RLS + RPCs', label: 'scoped backend security' }
+    ],
+    links: {
+      live: 'https://odin-budgets.buzz/',
+      source: 'https://github.com/VibeCoders-3DCSAD/Odin'
+    },
+    icon: 'terminal',
+    screenshot: '/projects/odin-layout.png',
+    screenshotFit: 'contain'
+  },
+  {
     id: '0X02',
     code: 'KATADA_VAN_RENTALS',
     name: 'Katada Transportation Services',
@@ -60,6 +85,29 @@ export const projects: Project[] = [
     },
     icon: 'van',
     screenshot: '/projects/katada-van-rentals.png'
+  },
+  {
+    id: '0X12',
+    code: 'EHANDA_04',
+    name: 'eHanda',
+    description:
+      'A pair-programmed barangay disaster assessment platform built for the eGovPH ecosystem. Served as Technical Lead, planning the team\'s feasible scope and coordinating delivery within eight hours of development time. My delivered work focused on the Assessment Builder for creating structured disaster campaigns, real-time dashboard and user-dashboard updates through the realtime/WebSocket layer, and a planned AWS-native production architecture covering load balancing, managed database infrastructure, secrets, encryption, and observability. The project was selected as a Top 10 hackathon finalist.',
+    role: 'Technical Lead and Pair Programming Full Stack Engineer',
+    period: 'July 2026',
+    tech: ['React', 'TypeScript', 'Vite', 'Supabase', 'Realtime/WebSockets', 'AWS architecture', 'eGovPH SSO'],
+    impact: 'Top 10 · 8-hour build',
+    highlights: [
+      { value: 'Realtime', label: 'dashboard + user updates' },
+      { value: 'Builder', label: 'structured assessments' },
+      { value: 'AWS', label: 'native production plan' }
+    ],
+    links: {
+      live: 'https://e-handa.vercel.app/',
+      source: 'https://github.com/CharlesTogle/eGovPHHackaton2026'
+    },
+    icon: 'shield',
+    screenshot: '/projects/e-handa.png',
+    screenshotFit: 'contain'
   },
   {
     id: '0X03',

@@ -106,14 +106,17 @@ export default function Projects() {
         <div className="grid gap-x-5 gap-y-10 sm:grid-cols-2 xl:grid-cols-4">
           {supportingProjects.map((project, index) => (
             <article key={project.id} className="group flex h-full flex-col border-t px-6 pt-5 sm:px-0" style={{ borderColor: "var(--border)" }}>
-              <div className="relative aspect-[16/10] overflow-hidden" style={{ background: "var(--surface-strong)" }}>
+              <div
+                className={`relative overflow-hidden ${project.screenshotFit === "contain" ? "aspect-[1862/894]" : "aspect-[16/10]"}`}
+                style={{ background: "var(--surface-strong)" }}
+              >
                 {project.screenshot ? (
                   <Image
                     src={project.screenshot}
                     alt={`${project.name} screenshot`}
                     fill
                     sizes="(min-width: 768px) 45vw, 100vw"
-                    className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+                    className={`${project.screenshotFit === "contain" ? "object-contain" : "object-cover object-top"} transition duration-500 group-hover:scale-[1.03]`}
                   />
                 ) : (
                   <div className="flex h-full items-end p-6">
@@ -130,7 +133,17 @@ export default function Projects() {
                     </p>
                     <h3 className="mt-2 text-2xl font-semibold tracking-[-0.04em]">{project.name}</h3>
                   </div>
-                  {project.impact && <span className="pill-tag shrink-0">{project.impact}</span>}
+                  <div className="flex flex-wrap justify-end gap-2">
+                    {project.status && (
+                      <span
+                        className="pill-tag shrink-0"
+                        style={{ borderColor: "var(--accent)", color: "var(--accent-strong)" }}
+                      >
+                        [{project.status}]
+                      </span>
+                    )}
+                    {project.impact && <span className="pill-tag shrink-0">{project.impact}</span>}
+                  </div>
                 </div>
 
                 <p className="max-w-[58ch] text-justify text-sm leading-relaxed" style={{ color: "var(--foreground-soft)" }}>

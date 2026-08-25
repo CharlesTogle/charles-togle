@@ -17,6 +17,7 @@ export const skillGroups: SkillGroup[] = [
       { name: 'Next.js' },
       { name: 'Node.js' },
       { name: 'Express' },
+      { name: 'FastifyJS' },
       { name: 'Hono' }
     ]
   },
