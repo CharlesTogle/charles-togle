@@ -258,7 +258,7 @@ export const experiences: ExperienceEntry[] = [
     location: 'Greenville, North Carolina (Remote)',
     bullets: [
       'Led the development of the CRM intake and billing systems across Supabase, Next.js, and Stripe',
-      'Migrated two connected Laravel SaaS products, Perforam and 1on1, across AWS Lightsail and RDS PostgreSQL environments while preserving cross-application data access',
+      'Reconstructed an undocumented vendor-managed DigitalOcean load-balancer setup and moved connected Laravel products, Perforam and 1on1, to AWS Lightsail and RDS PostgreSQL, preserving cross-app data access and bringing support and deployments in-house',
       'Established production deployment infrastructure with Nginx, PHP-FPM, Supervisor queue workers, Laravel scheduling, DNS, SSL, and developer handoff documentation'
     ]
   },
@@ -268,7 +268,7 @@ export const experiences: ExperienceEntry[] = [
     company: 'Centervert',
     location: 'Greenville, North Carolina (Remote)',
     bullets: [
-      'Increased lead intake by 30–40 per day by building an automated lead intake system using Supabase Edge Functions and GHL API',
+      'Increased lead intake by 30–40 per day by hardening failure handling and building a concurrent migration script with exponential backoff and jitter to backfill GHL data without triggering rate limits',
       'Generated $1K–$2K in per-request billing through a Next.js/Stripe change-request-to-invoice pipeline'
     ]
   },
@@ -278,8 +278,8 @@ export const experiences: ExperienceEntry[] = [
     company: 'Centervert',
     location: 'Greenville, North Carolina (Remote)',
     bullets: [
-      "Automated 5 FTEs' worth of manual data entry (per manager estimate) via a Supabase Edge Function intake pipeline",
-      "Migrated 460K+ records to a self-architected Supabase schema, now the CRM's source of truth"
+      'Replaced a manual Google Sheets-to-GHL data-entry process with a Supabase Edge Function pipeline that validated leads, wrote them to a self-architected schema, and retried failed GHL syncs, reducing manual work by an estimated 5 FTEs',
+      'Migrated 460K+ records into a self-architected Supabase schema; after a senior audit exposed flaws in the first pass, corrected it in production through a migration with no downtime or data loss'
     ]
   },
   {
