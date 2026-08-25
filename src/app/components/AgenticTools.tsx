@@ -11,7 +11,7 @@ export default function AgenticTools() {
   return (
     <section id="tools" className="section-frame">
       <div className="section-shell grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
-        <div className="space-y-4">
+        <div className="space-y-4 lg:sticky lg:top-24 lg:self-start">
           <p className="text-sm" style={{ color: "var(--accent-strong)" }}>
             Agentic coding stack
           </p>

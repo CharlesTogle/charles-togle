@@ -107,7 +107,7 @@ export default function Projects() {
           {supportingProjects.map((project, index) => (
             <article key={project.id} className="group flex h-full flex-col border-t px-6 pt-5 sm:px-0" style={{ borderColor: "var(--border)" }}>
               <div
-                className={`relative overflow-hidden ${project.screenshotFit === "contain" ? "aspect-[1862/894]" : "aspect-[16/10]"}`}
+                className="relative aspect-[16/10] overflow-hidden"
                 style={{ background: "var(--surface-strong)" }}
               >
                 {project.screenshot ? (
@@ -116,7 +116,7 @@ export default function Projects() {
                     alt={`${project.name} screenshot`}
                     fill
                     sizes="(min-width: 768px) 45vw, 100vw"
-                    className={`${project.screenshotFit === "contain" ? "object-contain" : "object-cover object-top"} transition duration-500 group-hover:scale-[1.03]`}
+                    className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
                   />
                 ) : (
                   <div className="flex h-full items-end p-6">
