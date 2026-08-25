@@ -209,7 +209,9 @@ export const experiences: ExperienceEntry[] = [
     company: 'Centervert',
     location: 'Greenville, North Carolina (Remote)',
     bullets: [
-      'Led the development of the CRM intake and billing systems across Supabase, Next.js, and Stripe'
+      'Led the development of the CRM intake and billing systems across Supabase, Next.js, and Stripe',
+      'Migrated two connected Laravel SaaS products, Perforam and 1on1, across AWS Lightsail and RDS PostgreSQL environments while preserving cross-application data access',
+      'Established production deployment infrastructure with Nginx, PHP-FPM, Supervisor queue workers, Laravel scheduling, DNS, SSL, and developer handoff documentation'
     ]
   },
   {

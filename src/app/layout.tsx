@@ -19,13 +19,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Charles Nathaniel Togle",
-  description: "Future Forward Deployed Engineer building practical software and systems with measurable impact.",
+  description: "Software and Systems Engineer building full-stack software, infrastructure, and practical systems with measurable impact.",
   icons: {
     icon: [{ url: "/profile-favicon-photo.svg", type: "image/svg+xml" }],
   },
   openGraph: {
     title: "Charles Nathaniel Togle",
-    description: "Future Forward Deployed Engineer building practical software and systems with measurable impact.",
+    description: "Software and Systems Engineer building full-stack software, infrastructure, and practical systems with measurable impact.",
     type: "website",
     images: [
       {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Charles Nathaniel Togle",
-    description: "Future Forward Deployed Engineer building practical software and systems with measurable impact.",
+    description: "Software and Systems Engineer building full-stack software, infrastructure, and practical systems with measurable impact.",
     images: ["/og-image.png"],
   },
 };
