@@ -57,8 +57,8 @@ export default function Hero() {
 
         <motion.aside initial={initialUp} animate={animateUp} transition={{ duration: 0.55, delay: reduceMotion ? 0 : 0.12, ease: [0.16, 1, 0.3, 1] }} className="card-surface grid gap-0 overflow-hidden">
           <div className="grid gap-6 p-6 sm:grid-cols-2 sm:p-8">
-            {stats.map((stat) => (
-              <div key={stat.value} className="space-y-3 border-t pt-4" style={{ borderColor: "var(--border)" }}>
+            {stats.map((stat, index) => (
+              <div key={stat.value} className={`space-y-3 pt-4 ${index > 1 ? "border-t" : ""}`} style={{ borderColor: "var(--border)" }}>
                 <p className="metric-value font-semibold">{stat.value}</p>
                 <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-soft)" }}>
                   {stat.label}

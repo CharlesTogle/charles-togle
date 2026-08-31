@@ -7,17 +7,17 @@ export interface AgenticTool {
 export const agenticTools: AgenticTool[] = [
   {
     name: "Opencode",
-    summary: "Primary environment for shipping changes directly inside the codebase with fast repo awareness.",
-    strength: "Implementation and repo-native iteration",
+    summary: "The agentic harness I use to this day and prefer over others for its out-of-the-box readiness and flexible CLI workflow.",
+    strength: "My primary environment for agentic delivery",
   },
   {
     name: "Claude Code",
-    summary: "Useful for deep reasoning, repository understanding, and larger multi-file edits with strong code context.",
-    strength: "Exploration, refactors, and technical review",
+    summary: "I used Claude Code in the past for an Anthropic-native feel before discovering Opencode.",
+    strength: "My earlier Anthropic-native workflow",
   },
   {
     name: "Codex",
-    summary: "Strong for fast execution loops, targeted code generation, and checking multiple approaches quickly.",
-    strength: "Rapid prototyping and focused delivery",
+    summary: "The first agentic harness I used, and one I still use when something cannot be achieved through Opencode.",
+    strength: "Fallback execution beyond Opencode",
   },
 ];
