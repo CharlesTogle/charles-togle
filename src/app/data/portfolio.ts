@@ -87,6 +87,20 @@ export const projects: Project[] = [
     screenshot: '/projects/katada-van-rentals.png'
   },
   {
+    id: '0X13',
+    code: 'CCIS_CENTRAL_PORTAL',
+    name: 'CCIS Centralized Portal',
+    description:
+      'Built and hardened the University of Makati College of Computing and Information Sciences student council portal across its application and infrastructure layers. The work spans student-facing announcements, event registration and verification, audience attendance QR passes, academic calendars, gallery and Patch media workflows, Bukas Kaban transparency records, support messaging, and a role-aware administration system. It also includes strict Supabase/RLS and RPC security boundaries, role preview controls, media write protections, automated email processing, client error telemetry, production scaling preparation, and repeated accessibility, reliability, and performance hardening for a dependable public platform.',
+    role: 'Full Stack Engineer',
+    period: 'August 2026',
+    tech: ['React', 'TypeScript', 'Vite', 'Supabase', 'Realtime', 'Tailwind CSS', 'GSAP'],
+    impact: 'Student council portal',
+    links: {},
+    icon: 'edu',
+    screenshot: '/projects/ccis-central-portal.png'
+  },
+  {
     id: '0X12',
     code: 'EHANDA_04',
     name: 'eHanda',
@@ -255,7 +269,7 @@ export const experiences: ExperienceEntry[] = [
     period: 'MAR 2026 - APR 2026',
     title: 'Dev Specialist',
     company: 'Centervert',
-    location: 'Greenville, North Carolina (Remote)',
+    location: 'Greenville, South Carolina (Remote)',
     bullets: [
       'Led the development of the CRM intake and billing systems across Supabase, Next.js, and Stripe',
       'Reconstructed an undocumented vendor-managed DigitalOcean load-balancer setup and moved connected Laravel products, Perforam and 1on1, to AWS Lightsail and RDS PostgreSQL, preserving cross-app data access and bringing support and deployments in-house',
@@ -266,7 +280,7 @@ export const experiences: ExperienceEntry[] = [
     period: 'OCT 2025 - MAR 2026',
     title: 'Full Stack Engineer',
     company: 'Centervert',
-    location: 'Greenville, North Carolina (Remote)',
+    location: 'Greenville, South Carolina (Remote)',
     bullets: [
       'Increased lead intake by 30–40 per day by hardening failure handling and building a concurrent migration script with exponential backoff and jitter to backfill GHL data without triggering rate limits',
       'Generated $1K–$2K in per-request billing through a Next.js/Stripe change-request-to-invoice pipeline'
@@ -276,7 +290,7 @@ export const experiences: ExperienceEntry[] = [
     period: 'AUG 2025 - OCT 2025',
     title: 'Supabase Consultant',
     company: 'Centervert',
-    location: 'Greenville, North Carolina (Remote)',
+    location: 'Greenville, South Carolina (Remote)',
     bullets: [
       'Replaced a manual Google Sheets-to-GHL data-entry process with a Supabase Edge Function pipeline that validated leads, wrote them to a self-architected schema, and retried failed GHL syncs, reducing manual work by an estimated 5 FTEs',
       'Migrated 460K+ records into a self-architected Supabase schema; after a senior audit exposed flaws in the first pass, corrected it in production through a migration with no downtime or data loss'
