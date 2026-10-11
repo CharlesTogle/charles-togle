@@ -1,5 +1,4 @@
-"use client";
-
+import type { ReactNode } from "react";
 import Link from "next/link";
 
 const homeLinks = [
@@ -10,7 +9,7 @@ const homeLinks = [
   { href: "#skills", label: "Skills" },
 ];
 
-export default function Nav() {
+export default function Nav({ visitCount }: { visitCount: ReactNode }) {
   const onHome = true;
 
   return (
@@ -33,6 +32,8 @@ export default function Nav() {
               </a>
             ))}
         </nav>
+
+        {visitCount}
 
       </div>
     </header>

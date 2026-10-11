@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { JetBrains_Mono, Outfit } from "next/font/google";
+import { Suspense } from "react";
 import Nav from "./components/Nav";
+import VisitCount, { VisitCountLoading } from "./components/VisitCount";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -53,8 +56,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${outfit.variable} ${jetbrainsMono.variable} bg-background text-foreground`}>
         <div className="page-shell" style={{ fontFamily: "var(--font-outfit), sans-serif" }}>
-          <Nav />
+          <Nav visitCount={<Suspense fallback={<VisitCountLoading />}><VisitCount /></Suspense>} />
           <main className="pt-20">{children}</main>
+          <Analytics />
         </div>
       </body>
     </html>
