@@ -47,7 +47,7 @@ export default async function VisitCount() {
 
   return (
     <p className="w-52 whitespace-nowrap font-bold text-right font-mono text-[0.85rem]! uppercase tracking-widest text-(--foreground-soft) sm:text-xs sm:tracking-[0.12em]">
-      Total Visits: # {count.toLocaleString("en-US") || "X"}
+      Total Visits: {count.toLocaleString("en-US") || "X"}
     </p>
   );
 }
