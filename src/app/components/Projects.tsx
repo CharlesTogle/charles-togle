@@ -1,11 +1,11 @@
-import { ArrowUpRight, GithubLogo } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRightIcon, GithubLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import { projects, type Project } from "../data/portfolio";
 
 function ProjectLink({ href, label, primary = false }: { href: string; label: string; primary?: boolean }) {
   return (
     <a href={href} target="_blank" rel="noreferrer" className={primary ? "button-primary" : "button-secondary"}>
-      {primary ? <ArrowUpRight size={16} /> : <GithubLogo size={16} />}
+      {primary ? <ArrowUpRightIcon size={16} /> : <GithubLogoIcon size={16} />}
       {label}
     </a>
   );
@@ -50,14 +50,14 @@ export default function Projects() {
 
         <article className="overflow-hidden border" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
           <div className="grid lg:grid-cols-[0.78fr_1.22fr]">
-            <div className="relative flex min-h-[380px] flex-col justify-between overflow-hidden border-b p-6 sm:p-10 lg:border-b-0 lg:border-r" style={{ borderColor: "var(--border)", background: "var(--accent)" }}>
-              <div className="relative z-[1] flex items-center justify-between gap-4 text-sm font-medium" style={{ color: "var(--surface)" }}>
+            <div className="relative flex min-h-95 flex-col justify-between overflow-hidden border-b p-6 sm:p-10 lg:border-b-0 lg:border-r" style={{ borderColor: "var(--border)", background: "var(--accent)" }}>
+              <div className="relative z-1 flex items-center justify-between gap-4 text-sm font-medium" style={{ color: "var(--surface)" }}>
                 <span>Featured work</span>
                 <span>{featured.period}</span>
               </div>
 
-              <div className="relative z-[1] space-y-5">
-                <p className="text-[clamp(4.5rem,10vw,8rem)] font-semibold leading-[0.82] tracking-[-0.1em]" style={{ color: "var(--surface)" }}>
+              <div className="relative z-1 space-y-5">
+                <p className="text-[clamp(4.5rem,10vw,8rem)] font-semibold leading-[0.82] -tracking-widest" style={{ color: "var(--surface)" }}>
                   460K+
                 </p>
                 <p className="max-w-[16ch] text-lg font-medium leading-snug" style={{ color: "var(--surface)" }}>
@@ -65,7 +65,7 @@ export default function Projects() {
                 </p>
               </div>
 
-              <div className="pointer-events-none absolute -bottom-20 -right-10 h-64 w-64 rounded-full border-[28px] opacity-25" style={{ borderColor: "var(--surface)" }} />
+              <div className="pointer-events-none absolute -bottom-20 -right-10 h-64 w-64 rounded-full border-28 opacity-25" style={{ borderColor: "var(--surface)" }} />
             </div>
 
             <div className="flex flex-col gap-8 p-6 sm:p-10 lg:p-12">
@@ -107,7 +107,7 @@ export default function Projects() {
           {supportingProjects.map((project, index) => (
             <article key={project.id} className="group flex h-full flex-col border-t px-6 pt-5 sm:px-0" style={{ borderColor: "var(--border)" }}>
               <div
-                className="relative aspect-[16/10] overflow-hidden"
+                className="relative aspect-16/10 overflow-hidden"
                 style={{ background: "var(--surface-strong)" }}
               >
                 {project.screenshot ? (
@@ -120,7 +120,7 @@ export default function Projects() {
                   />
                 ) : (
                   <div className="flex h-full items-end p-6">
-                    <p className="text-3xl font-semibold tracking-[-0.05em]">{project.code}</p>
+                    <p className="text-3xl font-semibold tracking-tighter">{project.code}</p>
                   </div>
                 )}
               </div>

@@ -1,10 +1,10 @@
-import { BracketsAngle, Code, Robot } from "@phosphor-icons/react/dist/ssr";
+import { BracketsAngleIcon, CodeIcon, RobotIcon } from "@phosphor-icons/react/dist/ssr";
 import { agenticTools } from "../data/agentic-tools";
 
 const icons = {
-  Opencode: Code,
-  "Claude Code": Robot,
-  Codex: BracketsAngle,
+  Opencode: CodeIcon,
+  "Claude Code": RobotIcon,
+  Codex: BracketsAngleIcon,
 };
 
 export default function AgenticTools() {

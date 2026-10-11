@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { aboutHighlights, awardEntries, contactItems } from "../data/about";
 
 export default function About() {
@@ -57,13 +57,13 @@ export default function About() {
                             {entry.source ? (
                               <a href={entry.source} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium">
                                 Source
-                                <ArrowUpRight size={14} />
+                                <ArrowUpRightIcon size={14} />
                               </a>
                             ) : null}
                             {entry.project ? (
                               <a href={entry.project} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium">
                                 Project
-                                <ArrowUpRight size={14} />
+                                <ArrowUpRightIcon size={14} />
                               </a>
                             ) : null}
                           </div>
@@ -87,7 +87,7 @@ export default function About() {
                   {item.href ? (
                     <a href={item.href} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-2 text-sm font-medium">
                       {item.val}
-                      <ArrowUpRight size={14} />
+                      <ArrowUpRightIcon size={14} />
                     </a>
                   ) : (
                     <p className="mt-2 text-sm font-medium">{item.val}</p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDownRight, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { ArrowDownRightIcon, ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 
@@ -43,11 +43,11 @@ export default function Hero() {
           <div className="flex flex-wrap gap-3">
             <a href="#projects" className="button-primary">
               View Projects
-              <ArrowRight size={16} />
+              <ArrowRightIcon size={16} />
             </a>
             <a href="#experience" className="button-secondary">
               See Experience
-              <ArrowDownRight size={16} />
+              <ArrowDownRightIcon size={16} />
             </a>
             <a href="/RESUME_CHARLES_TOGLE.pdf" download className="button-secondary">
               Download Resume
