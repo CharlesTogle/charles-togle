@@ -96,7 +96,9 @@ export const projects: Project[] = [
     period: 'August 2026',
     tech: ['React', 'TypeScript', 'Vite', 'Supabase', 'Realtime', 'Tailwind CSS', 'GSAP'],
     impact: 'Student council portal',
-    links: {},
+    links: {
+      live: 'https://ccis-rose.vercel.app'
+    },
     icon: 'edu',
     screenshot: '/projects/ccis-central-portal.png'
   },
@@ -204,36 +206,6 @@ export const projects: Project[] = [
     },
     icon: 'pulse',
     screenshot: '/projects/digital-pulse.png'
-  },
-  {
-    id: '0X08',
-    code: 'PHISHING_SCRAPER',
-    name: 'Phishing URL Scraper',
-    description:
-      'A security research data pipeline that continuously harvests phishing URLs from OpenPhish and PhishTank instead of relying on a one-off scrape. The Node.js scrapers poll feeds, paginate through large datasets, measure response behavior, resolve domains for GeoIP enrichment, inspect Cloudflare headers and hreflang metadata for country classification, and write structured append-only NDJSON records for downstream analysis. PhishTank results also produce a valid-only subset, while checkpoint files and graceful shutdown handling make long-running collection jobs resumable and operationally reliable.',
-    role: 'Solo Developer',
-    period: 'April 2026',
-    tech: ['Node.js', 'OpenPhish', 'PhishTank', 'GeoLite2', 'NDJSON'],
-    links: {
-      source: 'https://github.com/CharlesTogle/gather-phishing-urls'
-    },
-    icon: 'shield',
-    screenshot: '/projects/phishing-scraper.png'
-  },
-  {
-    id: '0X09',
-    code: 'AGENTIC_CODING_SLIDES',
-    name: 'Agentic Coding Presentation',
-    description:
-      'A 65-slide animated curriculum and presentation designed to move an entire third-year Computer Science cohort beyond copy-pasting AI output and toward deliberate agentic software engineering. Built as a programmatic React and Remotion deck, it covers the industry shift toward coding agents, agent fundamentals, tool comparisons, practical workflows, standards and CLAUDE.md customization, vibe coding versus vibe engineering, system design for agents, reusable skills, and a live coding demonstration. The presentation was itself built through the workflow it teaches, turning the deck into both an instructional resource and a working case study in AI-assisted software development. Presented to the full cohort and helped motivate the professor to consider agentic coding for future underclass curriculum.',
-    role: 'Author & Presenter',
-    period: 'March 2026',
-    tech: ['React', 'TypeScript', 'Remotion', 'Tailwind CSS', 'Education'],
-    links: {
-      source: 'https://github.com/CharlesTogle/agentic-coding-slides'
-    },
-    icon: 'slides',
-    screenshot: '/projects/agentic-slides.png'
   },
   {
     id: '0X10',
