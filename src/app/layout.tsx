@@ -18,19 +18,23 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
+const siteName = "Charles Nathaniel Togle";
+const siteDescription = "Software and Systems Engineer building full-stack software, infrastructure, and practical systems with measurable impact.";
+const email = contactItems.find((item) => item.label === "EMAIL")?.href;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
   },
-  title: "Charles Nathaniel Togle",
-  description: "Software and Systems Engineer building full-stack software, infrastructure, and practical systems with measurable impact.",
+  title: siteName,
+  description: siteDescription,
   icons: {
     icon: [{ url: "/profile-favicon-photo.svg", type: "image/svg+xml" }],
   },
   openGraph: {
-    title: "Charles Nathaniel Togle",
-    description: "Software and Systems Engineer building full-stack software, infrastructure, and practical systems with measurable impact.",
+    title: siteName,
+    description: siteDescription,
     type: "website",
     images: [
       {
@@ -43,8 +47,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Charles Nathaniel Togle",
-    description: "Software and Systems Engineer building full-stack software, infrastructure, and practical systems with measurable impact.",
+    title: siteName,
+    description: siteDescription,
     images: ["/og-image.png"],
   },
 };
@@ -52,12 +56,12 @@ export const metadata: Metadata = {
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Charles Nathaniel Togle",
+  name: siteName,
   jobTitle: "Software and Systems Engineer",
-  description: "Software and Systems Engineer building full-stack software, infrastructure, and practical systems with measurable impact.",
+  description: siteDescription,
   url: siteUrl,
   image: `${siteUrl}/profile.png`,
-  email: "mailto:charles3togle@gmail.com",
+  email,
   address: {
     "@type": "PostalAddress",
     addressLocality: "Pasay City",
