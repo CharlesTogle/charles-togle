@@ -59,6 +59,12 @@ export const awardEntries: AwardEntry[] = [
     project: 'https://e-handa.vercel.app/',
     summary:
       'Selected as a Top 10 Finalist for HANDA, a post-disaster household needs-assessment tool built as a super app integration with the eGovPH platform. The project focused on helping communities report urgent needs faster and giving responders clearer information to act on after a disaster.'
+  },
+  {
+    period: 'OCT 2026',
+    title: 'Infotechnolympics 2026 Hackathon - Champion, Best Prototype & Best Presenter',
+    summary:
+      'Won Champion, Best Prototype, and Best Presenter out of 7 teams in a 5-hour build. Our team architected and built a chatbot using a LangChain retrieval pipeline to answer questions from PDF documents and pull student details from their TBL Hub (Technology-Based Learning Hub) accounts.'
   }
 ]
 
