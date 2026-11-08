@@ -13,7 +13,8 @@ import {
   type Object3D,
 } from "three";
 import type { Planet } from "../../data/planets";
-import { createOrbit, createPlanet, createStars, createSun, type PlanetBody } from "./bodies";
+import { createOrbit, createPlanet, createStars, type PlanetBody } from "./bodies";
+import { createSun } from "./sun";
 import { createNewbornHole, NEWBORN_ID } from "./newbornHole";
 import { createPetrovaLine } from "./petrova";
 import { createGlowTexture } from "./textures";
@@ -90,8 +91,11 @@ export function createSolarScene(canvas: HTMLCanvasElement, options: SolarSceneO
   scene.add(system);
   scene.add(createStars(1800));
   scene.add(new AmbientLight(0xffffff, 0.07));
-  system.add(createSun(glow));
-  system.add(new PointLight(0xffffff, 3.2, 0, 0));
+  const sunGlow = createGlowTexture("255, 96, 32");
+  const sun = createSun(sunGlow);
+  system.add(sun.group);
+  // Warm light from the dying sun tints every planet's lit side.
+  system.add(new PointLight(0xffb37a, 3.4, 0, 0));
 
   const bodies: PlanetBody[] = options.planets.map((planet) => createPlanet(planet, glow));
   for (const b of bodies) {
@@ -144,7 +148,7 @@ export function createSolarScene(canvas: HTMLCanvasElement, options: SolarSceneO
     const aspect = camera.aspect;
     wide = aspect > 1.1;
     // On wide screens the system sits right of centre, leaving room for the headline.
-    system.position.set(wide ? 3.4 : 0, 0, 0);
+    system.position.set(wide ? 4.6 : 0, 0, 0);
     const halfHorizontal = Math.atan(Math.tan(MathUtils.degToRad(VERTICAL_FOV / 2)) * aspect);
     const fit = (10.6 / Math.tan(halfHorizontal)) * 0.9;
     const distance = MathUtils.clamp(fit, 15, 26);
@@ -394,6 +398,7 @@ export function createSolarScene(canvas: HTMLCanvasElement, options: SolarSceneO
     }
     updateBodies(dt);
     updatePetrova(dt);
+    sun.update(realTime);
     newborn.update(realTime, MathUtils.clamp((now - bornAt) / BIRTH_MS, 0, 1));
     updateCamera(now, dt);
     renderer.render(scene, camera);
@@ -429,6 +434,7 @@ export function createSolarScene(canvas: HTMLCanvasElement, options: SolarSceneO
   // The one orchestrated moment: glide in from deep space on load.
   updateBodies(0);
   updatePetrova(0);
+  sun.update(0);
   newborn.update(0, reducedMotion ? 1 : 0);
   if (!reducedMotion) {
     camPos.copy(homePos).multiplyScalar(2.6).add(new Vector3(-6, 10, 0));
@@ -480,6 +486,7 @@ export function createSolarScene(canvas: HTMLCanvasElement, options: SolarSceneO
       timer.dispose();
       newborn.dispose();
       glow.dispose();
+      sunGlow.dispose();
       renderer.dispose();
     },
   };

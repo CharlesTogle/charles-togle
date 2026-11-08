@@ -119,9 +119,16 @@ export default function StaticSystem({
     <svg viewBox="-560 -290 1120 580" className="block size-full" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
       <defs>
         <radialGradient id="sun-glow">
-          <stop offset="0" stopColor="#ffffff" stopOpacity="0.55" />
-          <stop offset="0.35" stopColor="#ffffff" stopOpacity="0.12" />
-          <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
+          <stop offset="0" stopColor="#ff6020" stopOpacity="0.6" />
+          <stop offset="0.35" stopColor="#ff6020" stopOpacity="0.16" />
+          <stop offset="1" stopColor="#ff6020" stopOpacity="0" />
+        </radialGradient>
+        {/* Limb darkening: hot core cooling to deep red at the edge */}
+        <radialGradient id="sun-surface" cx="0.45" cy="0.42" r="0.6">
+          <stop offset="0" stopColor="#ffb860" />
+          <stop offset="0.55" stopColor="#f25c14" />
+          <stop offset="0.9" stopColor="#a3260a" />
+          <stop offset="1" stopColor="#6b1003" />
         </radialGradient>
       </defs>
 
@@ -148,7 +155,7 @@ export default function StaticSystem({
       {behind.map(renderPlanet)}
 
       <circle r={SUN_RADIUS * 3.6} fill="url(#sun-glow)" />
-      <circle r={SUN_RADIUS} fill="#ffffff" />
+      <circle r={SUN_RADIUS} fill="url(#sun-surface)" />
 
       <path
         d={`M ${startX} ${startY} Q ${controlX} ${controlY} ${focus.x} ${focus.y}`}

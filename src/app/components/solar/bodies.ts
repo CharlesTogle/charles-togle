@@ -32,22 +32,6 @@ const ORBIT_GREY = new Color("#2e2e2e");
 const TRAIL_LENGTH = 0.9; // radians of orbit lit up behind each planet
 const TRAIL_POINTS = 48;
 
-export function createSun(glow: Texture) {
-  const sun = new Group();
-  sun.add(new Mesh(new SphereGeometry(1.1, 48, 48), new MeshBasicMaterial({ color: "#ffffff" })));
-
-  const corona = new Sprite(new SpriteMaterial({ map: glow, blending: AdditiveBlending, depthWrite: false }));
-  corona.scale.setScalar(7);
-  sun.add(corona);
-
-  const haze = new Sprite(
-    new SpriteMaterial({ map: glow, blending: AdditiveBlending, depthWrite: false, opacity: 0.22 }),
-  );
-  haze.scale.setScalar(16);
-  sun.add(haze);
-  return sun;
-}
-
 export function createStars(count: number) {
   const positions = new Float32Array(count * 3);
   const colors = new Float32Array(count * 3);

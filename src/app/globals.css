@@ -307,39 +307,6 @@ body {
   display: none;
 }
 
-/* Supernova: a white core swells past the edges of the screen, then
-   burns out to black and leaves the card behind. */
-.supernova-flash {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 40px;
-  height: 40px;
-  margin: -20px 0 0 -20px;
-  border-radius: 999px;
-  background: radial-gradient(circle, #ffffff 0%, #ffffff 35%, var(--signal) 55%, rgba(61, 255, 110, 0) 70%);
-  animation: supernova 1400ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
-}
-
-@keyframes supernova {
-  0% {
-    transform: scale(0.2);
-    opacity: 1;
-  }
-  55% {
-    transform: scale(90);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(110);
-    opacity: 0;
-  }
-}
-
-.supernova-card {
-  animation: panel-enter 500ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 /* Petrova line, page-wide */
 .petrova-rail,
 .petrova-lit,

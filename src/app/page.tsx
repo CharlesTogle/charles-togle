@@ -6,7 +6,6 @@ import Experience from "./components/Experience";
 import Hero from "./components/Hero";
 import MoreBuilds from "./components/MoreBuilds";
 import PetrovaThread from "./components/PetrovaThread";
-import Supernova from "./components/Supernova";
 import Wins from "./components/Wins";
 import { findContact } from "./data/about";
 
@@ -26,7 +25,6 @@ export default function Home() {
         <Contact />
       </div>
       <BlackHole email={email} />
-      {email ? <Supernova email={email} /> : null}
     </>
   );
 }
