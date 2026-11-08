@@ -1,40 +1,42 @@
-import type { ReactNode } from "react";
 import Link from "next/link";
+import { availability, findContact } from "../data/about";
+import Availability from "./Availability";
+import LowPowerToggle from "./LowPowerToggle";
 
-const homeLinks = [
-  { href: "#about", label: "About" },
-  { href: "#tools", label: "Tools" },
-  { href: "#projects", label: "Projects" },
+const links = [
+  { href: "#work", label: "Work" },
   { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
+  { href: "#wins", label: "Wins" },
+  { href: "#contact", label: "Contact" },
 ];
 
-export default function Nav({ visitCount }: { visitCount: ReactNode }) {
-  const onHome = true;
+export default function Nav() {
+  const email = findContact("EMAIL")?.href;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b" style={{ borderColor: "var(--border)", background: "color-mix(in srgb, var(--background) 88%, transparent)", backdropFilter: "blur(14px)" }}>
-      <div className="section-shell flex h-20 items-center justify-between gap-6">
-        <div className="flex items-center gap-3">
-          <Link href="/" className="text-lg font-semibold tracking-[-0.04em]">
-            Charles Togle
-          </Link>
-          <span className="hidden text-sm sm:inline" style={{ color: "var(--foreground-soft)" }}>
-            Software & Systems Engineer
-          </span>
-        </div>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-rule bg-ink/85 backdrop-blur-md">
+      <div className="shell flex h-16 items-center justify-between gap-6">
+        <Link href="/" className="font-semibold tracking-tight">
+          Charles Togle
+        </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex">
-          {onHome &&
-            homeLinks.map((item) => (
-              <a key={item.href} href={item.href} className="text-sm" style={{ color: "var(--foreground-soft)" }}>
-                {item.label}
-              </a>
-            ))}
+        <nav aria-label="Sections" className="hidden items-center gap-7 text-sm text-muted lg:flex">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} className="hover:text-paper">
+              {link.label}
+            </a>
+          ))}
         </nav>
 
-        {visitCount}
-
+        <div className="flex items-center gap-4 sm:gap-5">
+          <LowPowerToggle />
+          <Availability label={availability} className="hidden text-sm xl:inline-flex" />
+          {email ? (
+            <a href={email} className="btn btn-signal py-2.5! text-sm!">
+              Email me
+            </a>
+          ) : null}
+        </div>
       </div>
     </header>
   );

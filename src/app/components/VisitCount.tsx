@@ -4,9 +4,7 @@ const botUserAgent = /bot|crawler|spider|slurp|facebookexternalhit|preview/i;
 
 export function VisitCountLoading() {
   return (
-    <p className="w-52 animate-pulse whitespace-nowrap text-right font-mono text-[0.65rem] uppercase tracking-widest text-(--foreground-soft) sm:text-xs sm:tracking-[0.12em]">
-      Loading visits...
-    </p>
+    <span className="animate-pulse">Counting visits…</span>
   );
 }
 
@@ -39,15 +37,13 @@ export default async function VisitCount() {
   const url = process.env.KV_REST_API_URL;
   const token = process.env.KV_REST_API_TOKEN;
 
-  if (botUserAgent.test(userAgent) || !url || !token) return <span className="block w-52" />;
+  if (botUserAgent.test(userAgent) || !url || !token) return null;
 
   const count = await incrementVisitCount(url, token);
 
-  if (count === null) return <span className="block w-52" />;
+  if (count === null) return null;
 
   return (
-    <p className="w-52 whitespace-nowrap font-bold text-right font-mono text-[0.85rem]! uppercase tracking-widest text-(--foreground-soft) sm:text-xs sm:tracking-[0.12em]">
-      Total Visits: {count.toLocaleString("en-US") || "X"}
-    </p>
+    <span>{count.toLocaleString("en-US")} visits</span>
   );
 }

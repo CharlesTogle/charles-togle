@@ -17,8 +17,8 @@ export const skillGroups: SkillGroup[] = [
       { name: 'Next.js' },
       { name: 'Node.js' },
       { name: 'Express' },
-      { name: 'FastifyJS' },
-      { name: 'Hono' }
+      { name: 'Hono' },
+      { name: 'Prisma' }
     ]
   },
   {
@@ -26,7 +26,8 @@ export const skillGroups: SkillGroup[] = [
     skills: [
       { name: 'PostgreSQL' },
       { name: 'MySQL' },
-      { name: 'Supabase' }
+      { name: 'Supabase' },
+      { name: 'Neon' }
     ]
   },
   {
@@ -36,7 +37,15 @@ export const skillGroups: SkillGroup[] = [
       { name: 'GCP' },
       { name: 'Docker' },
       { name: 'Nginx' },
-      { name: 'VPS' }
+      { name: 'VPS' },
+      { name: 'GitHub Actions' }
+    ]
+  },
+  {
+    label: 'TESTING',
+    skills: [
+      { name: 'Vitest' },
+      { name: 'Playwright' }
     ]
   },
   {
@@ -48,7 +57,6 @@ export const skillGroups: SkillGroup[] = [
       { name: 'SSH' },
       { name: 'Vercel' },
       { name: 'Render' },
-      { name: 'GitHub Workflows' },
       { name: 'Tailscale' }
     ]
   },

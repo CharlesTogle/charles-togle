@@ -1,22 +1,27 @@
 export interface ProjectLinks {
+  /** The client or employer's own site, for work that isn't publicly viewable */
+  company?: string
   live?: string
   source?: string
   source2?: string
 }
 
+export interface CaseFile {
+  problem: string
+  built: string
+  result: string
+}
+
 export interface Project {
-  id: string
-  code: string
+  slug: string
   name: string
-  description: string
+  summary: string
   role: string
   period: string
   tech: string[]
-  impact?: string
   status?: string
-  highlights?: { value: string; label: string }[]
+  caseFile?: CaseFile
   links: ProjectLinks
-  icon: string
   screenshot?: string
   screenshotFit?: 'cover' | 'contain'
 }
@@ -31,263 +36,210 @@ export interface ExperienceEntry {
 
 export const projects: Project[] = [
   {
-    id: '0X01',
-    code: 'CENTERVERT_SYSTEMS',
-    name: 'CRM Intake & Billing Systems',
-    description:
-      'Production automation work for a remote CRM operation: an Edge Function intake pipeline, a self-architected Supabase schema for 460K+ records, and a Next.js/Stripe flow that turns change requests into invoices.',
-    role: 'Dev Specialist',
-    period: 'September 2025 – April 2026',
-    tech: ['Next.js', 'Supabase', 'Edge Functions', 'Stripe', 'GoHighLevel API'],
-    impact: '5 FTE + 30–40 leads/day',
-    links: {},
-    icon: 'terminal'
+    slug: 'crm',
+    name: 'Centervert',
+    summary: 'Lead intake, a 460K-record CRM schema, and change-request billing for a US agency.',
+    role: 'Dev specialist, remote',
+    period: 'Sep 2025 – Apr 2026',
+    tech: ['Supabase', 'Edge Functions', 'Next.js', 'Stripe', 'GoHighLevel API'],
+    caseFile: {
+      problem:
+        'Staff copied leads into the CRM by hand, failed syncs quietly dropped leads, and client change requests weren’t billed consistently.',
+      built:
+        'A Supabase Edge Function intake pipeline connected to the GoHighLevel API, a senior-approved schema that 460K+ records were migrated into, and a Next.js and Stripe flow that turns change requests into invoices.',
+      result:
+        '5 FTEs’ worth of manual entry automated, 30–40 more leads a day, a new source of truth for the CRM, and $1K–$2K billed per request.'
+    },
+    links: { company: 'https://centervert.com/' }
   },
   {
-    id: '0X11',
-    code: 'ODIN_PFM',
-    name: 'Odin',
-    description:
-      'An offline-first personal finance management app for Filipino working young adults. Built around local SQLite reads and writes so transaction entry, balances, budgets, savings goals, and debt management stay useful when connectivity drops, then converges through a cursor-based sync engine with queued domain operations, idempotent push, tombstones, IBM-backed delete-wins conflict resolution, and per-field last-write-wins for concurrent edits. Security is enforced through user-scoped RLS, explicit sync allowlists, ownership validation, and Postgres RPCs for sensitive operations. Recurring transaction templates generate queued ledger entries automatically, while the backend is planned for Google Cloud Run and local development uses Tailscale for private remote access.',
-    role: 'Full Stack Engineer and Infrastructure Engineer',
-    period: '2026 – present',
-    tech: ['React Native', 'Expo', 'SQLite', 'Express', 'Supabase', 'RLS', 'Sync allowlists', 'Postgres RPCs', 'Cloud Run', 'Tailscale', 'Cron jobs'],
-    status: 'In Progress',
-    highlights: [
-      { value: 'Offline-first', label: 'local finance workflows' },
-      { value: 'Cursor sync', label: 'incremental convergence' },
-      { value: 'RLS + RPCs', label: 'scoped backend security' }
-    ],
-    links: {
-      live: 'https://odin-budgets.buzz/',
-      source: 'https://github.com/VibeCoders-3DCSAD/Odin'
+    slug: 'katada',
+    name: 'Katada Van Rentals',
+    summary: 'A rental platform that replaced a paid booking service for a van rental business.',
+    role: 'Full-stack developer, freelance',
+    period: 'Jul – Aug 2026',
+    tech: ['React', 'TypeScript', 'Supabase', 'PostgreSQL', 'PL/pgSQL', 'Edge Functions', 'TanStack Query'],
+    caseFile: {
+      problem:
+        'The client paid ₱1,000 a month for a booking platform that couldn’t show how the business was doing, and toll costs were quoted by hand.',
+      built:
+        'Bookings, fleet, payments, KPI dashboards and CSV financial reports. Toll estimates come from a geocoded dataset of 97 Philippine toll plazas matched against each booking’s route. A PostgreSQL exclusion constraint and atomic PL/pgSQL payment RPCs replaced check-then-insert logic.',
+      result:
+        'The ₱1,000/month fee is gone, toll quotes are automatic, and concurrent requests can no longer double-book a van.'
     },
-    icon: 'terminal',
-    screenshot: '/projects/odin-layout.png',
-    screenshotFit: 'contain'
-  },
-  {
-    id: '0X02',
-    code: 'KATADA_VAN_RENTALS',
-    name: 'Katada Transportation Services',
-    description:
-      'A multi-tenant car-rental SaaS built for Katada Van Rentals, replacing a 1,000-peso monthly fee for the previous platform with a purpose-built system. Managed weekly client communication and delivered the full customer journey from fleet discovery and account onboarding to route-aware booking, payment receipt submission, and booking status updates. Matched toll plazas against the returned route polyline using an owned Philippine toll dataset to produce accurate estimates that still fit the customer\'s budget. Added meaningful KPI dashboards, financial reports, and CSV exports that gave the client a clearer view of the business, capabilities missing from the previous car-rental platform.',
-    role: 'Project Manager and Full Stack Developer',
-    period: 'July 2026 - August 2026',
-    tech: ['React', 'TypeScript', 'Vite', 'Supabase', 'RPCs', 'Edge Functions', 'TanStack Query', 'Chart.js', 'Vercel'],
-    highlights: [
-      { value: 'Polyline', label: 'route-matched tolls' },
-      { value: 'Own data', label: 'Philippine toll dataset' },
-      { value: '30-50', label: 'projected renters/year' }
-    ],
-    links: {
-      live: 'https://katada-van-rentals.vercel.app/'
-    },
-    icon: 'van',
+    links: { live: 'https://katada-van-rentals.vercel.app/' },
     screenshot: '/projects/katada-van-rentals.png'
   },
   {
-    id: '0X13',
-    code: 'CCIS_CENTRAL_PORTAL',
-    name: 'CCIS Centralized Portal',
-    description:
-      'Built and hardened the University of Makati College of Computing and Information Sciences student council portal across its application and infrastructure layers. The work spans student-facing announcements, event registration and verification, audience attendance QR passes, academic calendars, gallery and Patch media workflows, Bukas Kaban transparency records, support messaging, and a role-aware administration system. It also includes strict Supabase/RLS and RPC security boundaries, role preview controls, media write protections, automated email processing, client error telemetry, production scaling preparation, and repeated accessibility, reliability, and performance hardening for a dependable public platform.',
-    role: 'Full Stack Engineer',
-    period: 'August 2026',
-    tech: ['React', 'TypeScript', 'Vite', 'Supabase', 'Realtime', 'Tailwind CSS', 'GSAP'],
-    impact: 'Student council portal',
-    links: {
-      live: 'https://ccis-rose.vercel.app'
+    slug: 'budgie',
+    name: 'Budgie',
+    summary: 'A budgeting app that forecasts the expensive months, like December and enrollment, and works offline.',
+    role: 'Full-stack and infrastructure engineer',
+    period: '2026 – present',
+    status: 'In progress',
+    tech: ['React Native', 'Expo', 'SQLite', 'Express', 'Supabase', 'Cloud Run', 'Tailscale'],
+    caseFile: {
+      problem:
+        'People log spending on the go, often on patchy mobile data. A budget app that needs a connection gets abandoned.',
+      built:
+        'Local SQLite for every read and write, a cursor-based sync engine with idempotent pushes and tombstones, delete-wins and per-field last-write-wins conflict rules, and RLS plus Postgres RPCs on the backend.',
+      result:
+        'Transactions, budgets, savings goals and debts all work offline, then converge across devices.'
     },
-    icon: 'edu',
-    screenshot: '/projects/ccis-central-portal.png'
+    links: {
+      live: 'https://budgie-finances.app',
+      source: 'https://github.com/VibeCoders-3DCSAD/Budgie'
+    },
+    screenshot: '/projects/budgie.png'
   },
   {
-    id: '0X12',
-    code: 'EHANDA_04',
+    slug: 'sic',
+    name: 'UMak SIC App',
+    summary: 'Event registration, emailed QR passes and attendance for the University of Makati’s SIC.',
+    role: 'Lead developer',
+    period: 'Sep 2026 – present',
+    tech: ['Next.js', 'Prisma', 'Neon Postgres', 'Neon Auth', 'GitHub Actions', 'Vercel', 'Vitest', 'Playwright'],
+    caseFile: {
+      problem:
+        'Students waited 5–10 minutes in line to check in to events, and a single day could bring 100–200 registrations that each needed a ticket email.',
+      built:
+        'Emailed QR passes with server-side ticket verification and attendance tracking, a Postgres-backed email queue with job leases, idempotency keys, retries and provider failover, and GitHub Actions CI on throwaway Neon database branches with matching Vercel deployments.',
+      result:
+        'Check-in went from 5–10 minutes in line to about 5 seconds per student, and a full day of registrations goes out through the queue.'
+    },
+    links: { source: 'https://github.com/UMak-SIC/sic-app' }
+  },
+  {
+    slug: 'ehanda',
     name: 'eHanda',
-    description:
-      'A pair-programmed barangay disaster assessment platform built for the eGovPH ecosystem. Served as Technical Lead, planning the team\'s feasible scope and coordinating delivery within eight hours of development time. My delivered work focused on the Assessment Builder for creating structured disaster campaigns, real-time dashboard and user-dashboard updates through the realtime/WebSocket layer, and a planned AWS-native production architecture covering load balancing, managed database infrastructure, secrets, encryption, and observability. The project was selected as a Top 10 hackathon finalist.',
-    role: 'Technical Lead and Pair Programming Full Stack Engineer',
-    period: 'July 2026',
-    tech: ['React', 'TypeScript', 'Vite', 'Supabase', 'Realtime/WebSockets', 'AWS architecture', 'eGovPH SSO'],
-    impact: 'Top 10 · 8-hour build',
-    highlights: [
-      { value: 'Realtime', label: 'dashboard + user updates' },
-      { value: 'Builder', label: 'structured assessments' },
-      { value: 'AWS', label: 'native production plan' }
-    ],
+    summary:
+      'Post-disaster household needs assessment for the eGovPH super app. I led scoping in an 8-hour build and wrote the assessment builder and realtime dashboards. Top 10 at eGovHackathon 2026.',
+    role: 'Technical lead',
+    period: 'Jul 2026',
+    tech: ['React', 'TypeScript', 'Supabase Realtime', 'eGovPH SSO'],
     links: {
       live: 'https://e-handa.vercel.app/',
       source: 'https://github.com/CharlesTogle/eGovPHHackaton2026'
-    },
-    icon: 'shield',
-    screenshot: '/projects/e-handa.png',
-    screenshotFit: 'contain'
+    }
   },
   {
-    id: '0X03',
-    code: 'HOPE_HUB',
-    name: 'Hope Hub',
-    description:
-      'A multi-tenant Physical Education platform built with a team of five to bring lectures, quizzes, workouts, health tools, fitness testing, and class tracking into one system. Led the full-stack delivery across React, PostgreSQL, and Supabase, including role-based student and teacher experiences, lecture progress that controls quiz access, resumable timed quizzes with scoring and leaderboards, and session-based pre-test and post-test recording that automates Physical Fitness Test classification. The teacher dashboard supports class-code management, performance review, and spreadsheet export for reporting.',
-    role: 'Project Manager and Full Stack Developer',
-    period: 'March – May 2025',
-    tech: ['React', 'Vite', 'PostgreSQL', 'Supabase', 'React Query', 'Recharts'],
+    slug: 'ccis',
+    name: 'CCIS Centralized Portal',
+    summary:
+      'Student council portal for UMak’s computing college: events with QR attendance passes, transparency records and role-aware admin, locked down with RLS.',
+    role: 'Full-stack engineer',
+    period: 'Aug 2026',
+    tech: ['React', 'Supabase', 'Realtime', 'GSAP'],
+    links: { live: 'https://ccis-rose.vercel.app' }
+  },
+  {
+    slug: 'homeserver',
+    name: 'HomeServer Lite + NginxConf',
+    summary:
+      'My private file cloud: a React and Fastify app behind nginx, private BIND DNS and Tailscale, firewalled to the tailnet.',
+    role: 'Solo',
+    period: '2026',
+    tech: ['Fastify', 'Nginx', 'BIND', 'Tailscale', 'UFW'],
     links: {
-      live: 'https://hope-hub-fitness.vercel.app/',
-      source: 'https://github.com/CharlesTogle/Hope-Hub'
-    },
-    icon: 'edu',
-    screenshot: '/projects/hope-hub.png'
+      source: 'https://github.com/CharlesTogle/HomeServer-Lite',
+      source2: 'https://github.com/CharlesTogle/NginxConf'
+    }
   },
   {
-    id: '0X04',
-    code: 'UMAK_LINK',
+    slug: 'umak-link',
     name: 'Umak Link',
-    description:
-      'A unified lost and found platform for web and mobile, delivered with a team of four to replace fragmented reporting with one searchable system for the University of Makati community. Built the Ionic React and Capacitor mobile client, a Next.js staff and admin portal, and a Fastify backend-for-frontend that centralizes authentication, role enforcement, posts, claims, fraud reports, notifications, storage, and audit logging. Integrated Gemini image classification to extract item metadata and generate search queries, then combined PostgreSQL full-text and similarity search to match lost and found reports. The backend was dockerized and deployed for Google Cloud Run, with Firebase push notifications and Resend email completing the operational workflow.',
-    role: 'Project Manager and Full Stack Developer',
-    period: 'Feb – April 2025, Feb - March 2026',
-    tech: ['Ionic React', 'Capacitor', 'Next.js', 'FastifyJS', 'Supabase', 'Gemini API', 'Docker', 'Cloud Run'],
+    summary:
+      'Lost and found for UMak on web and mobile. Gemini reads item photos, and Postgres full-text and similarity search pairs lost with found.',
+    role: 'Project manager, team of four',
+    period: '2025 – 2026',
+    tech: ['Ionic', 'Next.js', 'Fastify', 'Gemini', 'Cloud Run'],
     links: {
       live: 'https://umak-link-web.vercel.app/',
       source: 'https://github.com/CharlesTogle/umak-link-web',
       source2: 'https://github.com/CharlesTogle/umak-link-backend'
-    },
-    icon: 'link',
-    screenshot: '/projects/umak-link.png'
+    }
   },
   {
-    id: '0X05',
-    code: 'ANDROID_LLM_SERVER',
-    name: 'Android LLM Server',
-    description:
-      'A practical setup guide for turning an Android phone into a self-hosted local LLM server. Documents the full path from installing Termux and configuring SSH to running TinyLlama through Ollama and exposing the inference endpoint across a trusted local network. The project makes an overlooked piece of hardware useful as a private, low-cost AI development environment that can be reached from a laptop without relying on a hosted API.',
-    role: 'Author',
-    period: 'Feb 2026',
-    tech: ['SSH', 'Ollama', 'Android', 'Linux'],
+    slug: 'hope-hub',
+    name: 'Hope Hub',
+    summary:
+      'A PE platform with gated lectures, resumable timed quizzes and automatic Physical Fitness Test classification.',
+    role: 'Project manager, team of five',
+    period: 'Mar – May 2025',
+    tech: ['React', 'PostgreSQL', 'Supabase', 'Recharts'],
     links: {
-      source: 'https://github.com/CharlesTogle/android-server-with-llm'
-    },
-    icon: 'terminal',
-    screenshot: '/projects/android-llm-server.png'
+      live: 'https://hope-hub-fitness.vercel.app/',
+      source: 'https://github.com/CharlesTogle/Hope-Hub'
+    }
   },
   {
-    id: '0X06',
-    code: 'MANUAL_QUIZ_APP',
-    name: 'Manual Quiz App',
-    description:
-      'A lightweight, browser-first learning platform that turns raw study material into repeatable practice sessions. Its AI-assisted JSON workflow lets users generate and load custom quizzes through file upload or direct paste, while a single unified engine supports multiple-choice, abbreviation, and identification questions with answer normalization, live progress tracking, instant scoring, correction feedback, shuffle-based retakes, and targeted retries for missed questions. Built as a zero-backend study tool, it helped 40+ classmates review course material more actively and contributed to a higher class passing rate.',
-    role: 'Solo Developer',
-    period: 'March 2026',
-    tech: ['HTML', 'CSS', 'JavaScript', 'Web Storage API'],
-    impact: '40+ students',
-    links: {
-      live: 'https://not-so-simple-quiz-app.vercel.app/',
-      source: 'https://github.com/CharlesTogle/not-so-simple-quiz-app'
-    },
-    icon: 'quiz',
-    screenshot: '/projects/manual-quiz.png'
-  },
-  {
-    id: '0X07',
-    code: 'DIGITAL_PULSE',
+    slug: 'digital-pulse',
     name: 'Digital Pulse Converter',
-    description:
-      'An interactive digital communications laboratory that makes abstract line-coding theory visible, inspectable, and easy to compare. The React/Vite application transforms every input character into an 8-bit ASCII stream and renders per-bit pulse patterns for NRZ, RZ, Manchester, Binary AMI, and CMI encoding, complete with voltage levels, timing transitions, character boundaries, binary and ASCII reference views, and encoding-specific explanations. Students can tune grid size, spacing, labels, connectors, markers, and animation, follow a guided tutorial, and export polished PNG or SVG diagrams for assignments and reports. Automated networking coursework for 50+ students while turning a typically manual exercise into an immediate visual learning experience.',
-    role: 'Co Developer',
-    period: 'March 2026',
-    tech: ['React', 'Vite', 'JavaScript', 'Canvas API', 'SVG'],
-    impact: '50+ students',
+    summary: 'Draws NRZ, RZ, Manchester, AMI and CMI line coding from any text. 50+ students used it for networking coursework.',
+    role: 'Co-developer',
+    period: 'Mar 2026',
+    tech: ['React', 'Canvas', 'SVG'],
     links: {
       live: 'https://digital-pulsify.vercel.app/',
       source: 'https://github.com/CharlesTogle/DigitalPulsify'
-    },
-    icon: 'pulse',
-    screenshot: '/projects/digital-pulse.png'
+    }
   },
   {
-    id: '0X10',
-    code: 'HOME_SERVER_SYSTEM',
-    name: 'HomeServer Lite + NginxConf',
-    description:
-      'A private self-hosted file server and its deployment layer. HomeServer Lite combines a React file-management interface with a Fastify API, authenticated sessions, nested folders, batched and idempotent uploads, file previews/downloads, search and type filtering, storage usage, favorites, and trash recovery backed by a durable SQLite database. The repository also includes a PostgreSQL schema for the planned database architecture. NginxConf supplies the operational front door: nginx hostname and path routing, private BIND DNS for the home zone, Tailscale Split DNS and Funnel integration, UFW rules limited to the tailnet interface, and a deployment script that validates and reloads the web and DNS configuration.',
-    role: 'System Designer, App Developer & Infrastructure Engineer',
-    period: '2026',
-    tech: ['React', 'Vite', 'Fastify', 'PostgreSQL', 'Nginx', 'BIND DNS', 'Tailscale', 'UFW'],
+    slug: 'quiz',
+    name: 'Manual Quiz App',
+    summary: 'A zero-backend quiz tool that 40+ classmates used to review for exams.',
+    role: 'Solo',
+    period: 'Mar 2026',
+    tech: ['JavaScript', 'Web Storage'],
     links: {
-      source: 'https://github.com/CharlesTogle/HomeServer-Lite',
-      source2: 'https://github.com/CharlesTogle/NginxConf'
-    },
-    icon: 'terminal',
-    screenshot: '/projects/home-server-lite.png'
+      live: 'https://not-so-simple-quiz-app.vercel.app/',
+      source: 'https://github.com/CharlesTogle/not-so-simple-quiz-app'
+    }
+  },
+  {
+    slug: 'android-llm',
+    name: 'Android LLM Server',
+    summary: 'A guide to running TinyLlama on an Android phone with Termux and Ollama, served over the local network.',
+    role: 'Author',
+    period: 'Feb 2026',
+    tech: ['Termux', 'Ollama', 'SSH'],
+    links: { source: 'https://github.com/CharlesTogle/android-server-with-llm' }
   }
 ]
 
 export const experiences: ExperienceEntry[] = [
   {
-    period: 'JUL 2026 - AUG 2026',
-    title: 'Project Manager and Full Stack Developer',
-    company: 'Katada Van Rentals (Freelance)',
-    location: 'Pasay City, Metro Manila, Philippines',
+    period: 'Sep 2026 – present',
+    title: 'Lead Developer',
+    company: 'SIC App, University of Makati',
+    location: 'Makati City, Philippines',
     bullets: [
-      'Communicated weekly with the client to translate day-to-day rental operations into a multi-tenant car-rental SaaS',
-      'Replaced the client\'s 1,000-peso monthly fee for a previous car-rental platform with a purpose-built system for bookings, fleet management, payments, and operations',
-      'Added meaningful KPI dashboards, financial reports, and CSV exports that gave the client visibility into business performance missing from the previous platform'
+      'Handled 100–200 event registrations in a single day by building a Postgres-backed ticket email queue with job leases, idempotency keys, retries and provider failover',
+      'Automated pull request checks and separated production, staging and dev by building GitHub Actions CI on throwaway Neon database branches with matching Vercel deployments',
+      'Cut check-in wait from 5–10 minutes in line to about 5 seconds per student by building emailed QR passes, server-side ticket verification and attendance tracking'
     ]
   },
   {
-    period: 'MAR 2026 - APR 2026',
+    period: 'Jul – Aug 2026',
+    title: 'Full Stack Developer',
+    company: 'Katada Transportation Services (Freelance)',
+    location: 'Pasay City, Philippines',
+    bullets: [
+      'Removed the client’s ₱1,000/month platform fee by delivering a rental system covering bookings, fleet, payments, KPI dashboards and CSV financial reports using React, TypeScript and Supabase',
+      'Automated toll estimates by building a geocoded dataset of 97 Philippine toll plazas, matched against each booking’s route',
+      'Stopped double-bookings during concurrent requests by replacing check-then-insert logic with a PostgreSQL exclusion constraint and atomic PL/pgSQL payment RPCs'
+    ]
+  },
+  {
+    period: 'Sep 2025 – Apr 2026',
     title: 'Dev Specialist',
     company: 'Centervert',
     location: 'Greenville, South Carolina (Remote)',
     bullets: [
-      'Led the development of the CRM intake and billing systems across Supabase, Next.js, and Stripe',
-      'Reconstructed an undocumented vendor-managed DigitalOcean load-balancer setup and moved connected Laravel products, Perforam and 1on1, to AWS Lightsail and RDS PostgreSQL, preserving cross-app data access and bringing support and deployments in-house',
-      'Established production deployment infrastructure with Nginx, PHP-FPM, Supervisor queue workers, Laravel scheduling, DNS, SSL, and developer handoff documentation'
-    ]
-  },
-  {
-    period: 'OCT 2025 - MAR 2026',
-    title: 'Full Stack Engineer',
-    company: 'Centervert',
-    location: 'Greenville, South Carolina (Remote)',
-    bullets: [
-      'Increased lead intake by 30–40 per day by hardening failure handling and building a concurrent migration script with exponential backoff and jitter to backfill GHL data without triggering rate limits',
-      'Generated $1K–$2K in per-request billing through a Next.js/Stripe change-request-to-invoice pipeline'
-    ]
-  },
-  {
-    period: 'AUG 2025 - OCT 2025',
-    title: 'Supabase Consultant',
-    company: 'Centervert',
-    location: 'Greenville, South Carolina (Remote)',
-    bullets: [
-      'Replaced a manual Google Sheets-to-GHL data-entry process with a Supabase Edge Function pipeline that validated leads, wrote them to a self-architected schema, and retried failed GHL syncs, reducing manual work by an estimated 5 FTEs',
-      'Migrated 460K+ records into a self-architected Supabase schema; after a senior audit exposed flaws in the first pass, corrected it in production through a migration with no downtime or data loss'
-    ]
-  },
-  {
-    period: 'MAR 2025 - MAY 2025',
-    title: 'Project Manager and Full Stack Developer',
-    company: 'The Hope Hub (Freelance)',
-    location: 'Makati City, Metro Manila, Philippines',
-    bullets: [
-      'Worked with a team of 5 to deliver a multi-tenant fitness education platform by leading full-stack development using React, PostgreSQL, and Supabase',
-      'Secured access for Teachers and Students across 4 core modules by designing a role-based access system',
-      'Automated Physical Fitness Test classification by implementing a session-based recording system'
-    ]
-  },
-  {
-    period: 'FEB 2025 - APR 2025',
-    title: 'Project Manager and Full Stack Developer',
-    company: 'University Project',
-    location: 'University of Makati',
-    bullets: [
-      'Worked with a team of 4 to deliver unified lost & found reporting across web and mobile by building a centralized platform using React, Capacitor, FastifyJS, and Supabase',
-      'Extracted structured metadata (color, category, descriptors) from item photos by integrating AI image classification via Gemini API',
-      'Matched lost and found items accurately by implementing PostgreSQL full-text and similarity search'
+      'Automated 5 FTEs’ worth of manual data entry via a Supabase Edge Function intake pipeline',
+      'Increased lead intake by 30–40 per day by building an automated lead intake system using Supabase Edge Functions and the GoHighLevel API',
+      'Migrated 460K+ records to a senior-approved Supabase schema, now the CRM’s source of truth',
+      'Generated $1K–$2K in per-request billing through a Next.js and Stripe change-request-to-invoice pipeline'
     ]
   }
 ]

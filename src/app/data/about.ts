@@ -19,52 +19,39 @@ export interface ContactItem {
   href?: string
 }
 
-export const aboutHighlights = [
-  'Technical and systems-level thinking grounded in practical software',
-  'Strong interest in building real-world software and practical systems that help people operate better',
-  'Comfortable in challenging, high-pressure environments with real delivery expectations',
-  'Approachable, teachable, and committed to continuous improvement in team settings'
-]
-
 export const educationEntries: EducationEntry[] = [
   {
-    period: 'EXPECTED MAY 2027',
+    period: 'Expected 2027',
     degree: 'Bachelor of Science in Computer Science, Major in Application Development',
-    school: 'University of Makati · Makati City, Philippines',
+    school: 'University of Makati, Makati City',
     bullets: [
-      "Dean's List - 1st & 2nd Sem, 2023-2024",
-      "Dean's List - 1st & 2nd Sem, 2024-2025",
-      "Dean's List - 1st & 2nd Sem, 2025-2026"
+      "Dean's List, 1st & 2nd Sem, 2023–2024",
+      "Dean's List, 1st & 2nd Sem, 2024–2025",
+      "Dean's List, 1st & 2nd Sem, 2025–2026"
     ]
-  },
-  {
-    period: 'MAY 2025',
-    degree: 'Direcho Trabaho: Introduction to ReactJS',
-    school: 'Certification / Training',
-    bullets: []
   }
 ]
 
 export const awardEntries: AwardEntry[] = [
   {
-    period: 'NOV 2024, NOV 2025',
-    title: 'Java Speed Coding - Infotech Winner',
+    period: 'Oct 2026',
+    title: 'InfoTechnOlympics 2026 Hackathon: Champion, Best Prototype and Best Presenter',
     summary:
-      'Won this university-level algorithmic coding competition twice, standing out among 20-30 people each year. Solved increasingly difficult problems under intense time pressure through fast reasoning, strong Java fundamentals, and precise implementation.'
+      'Won all three out of 7 teams by building, in 5 hours, a LangChain retrieval chatbot that answers questions from PDF documents and pulls student details from Technology-Based Learning (TBL) Hub accounts.'
   },
   {
-    period: 'JUL 2026',
-    title: 'eGovHackathon 2026 - Top 10 Finalist',
+    period: 'Jul 2026',
+    title: 'eGovHackathon 2026: Top 10 Finalist',
     source: 'https://github.com/Jerothegreat/eGovPHHackaton2026',
     project: 'https://e-handa.vercel.app/',
     summary:
-      'Selected as a Top 10 Finalist for HANDA, a post-disaster household needs-assessment tool built as a super app integration with the eGovPH platform. The project focused on helping communities report urgent needs faster and giving responders clearer information to act on after a disaster.'
+      'A national-level hackathon. Built eHANDA, a post-disaster household needs-assessment tool integrated with the eGovPH platform.'
   },
   {
-    period: 'OCT 2026',
-    title: 'Infotechnolympics 2026 Hackathon - Champion, Best Prototype & Best Presenter',
+    period: 'Nov 2024, Nov 2025',
+    title: 'InfoTechnOlympics Java Speed Coding: Champion, two years running',
     summary:
-      'Won Champion, Best Prototype, and Best Presenter out of 7 teams in a 5-hour build. Our team architected and built a chatbot using a LangChain retrieval pipeline to answer questions from PDF documents and pull student details from their TBL Hub (Technology-Based Learning Hub) accounts.'
+      'First place in 2024 and 2025 against 10–15 competing pairs, solving easy-to-hard algorithmic problems in Java under a strict time limit.'
   }
 ]
 
@@ -88,3 +75,9 @@ export const contactItems: ContactItem[] = [
     href: 'https://www.facebook.com/charles3togle'
   }
 ]
+
+export const availability = 'Open to internships and full-time roles'
+
+export function findContact(label: string) {
+  return contactItems.find((item) => item.label === label)
+}

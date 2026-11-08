@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { JetBrains_Mono, Outfit } from "next/font/google";
-import { Suspense } from "react";
+import { Archivo, JetBrains_Mono } from "next/font/google";
 import Nav from "./components/Nav";
-import VisitCount, { VisitCountLoading } from "./components/VisitCount";
-import { contactItems } from "./data/about";
+import { contactItems, findContact } from "./data/about";
 import { siteUrl } from "./helpers/siteUrl";
 import "./globals.css";
 
-const outfit = Outfit({
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  axes: ["wdth"],
+  variable: "--font-archivo",
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -20,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const siteName = "Charles Nathaniel Togle";
 const siteDescription = "Software and Systems Engineer building full-stack software, infrastructure, and practical systems with measurable impact.";
-const email = contactItems.find((item) => item.label === "EMAIL")?.href;
+const email = findContact("EMAIL")?.href;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -78,19 +77,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${outfit.variable} ${jetbrainsMono.variable} bg-background text-foreground`}>
+    <html lang="en" className={`${archivo.variable} ${jetbrainsMono.variable}`}>
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
           }}
         />
-        <div className="page-shell" style={{ fontFamily: "var(--font-outfit), sans-serif" }}>
-          <Nav visitCount={<Suspense fallback={<VisitCountLoading />}><VisitCount /></Suspense>} />
-          <main className="pt-20">{children}</main>
-          <Analytics />
-        </div>
+        <Nav />
+        {/* Clipped so content falling into the black hole can never grow the page */}
+        <main className="overflow-clip">{children}</main>
+        <Analytics />
       </body>
     </html>
   );

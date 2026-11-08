@@ -1,47 +1,530 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: light;
-  --background: #fffdf8;
-  --surface: #fffaf2;
-  --surface-strong: #f8f1e6;
-  --surface-muted: #f1e7d9;
-  --foreground: #191613;
-  --foreground-soft: #62554a;
-  --border: #e6dbcc;
-  --accent: #c85f28;
-  --accent-strong: #9f4518;
-  --accent-soft: rgba(200, 95, 40, 0.08);
-  --shadow: 0 16px 34px rgba(49, 31, 17, 0.04);
+  color-scheme: dark;
+  --ink: #000000;
+  --paper: #ffffff;
+  --muted: #a1a1a1;
+  --panel: #141414;
+  --rule: #262626;
+  --rule-strong: #4d4d4d;
+  --signal: #3dff6e;
+  /* The Petrova line: a dim infrared thread from the sun down the whole page */
+  --petrova: #ff5a36;
+  --petrova-dim: rgba(255, 90, 54, 0.22);
+  --petrova-glow: rgba(255, 90, 54, 0.5);
+  /* Sits in the page margin, just left of the content column. A var
+     substitutes as text, so 100% resolves against whatever uses it. */
+  --petrova-x: max(7px, calc((100% - min(100% - 2rem, 1200px)) / 2 - 28px));
+  --font-body: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-code: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-muted: var(--muted);
+  --color-panel: var(--panel);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-signal: var(--signal);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-code);
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-body::selection {
-  background: var(--accent);
-  color: var(--surface);
+::selection {
+  background: var(--signal);
+  color: var(--ink);
 }
 
-a,
-button {
-  transition:
-    color 160ms ease,
-    background-color 160ms ease,
-    border-color 160ms ease,
-    transform 160ms ease,
-    box-shadow 160ms ease;
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+/* Layout */
+.shell {
+  margin-inline: auto;
+  width: min(100% - 2rem, 1200px);
+}
+
+.section {
+  position: relative;
+  border-top: 1px solid var(--rule);
+  padding-block: clamp(4rem, 9vw, 7rem);
+}
+
+/* Type: the wide cut of Archivo is the page's display voice */
+.display {
+  font-variation-settings: "wdth" 125;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.display-xl {
+  font-size: clamp(2.6rem, 8.2vw, 7rem);
+}
+
+.display-lg {
+  font-size: clamp(2rem, 5vw, 3.75rem);
+}
+
+.display-md {
+  font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+  line-height: 1.05;
+}
+
+.lede {
+  max-width: 60ch;
+  color: var(--muted);
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.55;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--paper);
+  border-radius: 999px;
+  padding: 0.8rem 1.35rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.btn:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.btn-signal {
+  border-color: var(--signal);
+  background: var(--signal);
+  color: var(--ink);
+}
+
+.btn-signal:hover {
+  border-color: var(--paper);
+  background: var(--paper);
+}
+
+.text-link {
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 0.25em;
+  transition: text-decoration-color 150ms ease;
+}
+
+.text-link:hover {
+  text-decoration-color: var(--signal);
+}
+
+/* Availability dot */
+.live-dot {
+  position: relative;
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--signal);
+}
+
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--signal);
+  animation: live-ping 2s ease-out infinite;
+}
+
+@keyframes live-ping {
+  from {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* System map */
+.map-edge {
+  fill: none;
+  stroke: var(--rule-strong);
+  stroke-width: 1.5;
+}
+
+.map-packet {
+  fill: none;
+  stroke: var(--signal);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 28 72;
+  animation: packet-run 1.8s linear infinite;
+}
+
+@keyframes packet-run {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.map-node rect {
+  fill: var(--ink);
+  stroke: var(--paper);
+  stroke-width: 1.5;
+}
+
+.map-label {
+  fill: var(--paper);
+  font-family: var(--font-code);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.map-detail {
+  fill: var(--muted);
+  font-family: var(--font-code);
+  font-size: 13px;
+}
+
+.map-enter {
+  animation: map-enter 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes map-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Planet panel */
+.panel-enter {
+  animation: panel-enter 380ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Supernova: a white core swells past the edges of the screen, then
+   burns out to black and leaves the card behind. */
+.supernova-flash {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #ffffff 0%, #ffffff 35%, var(--signal) 55%, rgba(61, 255, 110, 0) 70%);
+  animation: supernova 1400ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+@keyframes supernova {
+  0% {
+    transform: scale(0.2);
+    opacity: 1;
+  }
+  55% {
+    transform: scale(90);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(110);
+    opacity: 0;
+  }
+}
+
+.supernova-card {
+  animation: panel-enter 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Petrova line, page-wide */
+.petrova-rail,
+.petrova-lit,
+.petrova-head,
+.petrova-end {
+  position: absolute;
+  left: var(--petrova-x);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.petrova-rail {
+  top: 0;
+  width: 1px;
+  height: var(--petrova-end, 100%);
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, transparent, var(--petrova-dim) 160px);
+}
+
+/* Particles flowing down the rail */
+.petrova-rail::after {
+  content: "";
+  position: absolute;
+  inset: 0 -1px;
+  background: repeating-linear-gradient(to bottom, var(--petrova) 0 5px, transparent 5px 44px);
+  opacity: 0.6;
+  mask-image: linear-gradient(to bottom, transparent, #000 200px);
+  animation: petrova-flow 2.4s linear infinite;
+}
+
+@keyframes petrova-flow {
+  to {
+    background-position: 0 44px;
+  }
+}
+
+.petrova-lit {
+  top: 0;
+  width: 2px;
+  height: var(--petrova-progress, 0px);
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, transparent, var(--petrova) 200px);
+  box-shadow: 0 0 10px 1px var(--petrova-glow);
+}
+
+.petrova-head {
+  top: var(--petrova-progress, 0px);
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  background: #ffd9cc;
+  box-shadow:
+    0 0 0 3px var(--petrova-dim),
+    0 0 18px 6px var(--petrova-glow);
+}
+
+.petrova-end {
+  top: var(--petrova-end, 100%);
+  width: 15px;
+  height: 15px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  background: var(--petrova);
+  box-shadow: 0 0 24px 8px var(--petrova-glow);
+}
+
+/* Where the line crosses each section divider */
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--petrova-x);
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--petrova);
+  border-radius: 999px;
+  background: var(--ink);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px var(--petrova-glow);
+  z-index: 2;
+}
+
+/* Black hole at the end of the page: 100vw wide, centred on the page's
+   bottom edge so only its top half rises into view. The zone overlaps the
+   bottom of the contact section; the hole paints behind it (z-index -1) and
+   BlackHole.tsx drives --bh-p (0 at rest, 1 when everything has been eaten). */
+.blackhole-zone {
+  --bh-zone: max(62vw, 60svh);
+  position: relative;
+  height: var(--bh-zone);
+  margin-top: calc(var(--bh-zone) * -0.5);
+  /* Clips the lower half, and keeps the hole out of the page's scroll size */
+  overflow: clip;
+  pointer-events: none;
+}
+
+.blackhole {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 100vw;
+  aspect-ratio: 1;
+  z-index: -1;
+  transform: translate(-50%, -50%) scale(calc(1 + var(--bh-p, 0) * 0.65));
+}
+
+/* Spacetime grid that bends into the hole while it feeds (see warpGrid.ts).
+   Fixed to the viewport, behind the content, and invisible at rest. */
+.bh-warp {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  opacity: min(1, calc(var(--bh-p, 0) * 3));
+  visibility: hidden;
+}
+
+.blackhole-zone[style*="--bh-p"] .bh-warp {
+  visibility: visible;
+}
+
+.bh-warp path {
+  fill: none;
+  stroke: rgba(255, 140, 110, 0.22);
+  stroke-width: 1;
+}
+
+.blackhole > * {
+  position: absolute;
+  border-radius: 999px;
+}
+
+.bh-glow {
+  inset: 0;
+  background: radial-gradient(
+    circle closest-side,
+    transparent 34%,
+    rgba(255, 90, 54, 0.3) 40%,
+    rgba(255, 90, 54, 0.08) 62%,
+    transparent 100%
+  );
+}
+
+/* The accretion disk, seen nearly edge-on */
+.bh-disk {
+  inset: 0;
+  transform: scaleY(0.24);
+}
+
+.bh-disk-front {
+  /* Only the near half passes in front of the horizon */
+  clip-path: inset(50% 0 0 0);
+}
+
+.bh-disk-spin {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: conic-gradient(
+    #ff5a36,
+    #ffe2d6 8%,
+    #ff7a4f 18%,
+    #5a1608 30%,
+    #ff5a36 42%,
+    #fff1ea 52%,
+    #ff6a40 62%,
+    #3a0e05 76%,
+    #ff8a5c 88%,
+    #ff5a36
+  );
+  mask: radial-gradient(circle closest-side, transparent 40%, #000 44%, #000 66%, rgba(0, 0, 0, 0.3) 82%, transparent 96%);
+  filter: blur(1.5px);
+  animation: bh-spin 18s linear infinite;
+}
+
+@keyframes bh-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.bh-horizon,
+.bh-photon-ring {
+  left: 50%;
+  top: 50%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+}
+
+.bh-horizon {
+  width: 36%;
+  background: #000;
+  box-shadow: 0 0 40px 14px #000;
+}
+
+/* Light bent around the horizon */
+.bh-photon-ring {
+  width: 38.5%;
+  border: 2px solid rgba(255, 226, 214, 0.9);
+  box-shadow:
+    0 0 18px 4px rgba(255, 90, 54, 0.6),
+    inset 0 0 18px 4px rgba(255, 90, 54, 0.35);
+}
+
+.bh-message {
+  position: absolute;
+  left: 50%;
+  /* Centred 30% of the way up the dome. The dome's height is the photon
+     ring's radius (38.5% of the 100vw hole, halved) times the hole's current
+     scale (see .blackhole). The max() keeps it on screen where the dome is
+     too small to hold it. */
+  bottom: max(8rem, calc(100vw * 0.1925 * (1 + var(--bh-p, 0) * 0.65) * 0.3));
+  width: min(100% - 2rem, 460px);
+  padding: 2rem 1rem;
+  transform: translate(-50%, 50%);
+  text-align: center;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6) 70%, transparent);
+  opacity: 0;
+  transition: opacity 800ms ease;
+  z-index: 5;
+}
+
+.bh-message.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* The Petrova line dims as the hole eats the page */
+.petrova-rail,
+.petrova-lit,
+.petrova-head,
+.petrova-end {
+  opacity: calc(1 - var(--eaten, 0));
+}
+
+/* Low power mode: stop continuous decorative animation. The 3D scene is
+   swapped for a static drawing in SolarHero. */
+:root[data-low-power] .bh-disk-spin,
+:root[data-low-power] .petrova-rail::after,
+:root[data-low-power] .live-dot::after,
+:root[data-low-power] .map-packet {
+  animation: none;
+}
+
+:root[data-low-power] .map-packet {
+  stroke-dasharray: none;
+  stroke-width: 1.5;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -55,103 +538,10 @@ button {
     animation: none !important;
     transition: none !important;
   }
-}
 
-.page-shell {
-  min-height: 100dvh;
-  background:
-    radial-gradient(circle at top left, rgba(200, 95, 40, 0.04), transparent 24%),
-    radial-gradient(circle at 80% 0%, rgba(200, 95, 40, 0.025), transparent 20%),
-    var(--background);
-}
-
-.section-shell {
-  margin-inline: auto;
-  width: min(100% - 2rem, 1200px);
-}
-
-.section-frame {
-  border-top: 1px solid var(--border);
-  padding-block: 5rem;
-}
-
-.section-title {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-
-.section-copy {
-  max-width: 65ch;
-  color: var(--foreground-soft);
-  line-height: 1.7;
-}
-
-.card-surface {
-  border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--surface) 97%, transparent);
-  box-shadow: var(--shadow);
-}
-
-.pill-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--surface) 96%, transparent);
-  color: var(--foreground-soft);
-  padding: 0.45rem 0.8rem;
-  font-size: 0.84rem;
-  line-height: 1;
-}
-
-.button-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border: 1px solid var(--accent);
-  background: color-mix(in srgb, var(--surface) 72%, var(--accent) 28%);
-  color: var(--accent-strong);
-  padding: 0.9rem 1.25rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.button-primary:hover {
-  transform: translateY(-1px);
-  background: color-mix(in srgb, var(--surface) 62%, var(--accent) 38%);
-  border-color: var(--accent-strong);
-}
-
-.button-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--foreground);
-  padding: 0.9rem 1.25rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.button-secondary:hover {
-  transform: translateY(-1px);
-  border-color: var(--accent);
-  color: var(--accent-strong);
-  background: var(--surface);
-}
-
-.muted-rule {
-  height: 1px;
-  width: 100%;
-  background: var(--border);
-}
-
-.metric-value {
-  font-size: clamp(2rem, 4vw, 3.25rem);
-  line-height: 1;
-  letter-spacing: -0.05em;
+  /* With no movement, show the packets as solid lit lines instead */
+  .map-packet {
+    stroke-dasharray: none;
+    stroke-width: 1.5;
+  }
 }
