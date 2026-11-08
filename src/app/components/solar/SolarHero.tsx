@@ -98,9 +98,14 @@ export default function SolarHero({ email }: { email?: string }) {
 
   return (
     <section id="hero" className="relative overflow-hidden md:h-svh md:min-h-[680px]">
-      <div className="relative h-[56svh] md:absolute md:inset-0 md:h-auto" aria-hidden="true">
+      <div
+        className={`relative md:absolute md:inset-0 md:h-auto ${showStatic ? "pt-16 md:pt-0" : "h-[56svh]"}`}
+        aria-hidden="true"
+      >
         {showStatic ? (
-          <div className="size-full px-2 md:ml-auto md:w-[68%] md:px-0 md:pb-24 md:pt-20">
+          // On phones the drawing sets its own height (it matches the SVG's
+          // aspect ratio) so it doesn't float in empty space above the copy.
+          <div className="aspect-[1120/580] w-full px-2 md:ml-auto md:aspect-auto md:h-full md:w-[68%] md:px-0 md:pb-24 md:pt-20">
             <StaticSystem
               planets={planets}
               selectedId={selectedId}

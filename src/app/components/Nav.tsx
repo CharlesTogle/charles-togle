@@ -16,8 +16,8 @@ export default function Nav() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-rule bg-ink/85 backdrop-blur-md">
-      <div className="shell flex h-16 items-center justify-between gap-6">
-        <Link href="/" className="font-semibold tracking-tight">
+      <div className="shell flex h-16 items-center justify-between gap-3 sm:gap-6">
+        <Link href="/" className="whitespace-nowrap font-semibold tracking-tight">
           Charles Togle
         </Link>
 
@@ -29,11 +29,11 @@ export default function Nav() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4 sm:gap-5">
+        <div className="flex shrink-0 items-center gap-3 sm:gap-5">
           <LowPowerToggle />
           <Availability label={availability} className="hidden text-sm xl:inline-flex" />
           {email ? (
-            <a href={email} className="btn btn-signal py-2.5! text-sm!">
+            <a href={email} className="btn btn-signal whitespace-nowrap px-4! py-2! text-sm! sm:px-[1.35rem]! sm:py-2.5!">
               Email me
             </a>
           ) : null}
