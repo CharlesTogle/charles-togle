@@ -16,16 +16,50 @@ export default function PlanetPanel({
   onClose: () => void;
 }) {
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const unlockScrollRef = useRef<() => void>(() => {});
   const map = systemMaps.find((m) => m.id === planet.mapId);
 
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: true });
   }, [planet.id]);
 
+  // On mobile the panel is a bottom sheet over the page, so lock the page
+  // scroll behind it. Desktop keeps scrolling since the panel sits in the hero.
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const html = document.documentElement;
+    const body = document.body;
+    const prev = { html: html.style.overflow, body: body.style.overflow };
+
+    const apply = () => {
+      const lock = mq.matches ? "hidden" : "";
+      html.style.overflow = lock || prev.html;
+      body.style.overflow = lock || prev.body;
+    };
+
+    const unlock = () => {
+      mq.removeEventListener("change", apply);
+      html.style.overflow = prev.html;
+      body.style.overflow = prev.body;
+    };
+
+    apply();
+    mq.addEventListener("change", apply);
+    unlockScrollRef.current = unlock;
+    return unlock;
+  }, []);
+
+  // Unlock synchronously before the browser follows the anchor; waiting for
+  // the unmount would leave overflow hidden and the hash jump would not scroll.
+  const readCaseFile = () => {
+    unlockScrollRef.current();
+    onClose();
+  };
+
   return (
     <aside
       aria-labelledby="planet-panel-title"
-      className="panel-enter pointer-events-auto fixed inset-x-0 bottom-0 z-40 max-h-[58svh] overflow-y-auto rounded-t-xl border border-rule bg-ink/90 p-5 backdrop-blur-md md:absolute md:inset-x-auto md:bottom-8 md:right-[max(1rem,calc((100vw-1200px)/2))] md:top-24 md:max-h-none md:w-[400px] md:rounded-md md:p-6"
+      className="panel-enter pointer-events-auto fixed inset-x-0 bottom-0 z-40 max-h-[58svh] overflow-y-auto overscroll-contain rounded-t-xl border border-rule bg-ink/90 p-5 backdrop-blur-md md:absolute md:inset-x-auto md:bottom-8 md:right-[max(1rem,calc((100vw-1200px)/2))] md:top-24 md:max-h-none md:w-[400px] md:rounded-md md:p-6"
     >
       <div className="flex items-start justify-between gap-4">
         <div>
@@ -54,7 +88,7 @@ export default function PlanetPanel({
         <p className="mt-1 text-lg font-semibold leading-snug">{planet.result}</p>
       </div>
 
-      <a href={`#project-${planet.projectSlug}`} onClick={onClose} className="btn btn-signal mt-6">
+      <a href={`#project-${planet.projectSlug}`} onClick={readCaseFile} className="btn btn-signal mt-6">
         Read the case file
       </a>
     </aside>
