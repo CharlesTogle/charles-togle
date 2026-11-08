@@ -20,7 +20,7 @@ export default function Contact() {
         <Availability label={availability} className="inline-flex text-sm" />
         <h2 className="display display-xl mt-8 max-w-[14ch]">Need someone who ships from day one?</h2>
         <p className="lede mt-8">
-          I&apos;m looking for internships now and full-time roles from May 2027, on-site in Metro Manila or remote.
+          I&apos;m open to internships and full-time roles now, on-site in Metro Manila or remote.
           Email is the fastest way to reach me.
         </p>
 

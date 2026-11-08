@@ -78,6 +78,9 @@ export function applyDevour(morsels: Morsel[], p: number) {
     element.style.opacity = String(1 - Math.pow(e, 1.3));
     element.style.filter = e > 0 ? `blur(${e * 5}px)` : "";
     element.style.pointerEvents = e > 0.3 ? "none" : "";
+    // Once a piece is mostly swallowed it shouldn't be reachable by keyboard
+    // or assistive tech either; the hole's own message offers the email link.
+    element.inert = e > 0.3;
     element.style.willChange = "transform, opacity";
   }
 }
@@ -88,6 +91,7 @@ export function clearMorsel(element: HTMLElement) {
   element.style.filter = "";
   element.style.pointerEvents = "";
   element.style.willChange = "";
+  element.inert = false;
 }
 
 export function releaseAll(morsels: Morsel[]) {

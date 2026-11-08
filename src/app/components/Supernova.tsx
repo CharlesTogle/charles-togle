@@ -31,6 +31,7 @@ export default function Supernova({ email }: { email: string }) {
   const [phase, setPhase] = useState<"idle" | "flash" | "card">("idle");
   const [copied, setCopied] = useState(false);
   const firstButtonRef = useRef<HTMLAnchorElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const address = email.replace(/^mailto:/, "");
 
   useEffect(() => {
@@ -63,10 +64,33 @@ export default function Supernova({ email }: { email: string }) {
 
   useEffect(() => {
     if (phase !== "card") return;
+    const previouslyFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     firstButtonRef.current?.focus();
-    const onKey = (event: KeyboardEvent) => event.key === "Escape" && setPhase("idle");
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setPhase("idle");
+        return;
+      }
+      // aria-modal: keep Tab focus cycling inside the card.
+      if (event.key !== "Tab" || !cardRef.current) return;
+      const focusable = Array.from(cardRef.current.querySelectorAll<HTMLElement>("a[href], button:not([disabled])"));
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      previouslyFocused?.focus({ preventScroll: true });
+    };
   }, [phase]);
 
   async function copyEmail() {
@@ -86,6 +110,7 @@ export default function Supernova({ email }: { email: string }) {
 
       {phase === "card" ? (
         <div
+          ref={cardRef}
           role="dialog"
           aria-modal="true"
           aria-labelledby="supernova-title"
