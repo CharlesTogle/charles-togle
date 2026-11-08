@@ -2,10 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Blog | Charles Nathaniel Togle",
+  title: "Blog",
   description: "Writing from Charles Nathaniel Togle. Nothing here yet, stay tuned.",
   alternates: {
     canonical: "/blog",
+  },
+  // Placeholder page: keep it out of search results until there are posts.
+  robots: {
+    index: false,
+    follow: true,
   },
 };
 

@@ -18,7 +18,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const siteName = "Charles Nathaniel Togle";
-const siteDescription = "Software and Systems Engineer building full-stack software, infrastructure, and practical systems with measurable impact.";
+const siteTitle = `${siteName} | Full-Stack & Infrastructure Engineer`;
+const siteDescription =
+  "Charles Togle is a full-stack and infrastructure engineer graduating in Computer Science from the University of Makati in May 2027. Explore the systems he has shipped, from web apps to home servers.";
+const ogImage = {
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
+  alt: "Charles Togle portfolio: I build the systems behind the software.",
+};
 const email = findContact("EMAIL")?.href;
 
 export const metadata: Metadata = {
@@ -26,29 +34,52 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  title: siteName,
+  title: {
+    default: siteTitle,
+    template: `%s | ${siteName}`,
+  },
   description: siteDescription,
+  applicationName: siteName,
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
+  keywords: [
+    "Charles Togle",
+    "Charles Nathaniel Togle",
+    "full-stack engineer",
+    "infrastructure engineer",
+    "software engineer portfolio",
+    "University of Makati",
+    "Philippines",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: [{ url: "/profile-favicon-photo.svg", type: "image/svg+xml" }],
   },
   openGraph: {
-    title: siteName,
+    title: siteTitle,
     description: siteDescription,
-    type: "website",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1718,
-        height: 806,
-        alt: "Charles Nathaniel Togle portfolio preview",
-      },
-    ],
+    url: "/",
+    siteName,
+    locale: "en_US",
+    type: "profile",
+    firstName: "Charles Nathaniel",
+    lastName: "Togle",
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteName,
+    title: siteTitle,
     description: siteDescription,
-    images: ["/og-image.png"],
+    images: [ogImage],
   },
 };
 
@@ -56,7 +87,11 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: siteName,
-  jobTitle: "Software and Systems Engineer",
+  jobTitle: "Full-Stack & Infrastructure Engineer",
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "University of Makati",
+  },
   description: siteDescription,
   url: siteUrl,
   image: `${siteUrl}/profile.png`,

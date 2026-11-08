@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "./helpers/siteUrl";
 
+// Add /blog back here once it has real posts (it is noindex until then).
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
@@ -8,12 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
-    },
-    {
-      url: `${siteUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.5,
+      images: [`${siteUrl}/og-image.png`],
     },
   ];
 }
