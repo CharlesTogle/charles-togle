@@ -453,6 +453,18 @@ body {
   animation: bh-spin 18s linear infinite;
 }
 
+/* Blog placeholder: the same black hole, small and fully in view */
+.blog-hole {
+  position: relative;
+  width: min(80vw, 420px);
+  aspect-ratio: 1;
+}
+
+.blog-hole > * {
+  position: absolute;
+  border-radius: 999px;
+}
+
 @keyframes bh-spin {
   to {
     transform: rotate(360deg);

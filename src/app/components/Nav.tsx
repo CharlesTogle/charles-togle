@@ -4,10 +4,11 @@ import Availability from "./Availability";
 import LowPowerToggle from "./LowPowerToggle";
 
 const links = [
-  { href: "#work", label: "Work" },
-  { href: "#experience", label: "Experience" },
-  { href: "#wins", label: "Wins" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#work", label: "Work" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#wins", label: "Wins" },
+  { href: "/#contact", label: "Contact" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export default function Nav() {
@@ -22,9 +23,9 @@ export default function Nav() {
 
         <nav aria-label="Sections" className="hidden items-center gap-7 text-sm text-muted lg:flex">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="hover:text-paper">
+            <Link key={link.href} href={link.href} className="hover:text-paper">
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
