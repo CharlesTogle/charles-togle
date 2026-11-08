@@ -243,6 +243,70 @@ body {
   }
 }
 
+/* Ship log: an instrument readout with corner brackets and a slow scanline */
+.hud-frame::before,
+.hud-frame::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.hud-frame::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1px solid var(--signal);
+  border-left: 1px solid var(--signal);
+  border-top-left-radius: 6px;
+}
+
+.hud-frame::after {
+  right: -1px;
+  bottom: -1px;
+  border-right: 1px solid var(--signal);
+  border-bottom: 1px solid var(--signal);
+  border-bottom-right-radius: 6px;
+}
+
+.hud-scan {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 40%;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(61, 255, 110, 0.05), transparent);
+  animation: hud-scan 6s linear infinite;
+}
+
+@keyframes hud-scan {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(260%);
+  }
+}
+
+.hud-caret {
+  animation: hud-blink 1s steps(1) infinite;
+}
+
+@keyframes hud-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.log-enter {
+  animation: panel-enter 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root[data-low-power] .hud-scan {
+  display: none;
+}
+
 /* Supernova: a white core swells past the edges of the screen, then
    burns out to black and leaves the card behind. */
 .supernova-flash {
