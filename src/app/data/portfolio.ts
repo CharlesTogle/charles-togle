@@ -73,18 +73,18 @@ export const projects: Project[] = [
   {
     slug: 'budgie',
     name: 'Budgie',
-    summary: 'A budgeting app that forecasts the expensive months, like December and enrollment, and works offline.',
-    role: 'Full-stack and infrastructure engineer',
+    summary: 'A financial planning app for Filipinos that forecasts each month’s spending from PSA household consumption data.',
+    role: 'Full-stack and ML engineer',
     period: '2026 – present',
     status: 'In progress',
-    tech: ['React Native', 'Expo', 'SQLite', 'Express', 'Supabase', 'Cloud Run', 'Tailscale'],
+    tech: ['Python', 'FastAPI', 'statsmodels', 'SciPy', 'React Native', 'Expo', 'SQLite', 'Express', 'Supabase', 'Cloud Run'],
     caseFile: {
       problem:
-        'People log spending on the go, often on patchy mobile data. A budget app that needs a connection gets abandoned.',
+        'Filipino spending isn’t steady. PSA household consumption (HFCE) data shows food prices climbing every December, electricity surging in summer and health spending peaking in the rainy season. A budget tracker that treats every month the same misses all of it.',
       built:
-        'Local SQLite for every read and write, a cursor-based sync engine with idempotent pushes and tombstones, delete-wins and per-field last-write-wins conflict rules, and RLS plus Postgres RPCs on the backend.',
+        'The forecasting engine: 12 per-category SARIMA models trained on PSA HFCE data from 2000 to 2026, which scale each user’s own spending baseline by the national seasonal trend, plus a linear-programming planner that splits income across essentials and flexible categories. I also built the React Native app and the Express and Supabase backend, offline-first with its own sync engine.',
       result:
-        'Transactions, budgets, savings goals and debts all work offline, then converge across devices.'
+        'Each month gets its own plan before it arrives, like more for food going into December. Testing how well this works for users is still underway as part of my thesis.'
     },
     links: {
       live: 'https://budgie-finances.app',

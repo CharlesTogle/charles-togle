@@ -138,7 +138,7 @@ body {
   text-decoration-color: var(--signal);
 }
 
-/* Availability dot */
+/* Status dot (ship log) */
 .live-dot {
   position: relative;
   display: inline-block;
