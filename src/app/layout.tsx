@@ -18,9 +18,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const siteName = "Charles Nathaniel Togle";
-const siteTitle = `${siteName} | Full-Stack & Infrastructure Engineer`;
+const siteTitle = `${siteName} | Full-Stack Engineer`;
 const siteDescription =
-  "Charles Togle is a full-stack and infrastructure engineer graduating in Computer Science from the University of Makati in May 2027. Explore the systems he has shipped, from web apps to home servers.";
+  "Charles Togle is a full-stack engineer graduating in Computer Science from the University of Makati in May 2027. Explore the systems he has shipped, from web apps to home servers.";
 const ogImage = {
   url: "/og-image.png",
   width: 1200,
@@ -46,7 +46,6 @@ export const metadata: Metadata = {
     "Charles Togle",
     "Charles Nathaniel Togle",
     "full-stack engineer",
-    "infrastructure engineer",
     "software engineer portfolio",
     "University of Makati",
     "Philippines",
@@ -87,7 +86,7 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: siteName,
-  jobTitle: "Full-Stack & Infrastructure Engineer",
+  jobTitle: "Full-Stack Engineer",
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "University of Makati",
