@@ -57,7 +57,6 @@ export const awardEntries: AwardEntry[] = [
 
 export const contactItems: ContactItem[] = [
   { label: 'EMAIL', val: 'charles3togle@gmail.com', href: 'mailto:charles3togle@gmail.com' },
-  { label: 'PHONE', val: '+63 9281995178', href: 'tel:+639281995178' },
   { label: 'LOCATION', val: 'Pasay City, PH' },
   {
     label: 'GITHUB',

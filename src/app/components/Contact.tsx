@@ -3,16 +3,14 @@ import { availability, findContact } from "../data/about";
 import Availability from "./Availability";
 import VisitCount, { VisitCountLoading } from "./VisitCount";
 
-const socials = ["GITHUB", "LINKEDIN", "FACEBOOK"] as const;
+const socials = ["GITHUB", "LINKEDIN"] as const;
 const socialNames: Record<(typeof socials)[number], string> = {
   GITHUB: "GitHub",
   LINKEDIN: "LinkedIn",
-  FACEBOOK: "Facebook",
 };
 
 export default function Contact() {
   const email = findContact("EMAIL");
-  const phone = findContact("PHONE");
 
   return (
     <footer id="contact" className="section">
@@ -46,11 +44,6 @@ export default function Contact() {
                 </a>
               ) : null;
             })}
-            {phone?.href ? (
-              <a href={phone.href} className="text-link text-paper">
-                {phone.val}
-              </a>
-            ) : null}
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <span>Pasay City, Philippines</span>
