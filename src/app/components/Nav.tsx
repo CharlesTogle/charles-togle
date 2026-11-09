@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { availability, findContact } from "../data/about";
-import Availability from "./Availability";
+import { findContact } from "../data/about";
 import LowPowerToggle from "./LowPowerToggle";
 
 const links = [
@@ -31,7 +30,6 @@ export default function Nav() {
 
         <div className="flex shrink-0 items-center gap-3 sm:gap-5">
           <LowPowerToggle />
-          <Availability label={availability} className="hidden text-sm xl:inline-flex" />
           {email ? (
             <a href={email} className="btn btn-signal whitespace-nowrap px-4! py-2! text-sm! sm:px-[1.35rem]! sm:py-2.5!">
               Email me

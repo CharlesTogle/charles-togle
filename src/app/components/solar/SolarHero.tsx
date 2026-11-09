@@ -13,7 +13,7 @@ import { useVisitedPlanets } from "./useVisitedPlanets";
 
 const planetIds = planets.map((p) => p.id);
 
-export default function SolarHero({ email }: { email?: string }) {
+export default function SolarHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const controllerRef = useRef<SolarSceneController | null>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
@@ -56,7 +56,7 @@ export default function SolarHero({ email }: { email?: string }) {
   useEffect(() => {
     // Hydration renders with the server's "full power" assumption first, so
     // check the real preference here too; otherwise three.js would start
-    // downloading before the stored low power setting applies.
+    // downloading before the stored simple mode setting applies.
     if (lowPower || readLowPower()) return;
     let cancelled = false;
     const canvas = canvasRef.current;
@@ -129,10 +129,10 @@ export default function SolarHero({ email }: { email?: string }) {
       <div className="pointer-events-none relative md:absolute md:inset-0">
         <div className="shell flex h-full flex-col justify-end gap-8 pb-10 pt-6 md:pb-12 md:pt-24">
           <div className={`transition-opacity duration-500 ${selected ? "md:pointer-events-none md:opacity-0" : "opacity-100"}`}>
-            <Availability label={availability} className="inline-flex text-sm xl:hidden" />
+            <Availability label={availability} className="inline-flex text-sm" />
             <h1 className="display mt-6 max-w-[12ch] text-[clamp(2.5rem,6.4vw,6rem)]">I build the systems behind the software.</h1>
             <p className="lede mt-6 max-w-[46ch]">
-              Full-stack and infrastructure engineer, graduating in CS from the University of Makati in May 2027.
+              Full-stack engineer, graduating in CS from the University of Makati in May 2027.
               Every planet here is a system I&apos;ve shipped. Land on one.
             </p>
           </div>
@@ -167,11 +167,6 @@ export default function SolarHero({ email }: { email?: string }) {
                 })}
               </div>
               <div className="mt-5 flex flex-wrap gap-3">
-                {email ? (
-                  <a href={email} className="btn btn-signal">
-                    Email me
-                  </a>
-                ) : null}
                 <a href="/RESUME_CHARLES_TOGLE.pdf" download className="btn bg-ink/60 backdrop-blur-sm">
                   Download resume
                 </a>
