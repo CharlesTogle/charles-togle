@@ -37,7 +37,7 @@ export function setLowPower(on: boolean) {
   window.dispatchEvent(new Event(CHANGE_EVENT));
 }
 
-/** Low power mode: no WebGL scene and no continuous decorative animation. */
+/** Simple mode: no WebGL scene and no continuous decorative animation. */
 export function useLowPower() {
   // Server render and hydration assume full power; the client corrects after.
   return useSyncExternalStore(subscribe, readLowPower, () => false);

@@ -17,7 +17,7 @@ export default function LowPowerToggle() {
       role="switch"
       aria-checked={lowPower}
       onClick={() => setLowPower(!lowPower)}
-      title={lowPower ? "Low power mode is on: 3D and animations are off" : "Turn off 3D and animations"}
+      title={lowPower ? "Simple Mode is on: 3D and animations are off" : "Turn off 3D and animations"}
       className="group inline-flex items-center gap-2 whitespace-nowrap text-sm text-muted hover:text-paper"
     >
       <span
@@ -32,7 +32,7 @@ export default function LowPowerToggle() {
           }`}
         />
       </span>
-      <span className="sr-only sm:not-sr-only">Low power</span>
+      <span className="sr-only sm:not-sr-only">Simple Mode</span>
     </button>
   );
 }

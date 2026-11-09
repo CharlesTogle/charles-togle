@@ -556,7 +556,7 @@ body {
   opacity: calc(1 - var(--eaten, 0));
 }
 
-/* Low power mode: stop continuous decorative animation. The 3D scene is
+/* Simple mode: stop continuous decorative animation. The 3D scene is
    swapped for a static drawing in SolarHero. */
 :root[data-low-power] .bh-disk-spin,
 :root[data-low-power] .petrova-rail::after,

@@ -26,7 +26,7 @@ function place(planet: Planet) {
 }
 
 /**
- * A still, SVG drawing of the solar system for low power mode and for
+ * A still, SVG drawing of the solar system for simple mode and for
  * devices without WebGL. Planets keep their colours and features, and stay
  * clickable; the HTML planet buttons remain the accessible way in.
  */
