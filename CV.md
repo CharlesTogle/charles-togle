@@ -35,7 +35,7 @@ Started by strengthening algorithmic problem-solving, winning the University of 
 - Delivered the Katada Van Rentals and The Hope Hub platforms, translating operational needs into reliable user-facing systems.
 
 ### Katada Van Rentals, Pasay City, Philippines
-**Project Manager & Full Stack Developer** | Jul 2026 - Aug 2026
+**Full Stack Developer** | Jul 2026 - Aug 2026
 
 - Delivered a multi-tenant car-rental SaaS covering fleet discovery, booking, receipt submission, operations, and status updates, replacing the client's PHP 1,000/month platform fee.
 - Translated weekly client feedback into product delivery and added KPI dashboards, financial reports, and CSV exports for operational visibility.
@@ -44,7 +44,7 @@ Started by strengthening algorithmic problem-solving, winning the University of 
 [Live project](https://katada-van-rentals.vercel.app/)
 
 ### The Hope Hub, Makati City, Philippines
-**Project Manager & Full Stack Developer** | Mar 2025 - May 2025
+**Full Stack Developer** | Mar 2025 - May 2025
 
 - Led full-stack delivery for a five-person team building a multi-tenant physical-education platform with React, PostgreSQL, and Supabase.
 - Designed role-based teacher and student access across four core modules and automated Physical Fitness Test classification through session-based recording.
@@ -52,7 +52,7 @@ Started by strengthening algorithmic problem-solving, winning the University of 
 [Live project](https://hope-hub-fitness.vercel.app/) | [Source](https://github.com/CharlesTogle/Hope-Hub)
 
 ### University of Makati
-**Project Manager & Full Stack Developer, Umak Link** | Feb 2025 - Apr 2025; Feb 2026 - Mar 2026
+**Full Stack Developer, Umak Link** | Feb 2025 - Apr 2025; Feb 2026 - Mar 2026
 
 - Built a unified lost-and-found system across Ionic/Capacitor mobile, a Next.js staff portal, and a Fastify backend-for-frontend.
 - Integrated Gemini image classification and PostgreSQL full-text and similarity search to extract item metadata and surface lost-and-found matches.
@@ -62,7 +62,7 @@ Started by strengthening algorithmic problem-solving, winning the University of 
 
 ### AI Document Sorting System | University hackathon | May 2025
 
-Project Manager and backend developer for a two-day faculty workflow hackathon. Led a four-person team and integrated TesseractJS OCR with an AI API to extract and classify documents such as resumes and CVs, reducing manual sorting work for faculty.
+Backend developer on a four-person team for a two-day faculty workflow hackathon. Integrated TesseractJS OCR with an AI API to extract and classify documents such as resumes and CVs, reducing manual sorting work for faculty.
 
 ## Selected Projects
 

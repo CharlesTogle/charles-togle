@@ -150,7 +150,7 @@ export const projects: Project[] = [
     name: 'Umak Link',
     summary:
       'Lost and found for UMak on web and mobile. Gemini reads item photos, and Postgres full-text and similarity search pairs lost with found.',
-    role: 'Project manager, team of four',
+    role: 'Full-stack developer, team of four',
     period: '2025 – 2026',
     tech: ['Ionic', 'Next.js', 'Fastify', 'Gemini', 'Cloud Run'],
     links: {
@@ -164,7 +164,7 @@ export const projects: Project[] = [
     name: 'Hope Hub',
     summary:
       'A PE platform with gated lectures, resumable timed quizzes and automatic Physical Fitness Test classification.',
-    role: 'Project manager, team of five',
+    role: 'Full-stack developer, team of five',
     period: 'Mar – May 2025',
     tech: ['React', 'PostgreSQL', 'Supabase', 'Recharts'],
     links: {
