@@ -89,7 +89,7 @@ export default function PlanetPanel({
       </div>
 
       <a href={`#project-${planet.projectSlug}`} onClick={readCaseFile} className="btn btn-signal mt-6">
-        Read the case file
+        Read more
       </a>
     </aside>
   );

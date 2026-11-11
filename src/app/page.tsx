@@ -1,6 +1,5 @@
 import Background from "./components/Background";
 import BlackHole from "./components/blackhole/BlackHole";
-import CaseFiles from "./components/CaseFiles";
 import Contact from "./components/Contact";
 import Experience from "./components/Experience";
 import Hero from "./components/Hero";
@@ -17,9 +16,8 @@ export default function Home() {
       <Hero />
       <div className="relative">
         <PetrovaThread />
-        <CaseFiles />
-        <MoreBuilds />
         <Experience />
+        <MoreBuilds />
         <Wins />
         <Background />
         <Contact />

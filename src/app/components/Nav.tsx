@@ -3,8 +3,8 @@ import { findContact } from "../data/about";
 import LowPowerToggle from "./LowPowerToggle";
 
 const links = [
-  { href: "/#work", label: "Work" },
   { href: "/#experience", label: "Experience" },
+  { href: "/#projects", label: "Projects" },
   { href: "/#wins", label: "Wins" },
   { href: "/#contact", label: "Contact" },
   { href: "/blog", label: "Blog" },

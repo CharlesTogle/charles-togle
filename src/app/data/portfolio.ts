@@ -6,12 +6,6 @@ export interface ProjectLinks {
   source2?: string
 }
 
-export interface CaseFile {
-  problem: string
-  built: string
-  result: string
-}
-
 export interface Project {
   slug: string
   name: string
@@ -20,7 +14,6 @@ export interface Project {
   period: string
   tech: string[]
   status?: string
-  caseFile?: CaseFile
   links: ProjectLinks
   screenshot?: string
   screenshotFit?: 'cover' | 'contain'
@@ -32,6 +25,8 @@ export interface ExperienceEntry {
   company: string
   location: string
   bullets: string[]
+  /** Links this role to its project, for links, stack and the solar-system anchor */
+  projectSlug?: string
 }
 
 export const projects: Project[] = [
@@ -42,14 +37,6 @@ export const projects: Project[] = [
     role: 'Dev specialist, remote',
     period: 'Sep 2025 – Apr 2026',
     tech: ['Supabase', 'Edge Functions', 'Next.js', 'Stripe', 'GoHighLevel API'],
-    caseFile: {
-      problem:
-        'Staff copied leads into the CRM by hand, failed syncs quietly dropped leads, and client change requests weren’t billed consistently.',
-      built:
-        'A Supabase Edge Function intake pipeline connected to the GoHighLevel API, a senior-approved schema that 460K+ records were migrated into, and a Next.js and Stripe flow that turns change requests into invoices.',
-      result:
-        '5 FTEs’ worth of manual entry automated, 30–40 more leads a day, a new source of truth for the CRM, and $1K–$2K billed per request.'
-    },
     links: { company: 'https://centervert.com/' }
   },
   {
@@ -59,14 +46,6 @@ export const projects: Project[] = [
     role: 'Full-stack developer, freelance',
     period: 'Jul – Aug 2026',
     tech: ['React', 'TypeScript', 'Supabase', 'PostgreSQL', 'PL/pgSQL', 'Edge Functions', 'TanStack Query'],
-    caseFile: {
-      problem:
-        'The client paid ₱1,000 a month for a booking platform that couldn’t show how the business was doing, and toll costs were quoted by hand.',
-      built:
-        'Bookings, fleet, payments, KPI dashboards and CSV financial reports. Toll estimates come from a geocoded dataset of 97 Philippine toll plazas matched against each booking’s route. A PostgreSQL exclusion constraint and atomic PL/pgSQL payment RPCs replaced check-then-insert logic.',
-      result:
-        'The ₱1,000/month fee is gone, toll quotes are automatic, and concurrent requests can no longer double-book a van.'
-    },
     links: { live: 'https://katada-van-rentals.vercel.app/' },
     screenshot: '/projects/katada-van-rentals.png'
   },
@@ -78,14 +57,6 @@ export const projects: Project[] = [
     period: '2026 – present',
     status: 'In progress',
     tech: ['Python', 'FastAPI', 'statsmodels', 'SciPy', 'React Native', 'Expo', 'SQLite', 'Express', 'Supabase', 'Cloud Run'],
-    caseFile: {
-      problem:
-        'Filipino spending isn’t steady. PSA household consumption (HFCE) data shows food prices climbing every December, electricity surging in summer and health spending peaking in the rainy season. A budget tracker that treats every month the same misses all of it.',
-      built:
-        'The forecasting engine: 12 per-category SARIMA models trained on PSA HFCE data from 2000 to 2026, which scale each user’s own spending baseline by the national seasonal trend, plus a linear-programming planner that splits income across essentials and flexible categories. I also built the React Native app and the Express and Supabase backend, offline-first with its own sync engine.',
-      result:
-        'Each month gets its own plan before it arrives, like more for food going into December. Testing how well this works for users is still underway as part of my thesis.'
-    },
     links: {
       live: 'https://budgie-finances.app',
       source: 'https://github.com/VibeCoders-3DCSAD/Budgie'
@@ -99,14 +70,6 @@ export const projects: Project[] = [
     role: 'Lead developer',
     period: 'Sep 2026 – present',
     tech: ['Next.js', 'Prisma', 'Neon Postgres', 'Neon Auth', 'GitHub Actions', 'Vercel', 'Vitest', 'Playwright'],
-    caseFile: {
-      problem:
-        'Students waited 5–10 minutes in line to check in to events, and a single day could bring 100–200 registrations that each needed a ticket email.',
-      built:
-        'Emailed QR passes with server-side ticket verification and attendance tracking, a Postgres-backed email queue with job leases, idempotency keys, retries and provider failover, and GitHub Actions CI on throwaway Neon database branches with matching Vercel deployments.',
-      result:
-        'Check-in went from 5–10 minutes in line to about 5 seconds per student, and a full day of registrations goes out through the queue.'
-    },
     links: { source: 'https://github.com/UMak-SIC/sic-app' }
   },
   {
@@ -212,6 +175,7 @@ export const experiences: ExperienceEntry[] = [
     period: 'Sep 2026 – present',
     title: 'Lead Developer',
     company: 'SIC App, University of Makati',
+    projectSlug: 'sic',
     location: 'Makati City, Philippines',
     bullets: [
       'Handled 100–200 event registrations in a single day by building a Postgres-backed ticket email queue with job leases, idempotency keys, retries and provider failover',
@@ -223,6 +187,7 @@ export const experiences: ExperienceEntry[] = [
     period: 'Jul – Aug 2026',
     title: 'Full Stack Developer',
     company: 'Katada Transportation Services (Freelance)',
+    projectSlug: 'katada',
     location: 'Pasay City, Philippines',
     bullets: [
       'Removed the client’s ₱1,000/month platform fee by delivering a rental system covering bookings, fleet, payments, KPI dashboards and CSV financial reports using React, TypeScript and Supabase',
@@ -234,6 +199,7 @@ export const experiences: ExperienceEntry[] = [
     period: 'Sep 2025 – Apr 2026',
     title: 'Dev Specialist',
     company: 'Centervert',
+    projectSlug: 'crm',
     location: 'Greenville, South Carolina (Remote)',
     bullets: [
       'Automated 5 FTEs’ worth of manual data entry via a Supabase Edge Function intake pipeline',

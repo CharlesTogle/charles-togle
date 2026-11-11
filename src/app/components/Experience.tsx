@@ -1,4 +1,6 @@
-import { experiences, type ExperienceEntry } from "../data/portfolio";
+import Image from "next/image";
+import { experiences, projects, type ExperienceEntry } from "../data/portfolio";
+import ProjectLinks from "./ProjectLinks";
 
 interface CompanyGroup {
   company: string;
@@ -42,25 +44,49 @@ export default function Experience() {
               </div>
 
               <ol className="grid gap-8 border-l border-rule pl-6">
-                {group.roles.map((role, index) => (
-                  <li key={`${role.title}-${role.period}`} className="relative">
-                    <span
-                      aria-hidden="true"
-                      className={`absolute -left-[calc(1.5rem+4.5px)] top-2 size-2 rounded-full ${index === 0 ? "bg-signal" : "bg-rule-strong"}`}
-                    />
-                    <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                      <h4 className="text-lg font-semibold">{role.title}</h4>
-                      <p className="text-sm text-muted">{role.period}</p>
-                    </div>
-                    <ul className="mt-3 grid list-disc gap-2 pl-5 text-muted marker:text-rule-strong">
-                      {role.bullets.map((bullet) => (
-                        <li key={bullet} className="max-w-[70ch]">
-                          {bullet}
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ))}
+                {group.roles.map((role, index) => {
+                  const project = projects.find((p) => p.slug === role.projectSlug);
+                  return (
+                    <li
+                      key={`${role.title}-${role.period}`}
+                      id={project ? `project-${project.slug}` : undefined}
+                      className="relative"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className={`absolute -left-[calc(1.5rem+4.5px)] top-2 size-2 rounded-full ${index === 0 ? "bg-signal" : "bg-rule-strong"}`}
+                      />
+                      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                        <h4 className="text-lg font-semibold">{role.title}</h4>
+                        <p className="text-sm text-muted">{role.period}</p>
+                      </div>
+                      <ul className="mt-3 grid list-disc gap-2 pl-5 text-muted marker:text-rule-strong">
+                        {role.bullets.map((bullet) => (
+                          <li key={bullet} className="max-w-[70ch]">
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                      {project ? (
+                        <div className="mt-4 grid gap-3 pl-5">
+                          {project.screenshot ? (
+                            <div className="relative aspect-16/10 max-w-xl overflow-hidden rounded-md border border-rule bg-panel">
+                              <Image
+                                src={project.screenshot}
+                                alt={`${project.name} screenshot`}
+                                fill
+                                sizes="(min-width: 1024px) 36rem, 100vw"
+                                className={project.screenshotFit === "contain" ? "object-contain" : "object-cover object-top"}
+                              />
+                            </div>
+                          ) : null}
+                          <p className="text-sm text-muted">{project.tech.join(", ")}</p>
+                          <ProjectLinks project={project} />
+                        </div>
+                      ) : null}
+                    </li>
+                  );
+                })}
               </ol>
             </article>
           ))}
