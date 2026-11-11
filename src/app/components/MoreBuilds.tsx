@@ -1,11 +1,37 @@
-import Image from "next/image";
-import { experiences, projects } from "../data/portfolio";
-import ProjectLinks from "./ProjectLinks";
+import { experiences, projects, type Project } from "../data/portfolio";
+import ProjectRow from "./ProjectRow";
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+// Turns one side of a period like "Mar 2026" or "2026" into a sortable
+// number. A bare year counts as January when it starts a period and
+// December when it ends one; "present" sorts after everything.
+function toMonthIndex(part: string, year: number, isEnd: boolean): number {
+  if (/present/i.test(part)) return Infinity;
+  const month = MONTHS.findIndex((m) => part.includes(m));
+  return year * 12 + (month >= 0 ? month : isEnd ? 11 : 0);
+}
+
+function periodRange(period: string): { start: number; end: number } {
+  const [first, second = first] = period.split("–").map((s) => s.trim());
+  const yearOf = (s: string) => Number(s.match(/\d{4}/)?.[0]);
+  // "Mar – May 2025" carries its year only on the end side.
+  const endYear = yearOf(second) || yearOf(first);
+  const startYear = yearOf(first) || endYear;
+  return { start: toMonthIndex(first, startYear, false), end: toMonthIndex(second, endYear, true) };
+}
+
+// Newest first: by when the project ended, then by when it started.
+function byDateDesc(a: Project, b: Project): number {
+  const ra = periodRange(a.period);
+  const rb = periodRange(b.period);
+  return rb.end - ra.end || rb.start - ra.start;
+}
 
 export default function MoreBuilds() {
   // Projects tied to a role already appear under Experience.
   const fromRoles = new Set(experiences.map((role) => role.projectSlug));
-  const rest = projects.filter((project) => !fromRoles.has(project.slug));
+  const rest = projects.filter((project) => !fromRoles.has(project.slug)).sort(byDateDesc);
 
   return (
     <section id="projects" aria-labelledby="projects-heading" className="section">
@@ -15,33 +41,7 @@ export default function MoreBuilds() {
         </h2>
         <ul className="mt-8 border-b border-rule">
           {rest.map((project) => (
-            <li
-              key={project.slug}
-              id={`project-${project.slug}`}
-              className="grid gap-3 border-t border-rule py-6 md:grid-cols-[minmax(0,4fr)_minmax(0,6fr)_minmax(0,3fr)] md:gap-8"
-            >
-              <div>
-                <h3 className="text-lg font-semibold">{project.name}</h3>
-                <p className="text-sm text-muted">
-                  {project.role}, {project.period}
-                </p>
-              </div>
-              <div className="grid gap-4">
-                <p className="max-w-[60ch] text-muted">{project.summary}</p>
-                {project.screenshot ? (
-                  <div className="relative aspect-16/10 max-w-xl overflow-hidden rounded-md border border-rule bg-panel">
-                    <Image
-                      src={project.screenshot}
-                      alt={`${project.name} screenshot`}
-                      fill
-                      sizes="(min-width: 768px) 40vw, 100vw"
-                      className={project.screenshotFit === "contain" ? "object-contain" : "object-cover object-top"}
-                    />
-                  </div>
-                ) : null}
-              </div>
-              <ProjectLinks project={project} className="md:justify-end" />
-            </li>
+            <ProjectRow key={project.slug} project={project} />
           ))}
         </ul>
       </div>

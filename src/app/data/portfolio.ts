@@ -83,7 +83,9 @@ export const projects: Project[] = [
     links: {
       live: 'https://e-handa.vercel.app/',
       source: 'https://github.com/CharlesTogle/eGovPHHackaton2026'
-    }
+    },
+    screenshot: '/projects/e-handa.png',
+    screenshotFit: 'contain'
   },
   {
     slug: 'ccis',
@@ -93,7 +95,8 @@ export const projects: Project[] = [
     role: 'Full-stack engineer',
     period: 'Aug 2026',
     tech: ['React', 'Supabase', 'Realtime', 'GSAP'],
-    links: { live: 'https://ccis-rose.vercel.app' }
+    links: { live: 'https://ccis-rose.vercel.app' },
+    screenshot: '/projects/ccis-central-portal.png'
   },
   {
     slug: 'homeserver',
@@ -106,7 +109,8 @@ export const projects: Project[] = [
     links: {
       source: 'https://github.com/CharlesTogle/HomeServer-Lite',
       source2: 'https://github.com/CharlesTogle/NginxConf'
-    }
+    },
+    screenshot: '/projects/home-server-lite.png'
   },
   {
     slug: 'umak-link',
@@ -120,7 +124,8 @@ export const projects: Project[] = [
       live: 'https://umak-link-web.vercel.app/',
       source: 'https://github.com/CharlesTogle/umak-link-web',
       source2: 'https://github.com/CharlesTogle/umak-link-backend'
-    }
+    },
+    screenshot: '/projects/umak-link.png'
   },
   {
     slug: 'hope-hub',
@@ -133,7 +138,8 @@ export const projects: Project[] = [
     links: {
       live: 'https://hope-hub-fitness.vercel.app/',
       source: 'https://github.com/CharlesTogle/Hope-Hub'
-    }
+    },
+    screenshot: '/projects/hope-hub.png'
   },
   {
     slug: 'digital-pulse',
@@ -145,7 +151,8 @@ export const projects: Project[] = [
     links: {
       live: 'https://digital-pulsify.vercel.app/',
       source: 'https://github.com/CharlesTogle/DigitalPulsify'
-    }
+    },
+    screenshot: '/projects/digital-pulse.png'
   },
   {
     slug: 'quiz',
@@ -157,7 +164,8 @@ export const projects: Project[] = [
     links: {
       live: 'https://not-so-simple-quiz-app.vercel.app/',
       source: 'https://github.com/CharlesTogle/not-so-simple-quiz-app'
-    }
+    },
+    screenshot: '/projects/manual-quiz.png'
   },
   {
     slug: 'android-llm',
@@ -166,7 +174,8 @@ export const projects: Project[] = [
     role: 'Author',
     period: 'Feb 2026',
     tech: ['Termux', 'Ollama', 'SSH'],
-    links: { source: 'https://github.com/CharlesTogle/android-server-with-llm' }
+    links: { source: 'https://github.com/CharlesTogle/android-server-with-llm' },
+    screenshot: '/projects/android-llm-server.png'
   }
 ]
 
