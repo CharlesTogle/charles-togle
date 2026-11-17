@@ -157,7 +157,7 @@ export const projects: Project[] = [
   {
     slug: 'quiz',
     name: 'Manual Quiz App',
-    summary: 'A zero-backend quiz tool that 40+ classmates used to review for exams.',
+    summary: 'A zero-backend quiz tool that 40+ students used to review for exams.',
     role: 'Solo',
     period: 'Mar 2026',
     tech: ['JavaScript', 'Web Storage'],

@@ -83,7 +83,7 @@ export const planets: Planet[] = [
     mapId: 'budgie',
     name: 'Budgie',
     tagline: 'Financial planning that sees December coming, built on PSA spending data',
-    result: 'Plans each month before it arrives. Testing is underway as part of my thesis.',
+    result: 'Plans each month before it arrives. Currently in testing.',
     radius: 0.6,
     orbit: 8.4,
     speed: 0.1,

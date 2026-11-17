@@ -23,8 +23,8 @@ export default function Background() {
           <h2 className="display display-md">Education</h2>
           <div className="mt-8 border-b border-rule">
             {educationEntries.map((entry) => (
-              <div key={`${entry.degree}-${entry.period}`} className="border-t border-rule py-4">
-                <p className="text-sm text-muted">{toSentenceCase(entry.period)}</p>
+              <div key={entry.degree} className="border-t border-rule py-4">
+                {entry.period ? <p className="text-sm text-muted">{toSentenceCase(entry.period)}</p> : null}
                 <h3 className="mt-1 font-semibold">{entry.degree}</h3>
                 <p className="text-muted">{entry.school}</p>
                 {entry.bullets.length > 0 ? (

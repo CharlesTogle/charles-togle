@@ -20,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 const siteName = "Charles Nathaniel Togle";
 const siteTitle = `${siteName} | Full-Stack Engineer`;
 const siteDescription =
-  "Charles Togle is a full-stack engineer graduating in Computer Science from the University of Makati in May 2027. Explore the systems he has shipped, from web apps to home servers.";
+  "Charles Togle is a full-stack engineer based in Pasay. Explore the systems he has shipped, from web apps to home servers.";
 const ogImage = {
   url: "/og-image.png",
   width: 1200,

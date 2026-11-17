@@ -102,7 +102,7 @@ More work: [Android LLM Server](https://github.com/CharlesTogle/android-server-w
 ## Education
 
 ### University of Makati, Makati City, Philippines
-**Bachelor of Science in Computer Science, Major in Application Development** | Jan 2023 - Jun 2027
+**Bachelor of Science in Computer Science, Major in Application Development**
 
 - Dean's List: 1st and 2nd semesters, AY 2023-2024; AY 2024-2025; AY 2025-2026.
 - Direcho Trabaho / Frontier Technology Institute: React JavaScript, Apr - Jun 2025.

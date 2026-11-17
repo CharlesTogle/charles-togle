@@ -132,7 +132,7 @@ export default function SolarHero() {
             <Availability label={availability} className="inline-flex text-sm" />
             <h1 className="display mt-6 max-w-[12ch] text-[clamp(2.5rem,6.4vw,6rem)]">I build the systems behind the software.</h1>
             <p className="lede mt-6 max-w-[46ch]">
-              Full-stack engineer, graduating in CS from the University of Makati in May 2027.
+              Full-stack engineer based in Pasay.
               Every planet here is a system I&apos;ve shipped. Land on one.
             </p>
           </div>

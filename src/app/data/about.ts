@@ -1,12 +1,12 @@
 export interface EducationEntry {
-  period: string
+  period?: string
   degree: string
   school: string
   bullets: string[]
 }
 
 export interface AwardEntry {
-  period: string
+  period?: string
   title: string
   summary: string
   source?: string
@@ -21,7 +21,6 @@ export interface ContactItem {
 
 export const educationEntries: EducationEntry[] = [
   {
-    period: 'Expected 2027',
     degree: 'Bachelor of Science in Computer Science, Major in Application Development',
     school: 'University of Makati, Makati City',
     bullets: [
